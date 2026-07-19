@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.plaf.basic.BasicSliderUI;
 import java.awt.*;
 
+// Claude sliderUI
 public class sliderUI extends BasicSliderUI {
 
     private Color fillColor = new Color(30, 30, 30);

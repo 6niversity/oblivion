@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
+// Claude Rounded Button
 public class RoundedButton extends JButton {
     public RoundedButton(String text) {
         super(text);

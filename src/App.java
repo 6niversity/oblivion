@@ -66,6 +66,9 @@ public class App {
         topUp.setForeground(bg);
         topUp.setBounds(627, 12, 61, 16);
 
+        // topUp button event (needs functionality)
+        topUp.addActionListener(e -> {});
+
         JLabel dice = new JLabel("Dice");
         dice.setFont(instrument48);
         dice.setForeground(Color.WHITE);
@@ -93,6 +96,9 @@ public class App {
         betPlacer.setBackground(Color.WHITE);
         betPlacer.setForeground(bg);
         betPlacer.setBounds(319, 246, 61, 16);
+
+        // betPlacer button event (needs functionality)
+        betPlacer.addActionListener(e -> {});
 
         JLabel informative = new JLabel("2x multiplier upon win");
         informative.setFont(geistmono6);
