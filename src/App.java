@@ -2,19 +2,37 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
 import javax.swing.*;
 
 public class App {
     static Color bg = new Color(11, 11, 11);
-    static int balance = 0;
+    static int balance = 100;
+    static String username = "";
 
     public static void main(String[] args) throws Exception {
+        /* 
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-        } catch (Exception e) {
-            e.printStackTrace();
+
+            FileInputStream fileInput = new FileInputStream("res/user/raw.txt");
+            ObjectInputStream objectInput = new ObjectInputStream(fileInput);
+
+            User currentUser = (User) objectInput.readObject();
+
+            objectInput.close();
+            fileInput.close();
+
+            mainScreen();
+
+        } catch (Exception _) {
+            // Insert sign up screen
         }
-        mainScreen();
+
+        */
+       mainScreen();
     }
 
     public static void mainScreen() {
@@ -58,13 +76,13 @@ public class App {
         JLabel userBalanace = new JLabel("$"+ balance);
         userBalanace.setFont(geistmono12);
         userBalanace.setForeground(Color.WHITE);
-        userBalanace.setBounds(589, 12, 22, 16);
+        userBalanace.setBounds(582, 12, 30, 16);
 
-        RoundedButton topUp = new RoundedButton("top up");
+        RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
         topUp.setBackground(Color.WHITE);
         topUp.setForeground(bg);
-        topUp.setBounds(627, 12, 61, 16);
+        topUp.setBounds(620, 12, 69, 16);
 
         // topUp button event (needs functionality)
         topUp.addActionListener(e -> {});
@@ -91,14 +109,31 @@ public class App {
 
         slider.addChangeListener(e -> slider.repaint());
 
+        RoundedButton over = new RoundedButton("over");
+        over.setFont(geistmono9);
+        over.setBackground(Color.WHITE);
+        over.setForeground(bg);
+        over.setBounds(276, 241, 69, 16);
+
+        RoundedButton under = new RoundedButton("under");
+        under.setFont(geistmono9);
+        under.setBackground(Color.WHITE);
+        under.setForeground(bg);
+        under.setBounds(354, 241, 69, 16); // +8
+
         RoundedButton betPlacer = new RoundedButton("bet");
-        betPlacer.setFont(geistmono9);
+        betPlacer.setFont(geistmono6);
         betPlacer.setBackground(Color.WHITE);
         betPlacer.setForeground(bg);
-        betPlacer.setBounds(319, 246, 61, 16);
+        betPlacer.setBounds(319, 305, 61, 16);
 
         // betPlacer button event (needs functionality)
-        betPlacer.addActionListener(e -> {});
+        betPlacer.addActionListener(e -> {
+            int rngDice = (int)(Math.random() * 101);
+            int rngUser = slider.getValue();
+
+            
+        });
 
         JLabel informative = new JLabel("2x multiplier upon win");
         informative.setFont(geistmono6);
@@ -112,6 +147,8 @@ public class App {
         contentpane.add(zero);
         contentpane.add(hundred);
         contentpane.add(slider);
+        contentpane.add(over);
+        contentpane.add(under);
         contentpane.add(betPlacer);
         contentpane.add(informative);
 
