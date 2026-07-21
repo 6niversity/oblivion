@@ -1,5 +1,5 @@
 public class User {
-    private int balance;
+    private double balance;
     private String username;
 
     public User(int balance, String username) {
@@ -8,7 +8,7 @@ public class User {
     }
 
     // getters
-    private int getBalance() {
+    private double getBalance() {
         return balance;
     }
 
@@ -17,7 +17,7 @@ public class User {
     }
 
     // setters
-    private void setBalance(int balance) {
+    private void setBalance(double balance) {
         this.balance = balance;
     }
 
