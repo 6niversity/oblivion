@@ -53,18 +53,21 @@ public class App {
         Font geistmono6 = null;
         Font geistmono9 = null;
         Font geistmono12 = null;
+        Font geistmono20 = null;
         Font instrument48 = null;
 
         try {
             geistmono6 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(6f);
             geistmono9 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(9f);
             geistmono12 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(12f);
+            geistmono20 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(20f);
             instrument48 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/instrumentserif.ttf")).deriveFont(48f);
 
             GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
             graphicsEnvironment.registerFont(geistmono6);
             graphicsEnvironment.registerFont(geistmono9);
             graphicsEnvironment.registerFont(geistmono12);
+            graphicsEnvironment.registerFont(geistmono20);
             graphicsEnvironment.registerFont(instrument48);
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
@@ -92,9 +95,40 @@ public class App {
         paymentsLabel.setBounds(200, 63, 175, 47);
 
         RoundedPanel panel = new RoundedPanel(20);
-        panel.setBackgroundColor(bg);
-        panel.setRoundedBorder(new Color(49, 49, 49), 1);
+        panel.setBackgroundColor(new Color(21, 21, 21));
+        panel.setLayout(null);
         panel.setBounds(200, 116, 300, 221);
+
+        JLabel hundred = new JLabel("$100");
+        hundred.setFont(geistmono20);
+        hundred.setForeground(Color.WHITE);
+        hundred.setBounds(15, 9, 175, 47);
+
+        JLabel thousand = new JLabel("$1000");
+        thousand.setFont(geistmono20);
+        thousand.setForeground(Color.WHITE);
+        thousand.setBounds(15, 49, 200, 47);
+
+        JLabel tenthousand = new JLabel("$10,000");
+        tenthousand.setFont(geistmono20);
+        tenthousand.setForeground(Color.WHITE);
+        tenthousand.setBounds(15, 98, 210, 26);
+
+        JLabel hundredthousand = new JLabel("$100,000");
+        hundredthousand.setFont(geistmono20);
+        hundredthousand.setForeground(Color.WHITE);
+        hundredthousand.setBounds(15, 137, 225, 26);
+
+        JLabel million = new JLabel("$1,000,000");
+        million.setFont(geistmono20);
+        million.setForeground(Color.WHITE);
+        million.setBounds(15, 176, 250, 26);
+
+        panel.add(hundred);
+        panel.add(thousand);
+        panel.add(tenthousand);
+        panel.add(hundredthousand);
+        panel.add(million);
 
         contentpane.add(title);
         contentpane.add(userBalanace);
