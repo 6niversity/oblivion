@@ -52,6 +52,7 @@ public class App {
         
         Font geistmono6 = null;
         Font geistmono9 = null;
+        Font geistmono10 = null;
         Font geistmono12 = null;
         Font geistmono20 = null;
         Font instrument48 = null;
@@ -59,6 +60,7 @@ public class App {
         try {
             geistmono6 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(6f);
             geistmono9 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(9f);
+            geistmono10 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(10f);
             geistmono12 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(12f);
             geistmono20 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(20f);
             instrument48 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/instrumentserif.ttf")).deriveFont(48f);
@@ -66,6 +68,7 @@ public class App {
             GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
             graphicsEnvironment.registerFont(geistmono6);
             graphicsEnvironment.registerFont(geistmono9);
+            graphicsEnvironment.registerFont(geistmono10);
             graphicsEnvironment.registerFont(geistmono12);
             graphicsEnvironment.registerFont(geistmono20);
             graphicsEnvironment.registerFont(instrument48);
@@ -124,11 +127,62 @@ public class App {
         million.setForeground(Color.WHITE);
         million.setBounds(15, 176, 250, 26);
 
+        RoundedButton purchasehundred = new RoundedButton("purchase");
+        purchasehundred.setFont(geistmono10);
+        purchasehundred.setBackground(Color.WHITE);
+        purchasehundred.setForeground(Color.BLACK);
+        purchasehundred.setBounds(185, 22, 99, 21);
+
+        // purchasehundred event
+        purchasehundred.addActionListener(e -> {});
+
+        RoundedButton purchasethousand = new RoundedButton("purchase");
+        purchasethousand.setFont(geistmono10);
+        purchasethousand.setBackground(Color.WHITE);
+        purchasethousand.setForeground(Color.BLACK);
+        purchasethousand.setBounds(185, 62, 99, 21);
+        
+        // purchasethousand event
+        purchasethousand.addActionListener(e -> {});
+
+        RoundedButton purchasetenthousand = new RoundedButton("purchase");
+        purchasetenthousand.setFont(geistmono10);
+        purchasetenthousand.setBackground(Color.WHITE);
+        purchasetenthousand.setForeground(Color.BLACK);
+        purchasetenthousand.setBounds(185, 102, 99, 21);
+
+        // purchasetenthousand event
+        purchasetenthousand.addActionListener(e -> {});
+
+        RoundedButton purchasehundredthousand = new RoundedButton("purchase");
+        purchasehundredthousand.setFont(geistmono10);
+        purchasehundredthousand.setBackground(Color.WHITE);
+        purchasehundredthousand.setForeground(Color.BLACK);
+        purchasehundredthousand.setBounds(185, 142, 99, 21);
+
+        // purchasehundredthousand event
+        purchasehundredthousand.addActionListener(e -> {});
+
+        RoundedButton purchasemillion = new RoundedButton("purchase");
+        purchasemillion.setFont(geistmono10);
+        purchasemillion.setBackground(Color.WHITE);
+        purchasemillion.setForeground(Color.BLACK);
+        purchasemillion.setBounds(185, 182, 99, 21);
+
+        // purchasemillion
+        purchasemillion.addActionListener(e -> {});
+
         panel.add(hundred);
         panel.add(thousand);
         panel.add(tenthousand);
         panel.add(hundredthousand);
         panel.add(million);
+
+        panel.add(purchasehundred);
+        panel.add(purchasethousand);
+        panel.add(purchasetenthousand);
+        panel.add(purchasehundredthousand);
+        panel.add(purchasemillion);
 
         contentpane.add(title);
         contentpane.add(userBalanace);
