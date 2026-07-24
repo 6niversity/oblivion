@@ -27,7 +27,7 @@ public class RoundedButton extends JButton {
             g2.setColor(getBackground());
         }
 
-        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
+        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20);
         g2.dispose();
 
         super.paintComponent(g);

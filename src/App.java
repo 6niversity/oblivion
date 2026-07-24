@@ -1,11 +1,10 @@
+import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-
-import javax.swing.*;
+// import java.io.FileInputStream;
+// import java.io.ObjectInputStream;
 
 public class App {
     static Color bg = new Color(11, 11, 11);
@@ -84,7 +83,7 @@ public class App {
         JLabel confirmLabel = new JLabel("Confirm");
         confirmLabel.setFont(instrument48);
         confirmLabel.setForeground(Color.WHITE);
-        confirmLabel.setBounds(200, 121, 103, 47);
+        confirmLabel.setBounds(200, 121, 145, 47);
 
         RoundedPanel panel = new RoundedPanel(20);
         panel.setBackgroundColor(new Color(21, 21, 21));
@@ -99,10 +98,49 @@ public class App {
         JLabel question2 = new JLabel("purchase " + pending + "?");
         question2.setFont(geistmono12);
         question2.setForeground(Color.WHITE);
-        question2.setBounds(85, 37, 173, 16);
+        if (pending == 100) {
+            question2.setBounds(103, 37, 173, 16);
+        } else if (pending == 1000) {
+            question2.setBounds(99, 37, 108, 16);
+        } else if (pending == 10000) {
+            question2.setBounds(96, 37, 108, 16);
+        } else if (pending == 100000) {
+            question2.setBounds(92, 37, 108, 16);
+        } else if (pending == 1000000) {
+            question2.setBounds(88, 37, 108, 16);
+        }
+
+        RoundedButton confirm = new RoundedButton("confirm");
+        confirm.setFont(geistmono6);
+        confirm.setBackground(Color.WHITE);
+        confirm.setForeground(bg);
+        confirm.setBounds(64, 69, 77, 21);
+
+        // confirm event
+        confirm.addActionListener(e -> {
+            balance += pending;
+            frame.setVisible(false);
+            frame.dispose();
+
+            mainScreen();
+        });;
+
+        GreyButton cancel = new GreyButton("cancel");
+        cancel.setFont(geistmono6);
+        cancel.setBounds(159, 69, 77, 21);
+
+        // cancel event
+        cancel.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+
+            topUpScreen();
+        });
 
         panel.add(question1);
         panel.add(question2);
+        panel.add(cancel);
+        panel.add(confirm);
 
         contentpane.add(title);
         contentpane.add(confirmLabel);
@@ -158,7 +196,7 @@ public class App {
         JLabel userBalanace = new JLabel("$"+ balance);
         userBalanace.setFont(geistmono12);
         userBalanace.setForeground(Color.WHITE);
-        userBalanace.setBounds(582, 12, 30, 16);
+        userBalanace.setBounds(14, 342, 300, 16);
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
@@ -209,6 +247,9 @@ public class App {
 
         // purchasehundred event
         purchasehundred.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+            
             confirmationScreen(100);
         });
 
@@ -219,7 +260,12 @@ public class App {
         purchasethousand.setBounds(185, 62, 99, 21);
         
         // purchasethousand event
-        purchasethousand.addActionListener(e -> {});
+        purchasethousand.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+            
+            confirmationScreen(1000);
+        });
 
         RoundedButton purchasetenthousand = new RoundedButton("purchase");
         purchasetenthousand.setFont(geistmono10);
@@ -228,7 +274,12 @@ public class App {
         purchasetenthousand.setBounds(185, 102, 99, 21);
 
         // purchasetenthousand event
-        purchasetenthousand.addActionListener(e -> {});
+        purchasetenthousand.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+            
+            confirmationScreen(10000);
+        });
 
         RoundedButton purchasehundredthousand = new RoundedButton("purchase");
         purchasehundredthousand.setFont(geistmono10);
@@ -237,7 +288,12 @@ public class App {
         purchasehundredthousand.setBounds(185, 142, 99, 21);
 
         // purchasehundredthousand event
-        purchasehundredthousand.addActionListener(e -> {});
+        purchasehundredthousand.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+            
+            confirmationScreen(100000);
+        });
 
         RoundedButton purchasemillion = new RoundedButton("purchase");
         purchasemillion.setFont(geistmono10);
@@ -246,7 +302,12 @@ public class App {
         purchasemillion.setBounds(185, 182, 99, 21);
 
         // purchasemillion
-        purchasemillion.addActionListener(e -> {});
+        purchasemillion.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+            
+            confirmationScreen(1000000);
+        });   
 
         panel.add(hundred);
         panel.add(thousand);
@@ -307,10 +368,10 @@ public class App {
         title.setForeground(Color.WHITE);
         title.setBounds(14, 12, 58, 16);
 
-        JLabel userBalanace = new JLabel("$"+ balance);
+        JLabel userBalanace = new JLabel("$"+ (int) balance);
         userBalanace.setFont(geistmono12);
         userBalanace.setForeground(Color.WHITE);
-        userBalanace.setBounds(582, 12, 30, 16);
+        userBalanace.setBounds(14, 342, 300, 16);
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
