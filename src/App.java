@@ -36,6 +36,104 @@ public class App {
        mainScreen();
     }
 
+    public static void menuScreen() {
+        JFrame frame = new JFrame();
+        Container contentpane = frame.getContentPane();
+
+        frame.setTitle("oblivion");
+        frame.setSize(700, 400);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        contentpane.setBackground(bg);
+        contentpane.setLayout(null);
+
+        Font geistmono6 = null;
+        Font geistmono9 = null;
+        Font geistmono10 = null;
+        Font geistmono12 = null;
+        Font geistmono20 = null;
+        Font instrument48 = null;
+
+        try {
+            geistmono6 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(6f);
+            geistmono9 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(9f);
+            geistmono10 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(10f);
+            geistmono12 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(12f);
+            geistmono20 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(20f);
+            instrument48 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/instrumentserif.ttf")).deriveFont(48f);
+
+            GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            graphicsEnvironment.registerFont(geistmono6);
+            graphicsEnvironment.registerFont(geistmono9);
+            graphicsEnvironment.registerFont(geistmono10);
+            graphicsEnvironment.registerFont(geistmono12);
+            graphicsEnvironment.registerFont(geistmono20);
+            graphicsEnvironment.registerFont(instrument48);
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+        }
+
+        JLabel title = new JLabel("oblivion");
+        title.setFont(geistmono12);
+        title.setForeground(Color.WHITE);
+        title.setBounds(14, 12, 58, 16);
+
+        contentpane.add(title);
+
+        frame.setVisible(true);
+    }
+
+    public static void blackjackScreen() {
+        JFrame frame = new JFrame();
+        Container contentpane = frame.getContentPane();
+
+        frame.setTitle("oblivion");
+        frame.setSize(700, 400);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        contentpane.setBackground(bg);
+        contentpane.setLayout(null);
+
+        Font geistmono6 = null;
+        Font geistmono9 = null;
+        Font geistmono10 = null;
+        Font geistmono12 = null;
+        Font geistmono20 = null;
+        Font instrument48 = null;
+
+        try {
+            geistmono6 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(6f);
+            geistmono9 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(9f);
+            geistmono10 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(10f);
+            geistmono12 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(12f);
+            geistmono20 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(20f);
+            instrument48 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/instrumentserif.ttf")).deriveFont(48f);
+
+            GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            graphicsEnvironment.registerFont(geistmono6);
+            graphicsEnvironment.registerFont(geistmono9);
+            graphicsEnvironment.registerFont(geistmono10);
+            graphicsEnvironment.registerFont(geistmono12);
+            graphicsEnvironment.registerFont(geistmono20);
+            graphicsEnvironment.registerFont(instrument48);
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+        }
+
+        JLabel title = new JLabel("oblivion");
+        title.setFont(geistmono12);
+        title.setForeground(Color.WHITE);
+        title.setBounds(14, 12, 58, 16);
+
+        contentpane.add(title);
+
+        frame.setVisible(true);
+    }
+
     public static void confirmationScreen(int pending) {
         JFrame frame = new JFrame();
         Container contentpane = frame.getContentPane();
