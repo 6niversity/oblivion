@@ -1,3 +1,4 @@
+import javax.imageio.plugins.bmp.BMPImageWriteParam;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -33,7 +34,7 @@ public class App {
         }
 
         */
-       mainScreen();
+       menuScreen();
     }
 
     public static void menuScreen() {
@@ -55,6 +56,7 @@ public class App {
         Font geistmono12 = null;
         Font geistmono20 = null;
         Font instrument48 = null;
+        Font instrument64 = null;
 
         try {
             geistmono6 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(6f);
@@ -63,6 +65,7 @@ public class App {
             geistmono12 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(12f);
             geistmono20 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(20f);
             instrument48 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/instrumentserif.ttf")).deriveFont(48f);
+            instrument64 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/instrumentserif.ttf")).deriveFont(64f);
 
             GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
             graphicsEnvironment.registerFont(geistmono6);
@@ -71,6 +74,7 @@ public class App {
             graphicsEnvironment.registerFont(geistmono12);
             graphicsEnvironment.registerFont(geistmono20);
             graphicsEnvironment.registerFont(instrument48);
+            graphicsEnvironment.registerFont(instrument64);
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
@@ -80,7 +84,78 @@ public class App {
         title.setForeground(Color.WHITE);
         title.setBounds(14, 12, 58, 16);
 
+        JLabel userBalance = new JLabel("$"+ (int) balance);
+        userBalance.setFont(geistmono12);
+        userBalance.setForeground(Color.WHITE);
+        userBalance.setBounds(14, 342, 300, 16);
+
+        RoundedButton topUp = new RoundedButton("buy");
+        topUp.setFont(geistmono9);
+        topUp.setBackground(Color.WHITE);
+        topUp.setForeground(bg);
+        topUp.setBounds(620, 12, 69, 16);
+
+        // topUp button event (needs functionality)
+        topUp.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+
+            topUpScreen();
+        });
+
+        RoundedPanel panel1 = new RoundedPanel(20);
+        panel1.setBackgroundColor(new Color(21, 21, 21));
+        panel1.setLayout(null);
+        panel1.setBounds(51, 125, 277, 150);
+
+        JLabel blackjackLabel = new JLabel("Blackjack");
+        blackjackLabel.setFont(instrument64);
+        blackjackLabel.setForeground(Color.WHITE);
+        blackjackLabel.setBounds(8, 0, 235, 83);
+
+        RoundedButton confirmBlackjack = new RoundedButton("confirm");
+        confirmBlackjack.setFont(geistmono6);
+        confirmBlackjack.setBackground(Color.WHITE);
+        confirmBlackjack.setForeground(bg);
+        confirmBlackjack.setBounds(189, 119, 77, 21);
+
+        // confirmBlackjack event
+        confirmBlackjack.addActionListener(e ->{});
+
+        RoundedPanel panel2 = new RoundedPanel(20);
+        panel2.setBackgroundColor(new Color(21, 21, 21));
+        panel2.setLayout(null);
+        panel2.setBounds(371, 125, 277, 150);
+
+        JLabel diceLabel = new JLabel("Dice");
+        diceLabel.setFont(instrument64);
+        diceLabel.setForeground(Color.WHITE);
+        diceLabel.setBounds(8, 0, 235, 83);
+
+        RoundedButton confirmDice = new RoundedButton("confirm");
+        confirmDice.setFont(geistmono6);
+        confirmDice.setBackground(Color.WHITE);
+        confirmDice.setForeground(bg);
+        confirmDice.setBounds(189, 119, 77, 21);
+
+        // confirmBlackjack event
+        confirmDice.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+            diceScreen();
+        });
+
         contentpane.add(title);
+        contentpane.add(userBalance);
+        contentpane.add(topUp);
+
+        contentpane.add(panel1);
+        panel1.add(blackjackLabel);
+        panel1.add(confirmBlackjack);
+
+        contentpane.add(panel2);
+        panel2.add(diceLabel);
+        panel2.add(confirmDice);
 
         frame.setVisible(true);
     }
@@ -220,7 +295,7 @@ public class App {
             frame.setVisible(false);
             frame.dispose();
 
-            mainScreen();
+            diceScreen();
         });;
 
         GreyButton cancel = new GreyButton("cancel");
@@ -291,10 +366,10 @@ public class App {
         title.setForeground(Color.WHITE);
         title.setBounds(14, 12, 58, 16);
 
-        JLabel userBalanace = new JLabel("$"+ balance);
-        userBalanace.setFont(geistmono12);
-        userBalanace.setForeground(Color.WHITE);
-        userBalanace.setBounds(14, 342, 300, 16);
+        JLabel userBalance = new JLabel("$"+ (int) balance);
+        userBalance.setFont(geistmono12);
+        userBalance.setForeground(Color.WHITE);
+        userBalance.setBounds(14, 342, 300, 16);
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
@@ -420,7 +495,7 @@ public class App {
         panel.add(purchasemillion);
 
         contentpane.add(title);
-        contentpane.add(userBalanace);
+        contentpane.add(userBalance);
         contentpane.add(topUp);
         contentpane.add(paymentsLabel);
         contentpane.add(panel);
@@ -428,7 +503,7 @@ public class App {
         frame.setVisible(true);
     }
 
-    public static void mainScreen() {
+    public static void diceScreen() {
         JFrame frame = new JFrame();
         Container contentpane = frame.getContentPane();
 
@@ -466,10 +541,10 @@ public class App {
         title.setForeground(Color.WHITE);
         title.setBounds(14, 12, 58, 16);
 
-        JLabel userBalanace = new JLabel("$"+ (int) balance);
-        userBalanace.setFont(geistmono12);
-        userBalanace.setForeground(Color.WHITE);
-        userBalanace.setBounds(14, 342, 300, 16);
+        JLabel userBalance = new JLabel("$"+ (int) balance);
+        userBalance.setFont(geistmono12);
+        userBalance.setForeground(Color.WHITE);
+        userBalance.setBounds(14, 342, 300, 16);
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
@@ -559,7 +634,7 @@ public class App {
                     System.out.println("Debugging: 2");
                 }
 
-                userBalanace.setText("$" + String.valueOf((int) balance));
+                userBalance.setText("$" + String.valueOf((int) balance));
 
                 contentpane.repaint();
                 contentpane.revalidate();
@@ -572,7 +647,7 @@ public class App {
         informative.setBounds(310, 330, 95, 8);
 
         contentpane.add(title);
-        contentpane.add(userBalanace);
+        contentpane.add(userBalance);
         contentpane.add(topUp);
         contentpane.add(dice);
         contentpane.add(zero);
