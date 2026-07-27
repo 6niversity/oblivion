@@ -80,7 +80,7 @@ public class App {
         }
 
         JLabel title = new JLabel("oblivion");
-        title.setFont(geistmono12);
+        title.setFont(geistmono9);
         title.setForeground(Color.WHITE);
         title.setBounds(14, 12, 58, 16);
 
@@ -103,15 +103,20 @@ public class App {
             topUpScreen();
         });
 
-        RoundedPanel panel1 = new RoundedPanel(20);
+        JLabel blackjackLabel = new JLabel("BLACKJACK");
+        blackjackLabel.setFont(geistmono9);
+        blackjackLabel.setForeground(new Color(55, 55, 55));
+        blackjackLabel.setBounds(51, 78, 235, 83);
+
+        RoundedPanel panel1 = new RoundedPanel(14);
         panel1.setBackgroundColor(new Color(21, 21, 21));
         panel1.setLayout(null);
         panel1.setBounds(51, 125, 277, 150);
 
-        JLabel blackjackLabel = new JLabel("Blackjack");
-        blackjackLabel.setFont(instrument64);
-        blackjackLabel.setForeground(Color.WHITE);
-        blackjackLabel.setBounds(8, 0, 235, 83);
+        ImageIcon bjDesign = new ImageIcon("res/img/blackjackDesign.png");
+        JLabel bj = new JLabel(bjDesign);
+        bj.setBackground(null);
+        bj.setBounds(21, 2, 236, 150);
 
         RoundedButton confirmBlackjack = new RoundedButton("confirm");
         confirmBlackjack.setFont(geistmono6);
@@ -122,15 +127,19 @@ public class App {
         // confirmBlackjack event
         confirmBlackjack.addActionListener(e ->{});
 
-        RoundedPanel panel2 = new RoundedPanel(20);
+        JLabel diceLabel = new JLabel("DICE");
+        diceLabel.setFont(geistmono9);
+        diceLabel.setForeground(new Color(55, 55, 55));
+        diceLabel.setBounds(371, 78, 235, 83);
+
+        RoundedPanel panel2 = new RoundedPanel(14);
         panel2.setBackgroundColor(new Color(21, 21, 21));
         panel2.setLayout(null);
         panel2.setBounds(371, 125, 277, 150);
 
-        JLabel diceLabel = new JLabel("Dice");
-        diceLabel.setFont(instrument64);
-        diceLabel.setForeground(Color.WHITE);
-        diceLabel.setBounds(8, 0, 235, 83);
+        ImageIcon diceDesign = new ImageIcon("res/img/diceDesign.png");
+        JLabel dice = new JLabel(diceDesign);
+        dice.setBounds(21, 2, 236, 150);
 
         RoundedButton confirmDice = new RoundedButton("confirm");
         confirmDice.setFont(geistmono6);
@@ -149,13 +158,15 @@ public class App {
         contentpane.add(userBalance);
         contentpane.add(topUp);
 
+        contentpane.add(blackjackLabel);
         contentpane.add(panel1);
-        panel1.add(blackjackLabel);
         panel1.add(confirmBlackjack);
+        panel1.add(bj);
 
+        contentpane.add(diceLabel);
         contentpane.add(panel2);
-        panel2.add(diceLabel);
         panel2.add(confirmDice);
+        panel2.add(dice);
 
         frame.setVisible(true);
     }
@@ -199,12 +210,21 @@ public class App {
             e.printStackTrace();
         }
 
-        JLabel title = new JLabel("oblivion");
-        title.setFont(geistmono12);
-        title.setForeground(Color.WHITE);
-        title.setBounds(14, 12, 58, 16);
+        ImageIcon menuIcon = new ImageIcon("res/img/menuIcon.png");
+        JButton menu = new JButton(menuIcon);
+        menu.setBorderPainted(false);
+        menu.setFocusPainted(false);
+        menu.setContentAreaFilled(false);
+        menu.setBackground(null);
+        menu.setBounds(15, 13, 24, 24);
 
-        contentpane.add(title);
+        JLabel userBalance = new JLabel("$"+ (int) balance);
+        userBalance.setFont(geistmono12);
+        userBalance.setForeground(Color.WHITE);
+        userBalance.setBounds(14, 342, 300, 16);
+
+        contentpane.add(menu);
+        contentpane.add(userBalance);
 
         frame.setVisible(true);
     }
@@ -361,10 +381,21 @@ public class App {
             e.printStackTrace();
         }
 
-        JLabel title = new JLabel("oblivion");
-        title.setFont(geistmono9);
-        title.setForeground(Color.WHITE);
-        title.setBounds(14, 12, 58, 16);
+        ImageIcon menuIcon = new ImageIcon("res/img/menuIcon.png");
+        JButton menu = new JButton(menuIcon);
+        menu.setBorderPainted(false);
+        menu.setFocusPainted(false);
+        menu.setContentAreaFilled(false);
+        menu.setBackground(null);
+        menu.setBounds(15, 13, 24, 24);
+
+        // menu button event
+        menu.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+
+            menuScreen();
+        });
 
         JLabel userBalance = new JLabel("$"+ (int) balance);
         userBalance.setFont(geistmono12);
@@ -494,7 +525,7 @@ public class App {
         panel.add(purchasehundredthousand);
         panel.add(purchasemillion);
 
-        contentpane.add(title);
+        contentpane.add(menu);
         contentpane.add(userBalance);
         contentpane.add(topUp);
         contentpane.add(paymentsLabel);
@@ -536,10 +567,21 @@ public class App {
             e.printStackTrace();
         }
 
-        JLabel title = new JLabel("oblivion");
-        title.setFont(geistmono9);
-        title.setForeground(Color.WHITE);
-        title.setBounds(14, 12, 58, 16);
+        ImageIcon menuIcon = new ImageIcon("res/img/menuIcon.png");
+        JButton menu = new JButton(menuIcon);
+        menu.setBorderPainted(false);
+        menu.setFocusPainted(false);
+        menu.setContentAreaFilled(false);
+        menu.setBackground(null);
+        menu.setBounds(15, 13, 24, 24);
+
+        // menu button event
+        menu.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+
+            menuScreen();
+        });
 
         JLabel userBalance = new JLabel("$"+ (int) balance);
         userBalance.setFont(geistmono12);
@@ -550,7 +592,7 @@ public class App {
         topUp.setFont(geistmono9);
         topUp.setBackground(Color.WHITE);
         topUp.setForeground(bg);
-        topUp.setBounds(620, 12, 69, 16);
+        topUp.setBounds(615, 13, 69, 16);
 
         // topUp button event (needs functionality)
         topUp.addActionListener(e -> {
@@ -646,7 +688,7 @@ public class App {
         informative.setForeground(new Color(75, 75, 75));
         informative.setBounds(310, 330, 95, 8);
 
-        contentpane.add(title);
+        contentpane.add(menu);
         contentpane.add(userBalance);
         contentpane.add(topUp);
         contentpane.add(dice);
