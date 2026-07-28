@@ -381,13 +381,23 @@ public class App {
             e.printStackTrace();
         }
 
-        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon.png");
+        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        JPanel menuPanel = new JPanel();
+        menuPanel.setLayout(null);
+        menuPanel.setBackground(null);
+        menuPanel.setBounds(0, 0, 136, 42);
+
+        JLabel glassPanel = new JLabel(glassPanelImg);
+        glassPanel.setBackground(null);
+        glassPanel.setBounds(0, 0, 136, 42);
+
+        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon21px.png");
         JButton menu = new JButton(menuIcon);
         menu.setBorderPainted(false);
         menu.setFocusPainted(false);
         menu.setContentAreaFilled(false);
         menu.setBackground(null);
-        menu.setBounds(15, 13, 24, 24);
+        menu.setBounds(18, 11, 21, 21);
 
         // menu button event
         menu.addActionListener(e -> {
@@ -406,7 +416,7 @@ public class App {
         topUp.setFont(geistmono9);
         topUp.setBackground(Color.WHITE);
         topUp.setForeground(bg);
-        topUp.setBounds(620, 12, 69, 16);
+        topUp.setBounds(51, 13, 69, 16);
 
         JLabel paymentsLabel = new JLabel("Payments");
         paymentsLabel.setFont(instrument48);
@@ -513,6 +523,10 @@ public class App {
             confirmationScreen(1000000);
         });   
 
+        menuPanel.add(menu);
+        menuPanel.add(topUp);
+        menuPanel.add(glassPanel);
+
         panel.add(hundred);
         panel.add(thousand);
         panel.add(tenthousand);
@@ -525,9 +539,8 @@ public class App {
         panel.add(purchasehundredthousand);
         panel.add(purchasemillion);
 
-        contentpane.add(menu);
+        contentpane.add(menuPanel);
         contentpane.add(userBalance);
-        contentpane.add(topUp);
         contentpane.add(paymentsLabel);
         contentpane.add(panel);
 
@@ -567,16 +580,27 @@ public class App {
             e.printStackTrace();
         }
 
-        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon.png");
+        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setBackground(null);
+        panel.setBounds(0, 0, 136, 42);
+
+        JLabel glassPanel = new JLabel(glassPanelImg);
+        glassPanel.setBackground(null);
+        glassPanel.setBounds(0, 0, 136, 42);
+
+        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon21px.png");
         JButton menu = new JButton(menuIcon);
         menu.setBorderPainted(false);
         menu.setFocusPainted(false);
         menu.setContentAreaFilled(false);
         menu.setBackground(null);
-        menu.setBounds(15, 13, 24, 24);
+        menu.setBounds(18, 11, 21, 21);
 
         // menu button event
         menu.addActionListener(e -> {
+            System.out.println(glassPanelImg.getImageLoadStatus());
             frame.setVisible(false);
             frame.dispose();
 
@@ -586,13 +610,13 @@ public class App {
         JLabel userBalance = new JLabel("$"+ (int) balance);
         userBalance.setFont(geistmono12);
         userBalance.setForeground(Color.WHITE);
-        userBalance.setBounds(14, 342, 300, 16);
+        userBalance.setBounds(655, 16, 700, 16);
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
         topUp.setBackground(Color.WHITE);
         topUp.setForeground(bg);
-        topUp.setBounds(615, 13, 69, 16);
+        topUp.setBounds(51, 13, 69, 16);
 
         // topUp button event (needs functionality)
         topUp.addActionListener(e -> {
@@ -605,22 +629,22 @@ public class App {
         JLabel dice = new JLabel("Dice");
         dice.setFont(instrument48);
         dice.setForeground(Color.WHITE);
-        dice.setBounds(315, 138, 70, 62);
+        dice.setBounds(315, 120, 70, 62);
 
         JLabel zero = new JLabel("0");
         zero.setFont(geistmono12);
-        zero.setForeground(Color.WHITE);
-        zero.setBounds(91, 192, 8, 16);
+        zero.setForeground(new Color(55, 55, 55));
+        zero.setBounds(98, 174, 8, 16);
 
         JLabel hundred = new JLabel("100");
         hundred.setFont(geistmono12);
-        hundred.setForeground(Color.WHITE);
-        hundred.setBounds(586, 192, 22, 16);
+        hundred.setForeground(new Color(55, 55, 55));
+        hundred.setBounds(586, 174, 22, 16);
 
         JSlider slider = new JSlider(0, 100, 35);
         slider.setUI(new sliderUI(slider));
         slider.setOpaque(false);
-        slider.setBounds(91, 213, 517, 14);
+        slider.setBounds(91, 195, 517, 14);
 
         slider.addChangeListener(e -> slider.repaint());
 
@@ -628,7 +652,7 @@ public class App {
         over.setFont(geistmono9);
         over.setBackground(Color.WHITE);
         over.setForeground(bg);
-        over.setBounds(276, 241, 69, 16);
+        over.setBounds(276, 223, 69, 16);
 
         over.addActionListener(e -> {
             switchs = 0;
@@ -638,7 +662,7 @@ public class App {
         under.setFont(geistmono9);
         under.setBackground(Color.WHITE);
         under.setForeground(bg);
-        under.setBounds(354, 241, 69, 16);
+        under.setBounds(354, 223, 69, 16);
 
         under.addActionListener(e -> {
             switchs = 1;
@@ -685,12 +709,15 @@ public class App {
 
         JLabel informative = new JLabel("1.2x multiplier upon win");
         informative.setFont(geistmono6);
-        informative.setForeground(new Color(75, 75, 75));
+        informative.setForeground(new Color(55, 55, 55));
         informative.setBounds(310, 330, 95, 8);
 
-        contentpane.add(menu);
+        contentpane.add(panel);
+        panel.add(menu);
+        panel.add(topUp);
+        panel.add(glassPanel);
+
         contentpane.add(userBalance);
-        contentpane.add(topUp);
         contentpane.add(dice);
         contentpane.add(zero);
         contentpane.add(hundred);
