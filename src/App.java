@@ -113,7 +113,7 @@ public class App {
         panel1.setLayout(null);
         panel1.setBounds(51, 125, 277, 150);
 
-        ImageIcon bjDesign = new ImageIcon("res/img/blackjackDesign.png");
+        ImageIcon bjDesign = new ImageIcon("res/img/figma/blackjackDesign.png");
         JLabel bj = new JLabel(bjDesign);
         bj.setBackground(null);
         bj.setBounds(21, 2, 236, 150);
@@ -137,7 +137,7 @@ public class App {
         panel2.setLayout(null);
         panel2.setBounds(371, 125, 277, 150);
 
-        ImageIcon diceDesign = new ImageIcon("res/img/diceDesign.png");
+        ImageIcon diceDesign = new ImageIcon("res/img/figma/diceDesign.png");
         JLabel dice = new JLabel(diceDesign);
         dice.setBounds(21, 2, 236, 150);
 
@@ -210,7 +210,7 @@ public class App {
             e.printStackTrace();
         }
 
-        ImageIcon menuIcon = new ImageIcon("res/img/menuIcon.png");
+        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon.png");
         JButton menu = new JButton(menuIcon);
         menu.setBorderPainted(false);
         menu.setFocusPainted(false);
@@ -381,7 +381,7 @@ public class App {
             e.printStackTrace();
         }
 
-        ImageIcon menuIcon = new ImageIcon("res/img/menuIcon.png");
+        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon.png");
         JButton menu = new JButton(menuIcon);
         menu.setBorderPainted(false);
         menu.setFocusPainted(false);
@@ -567,7 +567,7 @@ public class App {
             e.printStackTrace();
         }
 
-        ImageIcon menuIcon = new ImageIcon("res/img/menuIcon.png");
+        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon.png");
         JButton menu = new JButton(menuIcon);
         menu.setBorderPainted(false);
         menu.setFocusPainted(false);
