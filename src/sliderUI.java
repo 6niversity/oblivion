@@ -5,11 +5,11 @@ import java.awt.*;
 // Claude sliderUI
 public class sliderUI extends BasicSliderUI {
 
-    private Color fillColor = new Color(30, 30, 30);
+    private Color fillColor = new Color(46, 46, 46);
     private Color trackColor = Color.WHITE;
     private Color thumbColor = new Color(140, 140, 140);
     private int thumbDiameter = 16;
-    private int trackHeight = 6;
+    private int trackHeight = 10;
 
     public sliderUI(JSlider slider) {
         super(slider);

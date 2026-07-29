@@ -79,21 +79,31 @@ public class App {
             e.printStackTrace();
         }
 
-        JLabel title = new JLabel("oblivion");
+        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setBackground(null);
+        panel.setBounds(0, 0, 136, 42);
+
+        JLabel glassPanel = new JLabel(glassPanelImg);
+        glassPanel.setBackground(null);
+        glassPanel.setBounds(0, 0, 136, 42);
+
+        JLabel title = new JLabel("obv");
         title.setFont(geistmono9);
         title.setForeground(Color.WHITE);
-        title.setBounds(14, 12, 58, 16);
+        title.setBounds(21, 13, 58, 16);
 
         JLabel userBalance = new JLabel("$"+ (int) balance);
         userBalance.setFont(geistmono12);
         userBalance.setForeground(Color.WHITE);
-        userBalance.setBounds(14, 342, 300, 16);
+        userBalance.setBounds(653, 13, 300, 16);
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
         topUp.setBackground(Color.WHITE);
         topUp.setForeground(bg);
-        topUp.setBounds(620, 12, 69, 16);
+        topUp.setBounds(51, 13, 69, 16);
 
         // topUp button event (needs functionality)
         topUp.addActionListener(e -> {
@@ -154,9 +164,11 @@ public class App {
             diceScreen();
         });
 
-        contentpane.add(title);
         contentpane.add(userBalance);
-        contentpane.add(topUp);
+        contentpane.add(panel);
+        panel.add(title);
+        panel.add(topUp);
+        panel.add(glassPanel);
 
         contentpane.add(blackjackLabel);
         contentpane.add(panel1);
@@ -629,22 +641,27 @@ public class App {
         JLabel dice = new JLabel("Dice");
         dice.setFont(instrument48);
         dice.setForeground(Color.WHITE);
-        dice.setBounds(315, 120, 70, 62);
+        dice.setBounds(316, 143, 70, 62);
 
         JLabel zero = new JLabel("0");
         zero.setFont(geistmono12);
         zero.setForeground(new Color(55, 55, 55));
-        zero.setBounds(98, 174, 8, 16);
+        zero.setBounds(92, 197, 8, 16);
 
         JLabel hundred = new JLabel("100");
         hundred.setFont(geistmono12);
         hundred.setForeground(new Color(55, 55, 55));
-        hundred.setBounds(586, 174, 22, 16);
+        hundred.setBounds(587, 197, 22, 16);
+
+        ImageIcon backgroundImg = new ImageIcon("res/img/figma/sliderBackground.png");
+        JLabel background = new JLabel(backgroundImg);
+        background.setBackground(null);
+        background.setBounds(92, 218, 517, 14);
 
         JSlider slider = new JSlider(0, 100, 35);
         slider.setUI(new sliderUI(slider));
         slider.setOpaque(false);
-        slider.setBounds(91, 195, 517, 14);
+        slider.setBounds(85, 218, 525, 14);
 
         slider.addChangeListener(e -> slider.repaint());
 
@@ -652,7 +669,7 @@ public class App {
         over.setFont(geistmono9);
         over.setBackground(Color.WHITE);
         over.setForeground(bg);
-        over.setBounds(276, 223, 69, 16);
+        over.setBounds(92, 240, 69, 16);
 
         over.addActionListener(e -> {
             switchs = 0;
@@ -662,7 +679,7 @@ public class App {
         under.setFont(geistmono9);
         under.setBackground(Color.WHITE);
         under.setForeground(bg);
-        under.setBounds(354, 223, 69, 16);
+        under.setBounds(170, 240, 69, 16);
 
         under.addActionListener(e -> {
             switchs = 1;
@@ -672,7 +689,7 @@ public class App {
         betPlacer.setFont(geistmono6);
         betPlacer.setBackground(Color.WHITE);
         betPlacer.setForeground(bg);
-        betPlacer.setBounds(319, 305, 61, 16);
+        betPlacer.setBounds(548, 240, 61, 16);
 
         // betPlacer button event (needs functionality)
         betPlacer.addActionListener(e -> {
@@ -710,7 +727,7 @@ public class App {
         JLabel informative = new JLabel("1.2x multiplier upon win");
         informative.setFont(geistmono6);
         informative.setForeground(new Color(55, 55, 55));
-        informative.setBounds(310, 330, 95, 8);
+        informative.setBounds(310, 345, 105, 8);
 
         contentpane.add(panel);
         panel.add(menu);
@@ -721,7 +738,8 @@ public class App {
         contentpane.add(dice);
         contentpane.add(zero);
         contentpane.add(hundred);
-        contentpane.add(slider);
+        contentpane.add(slider);   
+        contentpane.add(background);
         contentpane.add(over);
         contentpane.add(under);
         contentpane.add(betPlacer);
