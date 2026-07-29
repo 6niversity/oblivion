@@ -19,11 +19,11 @@ The workspace contains three folders, where:
 - Dice Foundation Achieved
 - New design
 - Main Menu
-- Blackjack in the works
+- Blackjack // WIP
 
 ## ⬆️ Future Patches
 
-- Crash game
+- Crash instance
 
 ## ✍️ Credits
 
