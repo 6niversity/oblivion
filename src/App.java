@@ -90,7 +90,7 @@ public class App {
         glassPanel.setBounds(0, 0, 136, 42);
 
         JLabel title = new JLabel("obv");
-        title.setFont(geistmono9);
+        title.setFont(geistmono12);
         title.setForeground(Color.WHITE);
         title.setBounds(21, 13, 58, 16);
 
@@ -280,10 +280,37 @@ public class App {
             e.printStackTrace();
         }
 
-        JLabel title = new JLabel("oblivion");
-        title.setFont(geistmono12);
-        title.setForeground(Color.WHITE);
-        title.setBounds(14, 12, 58, 16);
+        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        JPanel gPanel = new JPanel();
+        gPanel.setLayout(null);
+        gPanel.setBackground(null);
+        gPanel.setBounds(0, 0, 136, 42);
+
+        JLabel glassPanel = new JLabel(glassPanelImg);
+        glassPanel.setBackground(null);
+        glassPanel.setBounds(0, 0, 136, 42);
+
+        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon21px.png");
+        JButton menu = new JButton(menuIcon);
+        menu.setBorderPainted(false);
+        menu.setFocusPainted(false);
+        menu.setContentAreaFilled(false);
+        menu.setBackground(null);
+        menu.setBounds(20, 11, 21, 21);
+
+        // menu button event
+        menu.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+
+            menuScreen();
+        });
+
+        RoundedButton topUp = new RoundedButton("buy");
+        topUp.setFont(geistmono9);
+        topUp.setBackground(Color.WHITE);
+        topUp.setForeground(bg);
+        topUp.setBounds(51, 13, 69, 16);
 
         JLabel confirmLabel = new JLabel("Confirm");
         confirmLabel.setFont(instrument48);
@@ -304,15 +331,15 @@ public class App {
         question2.setFont(geistmono12);
         question2.setForeground(Color.WHITE);
         if (pending == 100) {
-            question2.setBounds(103, 37, 173, 16);
+            question2.setBounds(103, 37, 300, 16);
         } else if (pending == 1000) {
-            question2.setBounds(99, 37, 108, 16);
+            question2.setBounds(99, 37, 300, 16);
         } else if (pending == 10000) {
-            question2.setBounds(96, 37, 108, 16);
+            question2.setBounds(96, 37, 300, 16);
         } else if (pending == 100000) {
-            question2.setBounds(92, 37, 108, 16);
+            question2.setBounds(92, 37, 300, 16);
         } else if (pending == 1000000) {
-            question2.setBounds(88, 37, 108, 16);
+            question2.setBounds(88, 37, 300, 16);
         }
 
         RoundedButton confirm = new RoundedButton("confirm");
@@ -347,7 +374,11 @@ public class App {
         panel.add(cancel);
         panel.add(confirm);
 
-        contentpane.add(title);
+        contentpane.add(gPanel);
+        gPanel.add(menu);
+        gPanel.add(topUp);
+        gPanel.add(glassPanel);
+
         contentpane.add(confirmLabel);
         contentpane.add(panel);
 
@@ -409,7 +440,7 @@ public class App {
         menu.setFocusPainted(false);
         menu.setContentAreaFilled(false);
         menu.setBackground(null);
-        menu.setBounds(18, 11, 21, 21);
+        menu.setBounds(20, 11, 21, 21);
 
         // menu button event
         menu.addActionListener(e -> {
@@ -422,7 +453,7 @@ public class App {
         JLabel userBalance = new JLabel("$"+ (int) balance);
         userBalance.setFont(geistmono12);
         userBalance.setForeground(Color.WHITE);
-        userBalance.setBounds(14, 342, 300, 16);
+        userBalance.setBounds(653, 13, 300, 16);
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
@@ -608,7 +639,7 @@ public class App {
         menu.setFocusPainted(false);
         menu.setContentAreaFilled(false);
         menu.setBackground(null);
-        menu.setBounds(18, 11, 21, 21);
+        menu.setBounds(20, 11, 21, 21);
 
         // menu button event
         menu.addActionListener(e -> {
@@ -686,7 +717,7 @@ public class App {
         });
 
         RoundedButton betPlacer = new RoundedButton("bet");
-        betPlacer.setFont(geistmono6);
+        betPlacer.setFont(geistmono9);
         betPlacer.setBackground(Color.WHITE);
         betPlacer.setForeground(bg);
         betPlacer.setBounds(548, 240, 61, 16);
