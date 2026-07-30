@@ -1,13 +1,14 @@
-import javax.imageio.plugins.bmp.BMPImageWriteParam;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-// import java.io.FileInputStream;
-// import java.io.ObjectInputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
-public class App {
+public class App implements Runnable{
     static Color bg = new Color(11, 11, 11);
     static double balance = 100;
     static String username = "";
@@ -15,7 +16,6 @@ public class App {
     static int switchs = 2; // 0 for over, 1 for under, 2 for none
 
     public static void main(String[] args) throws Exception {
-        /* 
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
 
@@ -24,17 +24,43 @@ public class App {
 
             User currentUser = (User) objectInput.readObject();
 
+            balance = currentUser.getBalance();
+
             objectInput.close();
             fileInput.close();
 
-            mainScreen();
+            System.out.println("Debug: User Balance successfully set!");
 
-        } catch (Exception _) {
-            // Insert sign up screen
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        */
-       menuScreen();
+        App main = new App();
+        Thread thread = new Thread(main);
+        thread.start();
+
+        menuScreen();
+    }
+
+    public void run() {
+        while (true) {
+            try {
+                User u = new User(balance);
+
+                u.setBalance(balance);
+
+                FileOutputStream fileOutput = new FileOutputStream("res/user/raw.txt");
+                ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
+
+                objectOutput.writeObject(u);
+
+                objectOutput.close();
+                fileOutput.close();
+
+                System.out.println("Debug: User Balance Saved in: res/user/raw.txt");
+                Thread.sleep(1000); // autosave per second
+            } catch (Exception _) {}
+        }
     }
 
     public static void menuScreen() {

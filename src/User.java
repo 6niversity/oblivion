@@ -1,27 +1,19 @@
-public class User {
-    private double balance;
-    private String username;
+import java.io.Serializable;
 
-    public User(int balance, String username) {
+public class User implements Serializable{
+    private double balance;
+
+    public User(double balance) {
         this.balance = balance;
-        this.username = username;
     }
 
     // getters
-    private double getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    private String getUsername() {
-        return username;
-    }
-
     // setters
-    private void setBalance(double balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
-    }
-
-    private void setUsername(String username) {
-        this.username = username;
     }
 }
