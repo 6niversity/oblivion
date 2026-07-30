@@ -20,6 +20,7 @@ The workspace contains three folders, where:
 - New design
 - Main Menu
 - Blackjack // WIP
+- User balance autosave
 
 ## ⬆️ Future Patches
 
