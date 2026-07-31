@@ -1,6 +1,6 @@
 ## Oblivion
-<img width="500" height="500" alt="icon" src="https://github.com/user-attachments/assets/affde97d-8c4a-481b-b13e-3b71c90c452e" />
-Welcome to Oblivion! This java project/application was made for practice but its sole purpose is to play "original" games without having to pay anything.
+<img width="500" height="500" alt="icon" src="https://github.com/user-attachments/assets/affde97d-8c4a-481b-b13e-3b71c90c452e"/>
+<\n>Welcome to Oblivion! This java project/application was made for practice but its sole purpose is to play "original" games without having to pay anything.
 
 ## 📂 Folder Structure
 
