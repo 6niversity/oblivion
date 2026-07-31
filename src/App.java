@@ -1,4 +1,5 @@
 import javax.swing.*;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +19,16 @@ public class App implements Runnable{
     public static void main(String[] args) throws Exception {
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+
+            // claude icon support
+            Image icon = Toolkit.getDefaultToolkit().getImage("res/img/icons/icon.png");
+
+            if (Taskbar.isTaskbarSupported()) {
+                Taskbar taskbar = Taskbar.getTaskbar();
+                if (taskbar.isSupported(Taskbar.Feature.ICON_IMAGE)) {
+                    taskbar.setIconImage(icon);
+                }
+            }
 
             FileInputStream fileInput = new FileInputStream("res/user/raw.txt");
             ObjectInputStream objectInput = new ObjectInputStream(fileInput);
