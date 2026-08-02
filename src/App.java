@@ -172,7 +172,12 @@ public class App implements Runnable{
         confirmBlackjack.setBounds(189, 119, 77, 21);
 
         // confirmBlackjack event
-        confirmBlackjack.addActionListener(e ->{});
+        confirmBlackjack.addActionListener(e ->{
+            frame.setVisible(false);
+            frame.dispose();
+
+            blackjackScreen();
+        });
 
         JLabel diceLabel = new JLabel("DICE");
         diceLabel.setFont(geistmono9);
@@ -259,21 +264,89 @@ public class App implements Runnable{
             e.printStackTrace();
         }
 
-        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon.png");
+        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setBackground(null);
+        panel.setBounds(0, 0, 136, 42);
+
+        JLabel glassPanel = new JLabel(glassPanelImg);
+        glassPanel.setBackground(null);
+        glassPanel.setBounds(0, 0, 136, 42);
+
+        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon21px.png");
         JButton menu = new JButton(menuIcon);
         menu.setBorderPainted(false);
         menu.setFocusPainted(false);
         menu.setContentAreaFilled(false);
         menu.setBackground(null);
-        menu.setBounds(15, 13, 24, 24);
+        menu.setBounds(20, 11, 21, 21);
+
+        // menu button event
+        menu.addActionListener(e -> {
+            System.out.println(glassPanelImg.getImageLoadStatus());
+            frame.setVisible(false);
+            frame.dispose();
+
+            menuScreen();
+        });
 
         JLabel userBalance = new JLabel("$"+ (int) balance);
         userBalance.setFont(geistmono12);
         userBalance.setForeground(Color.WHITE);
-        userBalance.setBounds(14, 342, 300, 16);
+        userBalance.setBounds(655, 16, 700, 16);
 
-        contentpane.add(menu);
+        RoundedButton topUp = new RoundedButton("buy");
+        topUp.setFont(geistmono9);
+        topUp.setBackground(Color.WHITE);
+        topUp.setForeground(bg);
+        topUp.setBounds(51, 13, 69, 16);
+
+        // topUp button event (needs functionality)
+        topUp.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+
+            topUpScreen();
+        });
+
+        JLabel dealerInfo = new JLabel("DEALER MUST STAND ON ALL 17'S");
+        dealerInfo.setFont(geistmono9);
+        dealerInfo.setForeground(Color.WHITE);
+        dealerInfo.setBounds(271, 48, 157, 12);
+
+        JPanel tablePanel = new JPanel();
+        tablePanel.setLayout(null);
+        tablePanel.setBackground(null);
+        tablePanel.setBounds(83, 55, 533, 290);
+
+        ImageIcon blackjackTableImg = new ImageIcon("res/img/figma/blackjackTable.png");
+        JLabel blackjackTable = new JLabel(blackjackTableImg);
+        blackjackTable.setBackground(null);
+        blackjackTable.setBounds(0, 0, 533, 290);
+
+        JLabel dealerNum = new JLabel("<dealernum>");
+        dealerNum.setFont(geistmono9);
+        dealerNum.setForeground(Color.WHITE);
+        dealerNum.setBounds(237, 37, 533, 12);
+
+        JLabel userCards = new JLabel("<usercards>");
+        userCards.setFont(geistmono9);
+        userCards.setForeground(Color.WHITE);
+        userCards.setBounds(237, 242, 60, 12);
+
+        contentpane.add(panel);
+        panel.add(menu);
+        panel.add(topUp);
+        panel.add(glassPanel);
+
         contentpane.add(userBalance);
+        contentpane.add(dealerInfo);
+
+        contentpane.add(tablePanel);
+        tablePanel.add(dealerNum);
+        tablePanel.add(userCards);
+        tablePanel.add(blackjackTable);
 
         frame.setVisible(true);
     }
