@@ -23,6 +23,9 @@ public class App implements Runnable{
     static Font geistmono20 = null;
     static Font instrument48 = null;
 
+    static int dealerRNG;
+    static int userRNG;
+
     public static void main(String[] args) throws Exception {
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -342,12 +345,63 @@ public class App implements Runnable{
         betPlacer.setBounds(319, 334, 61, 16);
 
         betPlacer.addActionListener(e -> {
-            int dealerRNG = (int)(Math.random() * 11);
-            int userRNG = (int)(Math.random() * 11);
+            dealerRNG = (int)(Math.random() * 11);
+            userRNG = (int)(Math.random() * 11);
 
             RoundedButton hitButton = new RoundedButton("hit");
             hitButton.setFont(geistmono9);
+            hitButton.setBackground(Color.WHITE);
+            hitButton.setForeground(bg);
+            hitButton.setBounds(276, 334, 61, 16);
 
+            hitButton.addActionListener(k -> {
+                if (userRNG == 21) {
+                    balance *= 1.2;
+                    System.out.println("Debug: won the game");
+
+                    frame.setVisible(false);
+                    frame.dispose();
+
+                    blackjackScreen();
+                } else if (userRNG > 21) {
+                    balance -= 20;
+
+                    frame.setVisible(false);
+                    frame.dispose();
+
+                    blackjackScreen();
+                } else {
+                    userRNG += (int) (Math.random() * 11);
+                }
+            });
+
+            RoundedButton standButton = new RoundedButton("stand");
+            standButton.setFont(geistmono9);
+            standButton.setBackground(Color.WHITE);
+            standButton.setForeground(bg);
+            standButton.setBounds(354, 341, 69, 16);
+
+            standButton.addActionListener(k -> {
+                while (dealerRNG <= 17) {
+                    dealerRNG += (int) (Math.random() * 11);
+                }
+                
+                if (dealerRNG > 21) {
+                    balance += 1.2;
+                } else if (dealerRNG == 21) {
+                    balance -= 2000;
+                } else if (dealerRNG < userRNG) {
+                    balance += 1.2;
+                } else if (dealerRNG > userRNG) {
+                    balance -= 200;
+                }
+
+                System.out.println("Debug: test");
+
+                frame.setVisible(false);
+                frame.dispose();
+                blackjackScreen();
+            });
         });
 
         contentpane.add(panel);
