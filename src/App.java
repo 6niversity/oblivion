@@ -16,6 +16,13 @@ public class App implements Runnable{
 
     static int switchs = 2; // 0 for over, 1 for under, 2 for none
 
+    static Font geistmono6 = null;
+    static Font geistmono9 = null;
+    static Font geistmono10 = null;
+    static Font geistmono12 = null;
+    static Font geistmono20 = null;
+    static Font instrument48 = null;
+
     public static void main(String[] args) throws Exception {
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -43,6 +50,25 @@ public class App implements Runnable{
             System.out.println("Debug: User Balance successfully set!");
 
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            geistmono6 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(6f);
+            geistmono9 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(9f);
+            geistmono10 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(10f);
+            geistmono12 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(12f);
+            geistmono20 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(20f);
+            instrument48 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/instrumentserif.ttf")).deriveFont(48f);
+
+            GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            graphicsEnvironment.registerFont(geistmono6);
+            graphicsEnvironment.registerFont(geistmono9);
+            graphicsEnvironment.registerFont(geistmono10);
+            graphicsEnvironment.registerFont(geistmono12);
+            graphicsEnvironment.registerFont(geistmono20);
+            graphicsEnvironment.registerFont(instrument48);
+        } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
 
@@ -238,32 +264,6 @@ public class App implements Runnable{
         contentpane.setBackground(bg);
         contentpane.setLayout(null);
 
-        Font geistmono6 = null;
-        Font geistmono9 = null;
-        Font geistmono10 = null;
-        Font geistmono12 = null;
-        Font geistmono20 = null;
-        Font instrument48 = null;
-
-        try {
-            geistmono6 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(6f);
-            geistmono9 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(9f);
-            geistmono10 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(10f);
-            geistmono12 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(12f);
-            geistmono20 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(20f);
-            instrument48 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/instrumentserif.ttf")).deriveFont(48f);
-
-            GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            graphicsEnvironment.registerFont(geistmono6);
-            graphicsEnvironment.registerFont(geistmono9);
-            graphicsEnvironment.registerFont(geistmono10);
-            graphicsEnvironment.registerFont(geistmono12);
-            graphicsEnvironment.registerFont(geistmono20);
-            graphicsEnvironment.registerFont(instrument48);
-        } catch (IOException | FontFormatException e) {
-            e.printStackTrace();
-        }
-
         ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
         JPanel panel = new JPanel();
         panel.setLayout(null);
@@ -318,22 +318,37 @@ public class App implements Runnable{
         JPanel tablePanel = new JPanel();
         tablePanel.setLayout(null);
         tablePanel.setBackground(null);
-        tablePanel.setBounds(83, 55, 533, 290);
+        tablePanel.setBounds(83, 50, 533, 290);
 
         ImageIcon blackjackTableImg = new ImageIcon("res/img/figma/blackjackTable.png");
         JLabel blackjackTable = new JLabel(blackjackTableImg);
         blackjackTable.setBackground(null);
         blackjackTable.setBounds(0, 0, 533, 290);
 
-        JLabel dealerNum = new JLabel("<dealernum>");
+        JLabel dealerNum = new JLabel("");
         dealerNum.setFont(geistmono9);
         dealerNum.setForeground(Color.WHITE);
         dealerNum.setBounds(237, 37, 533, 12);
 
-        JLabel userCards = new JLabel("<usercards>");
+        JLabel userCards = new JLabel("");
         userCards.setFont(geistmono9);
         userCards.setForeground(Color.WHITE);
         userCards.setBounds(237, 242, 60, 12);
+
+        RoundedButton betPlacer = new RoundedButton("bet");
+        betPlacer.setFont(geistmono9);
+        betPlacer.setBackground(Color.WHITE);
+        betPlacer.setForeground(bg);
+        betPlacer.setBounds(319, 334, 61, 16);
+
+        betPlacer.addActionListener(e -> {
+            int dealerRNG = (int)(Math.random() * 11);
+            int userRNG = (int)(Math.random() * 11);
+
+            RoundedButton hitButton = new RoundedButton("hit");
+            hitButton.setFont(geistmono9);
+
+        });
 
         contentpane.add(panel);
         panel.add(menu);
@@ -342,6 +357,8 @@ public class App implements Runnable{
 
         contentpane.add(userBalance);
         contentpane.add(dealerInfo);
+
+        contentpane.add(betPlacer);
 
         contentpane.add(tablePanel);
         tablePanel.add(dealerNum);
@@ -363,32 +380,6 @@ public class App implements Runnable{
 
         contentpane.setBackground(bg);
         contentpane.setLayout(null);
-
-        Font geistmono6 = null;
-        Font geistmono9 = null;
-        Font geistmono10 = null;
-        Font geistmono12 = null;
-        Font geistmono20 = null;
-        Font instrument48 = null;
-
-        try {
-            geistmono6 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(6f);
-            geistmono9 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(9f);
-            geistmono10 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(10f);
-            geistmono12 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(12f);
-            geistmono20 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(20f);
-            instrument48 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/instrumentserif.ttf")).deriveFont(48f);
-
-            GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            graphicsEnvironment.registerFont(geistmono6);
-            graphicsEnvironment.registerFont(geistmono9);
-            graphicsEnvironment.registerFont(geistmono10);
-            graphicsEnvironment.registerFont(geistmono12);
-            graphicsEnvironment.registerFont(geistmono20);
-            graphicsEnvironment.registerFont(instrument48);
-        } catch (IOException | FontFormatException e) {
-            e.printStackTrace();
-        }
 
         ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
         JPanel gPanel = new JPanel();
@@ -507,32 +498,6 @@ public class App implements Runnable{
 
         contentpane.setBackground(bg);
         contentpane.setLayout(null);
-        
-        Font geistmono6 = null;
-        Font geistmono9 = null;
-        Font geistmono10 = null;
-        Font geistmono12 = null;
-        Font geistmono20 = null;
-        Font instrument48 = null;
-
-        try {
-            geistmono6 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(6f);
-            geistmono9 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(9f);
-            geistmono10 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(10f);
-            geistmono12 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(12f);
-            geistmono20 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(20f);
-            instrument48 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/instrumentserif.ttf")).deriveFont(48f);
-
-            GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            graphicsEnvironment.registerFont(geistmono6);
-            graphicsEnvironment.registerFont(geistmono9);
-            graphicsEnvironment.registerFont(geistmono10);
-            graphicsEnvironment.registerFont(geistmono12);
-            graphicsEnvironment.registerFont(geistmono20);
-            graphicsEnvironment.registerFont(instrument48);
-        } catch (IOException | FontFormatException e) {
-            e.printStackTrace();
-        }
 
         ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
         JPanel menuPanel = new JPanel();
@@ -712,26 +677,6 @@ public class App implements Runnable{
 
         contentpane.setBackground(bg);
         contentpane.setLayout(null);
-        
-        Font geistmono6 = null;
-        Font geistmono9 = null;
-        Font geistmono12 = null;
-        Font instrument48 = null;
-
-        try {
-            geistmono6 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(6f);
-            geistmono9 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(9f);
-            geistmono12 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(12f);
-            instrument48 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/instrumentserif.ttf")).deriveFont(48f);
-
-            GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            graphicsEnvironment.registerFont(geistmono6);
-            graphicsEnvironment.registerFont(geistmono9);
-            graphicsEnvironment.registerFont(geistmono12);
-            graphicsEnvironment.registerFont(instrument48);
-        } catch (IOException | FontFormatException e) {
-            e.printStackTrace();
-        }
 
         ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
         JPanel panel = new JPanel();
