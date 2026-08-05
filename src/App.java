@@ -333,12 +333,12 @@ public class App implements Runnable{
         JLabel dealerNum = new JLabel("");
         dealerNum.setFont(geistmono9);
         dealerNum.setForeground(Color.WHITE);
-        dealerNum.setBounds(261, 37, 533, 12);
+        dealerNum.setBounds(261, 61, 533, 12);
 
         JLabel userCards = new JLabel("");
         userCards.setFont(geistmono9);
         userCards.setForeground(Color.WHITE);
-        userCards.setBounds(261, 223, 60, 12);
+        userCards.setBounds(261, 190, 60, 12);
 
         RoundedButton betPlacer = new RoundedButton("bet");
         betPlacer.setFont(geistmono9);
@@ -355,6 +355,15 @@ public class App implements Runnable{
 
             dealerNum.setText(String.valueOf(dealerRNG));
             userCards.setText(String.valueOf(userRNG));
+
+            ImageIcon cardImg = new ImageIcon("res/img/figma/cardFrame.png");
+            JLabel dealerCard = new JLabel(cardImg);
+            dealerCard.setBackground(null);
+            dealerCard.setBounds(245, 34, 44, 67);
+
+            JLabel userCard = new JLabel(cardImg);
+            userCard.setBackground(null);
+            userCard.setBounds(245, 162, 44, 67);
 
             RoundedButton hitButton = new RoundedButton("hit");
             hitButton.setFont(geistmono9);
@@ -425,6 +434,12 @@ public class App implements Runnable{
             tablePanel.add(hitButton, 0);
             tablePanel.add(standButton, 0);
 
+            tablePanel.add(dealerNum, 1);
+            tablePanel.add(userCards, 2);
+
+            tablePanel.add(dealerCard, 3);
+            tablePanel.add(userCard, 4);
+
             tablePanel.repaint();
             tablePanel.revalidate();
             contentpane.repaint();
@@ -442,8 +457,6 @@ public class App implements Runnable{
         contentpane.add(betPlacer);
 
         contentpane.add(tablePanel);
-        tablePanel.add(dealerNum);
-        tablePanel.add(userCards);
         tablePanel.add(blackjackTable);
 
         frame.setVisible(true);
