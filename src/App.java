@@ -184,12 +184,12 @@ public class App implements Runnable{
         JLabel blackjackLabel = new JLabel("BLACKJACK");
         blackjackLabel.setFont(geistmono9);
         blackjackLabel.setForeground(new Color(55, 55, 55));
-        blackjackLabel.setBounds(51, 78, 235, 83);
+        blackjackLabel.setBounds(94, 42, 235, 12);
 
         RoundedPanel panel1 = new RoundedPanel(14);
         panel1.setBackgroundColor(new Color(21, 21, 21));
         panel1.setLayout(null);
-        panel1.setBounds(51, 125, 277, 150);
+        panel1.setBounds(94, 54, 245, 132);
 
         ImageIcon bjDesign = new ImageIcon("res/img/figma/blackjackDesign.png");
         JLabel bj = new JLabel(bjDesign);
@@ -213,12 +213,12 @@ public class App implements Runnable{
         JLabel diceLabel = new JLabel("DICE");
         diceLabel.setFont(geistmono9);
         diceLabel.setForeground(new Color(55, 55, 55));
-        diceLabel.setBounds(371, 78, 235, 83);
+        diceLabel.setBounds(360, 42, 235, 12);
 
         RoundedPanel panel2 = new RoundedPanel(14);
         panel2.setBackgroundColor(new Color(21, 21, 21));
         panel2.setLayout(null);
-        panel2.setBounds(371, 125, 277, 150);
+        panel2.setBounds(360, 54, 245, 132);
 
         ImageIcon diceDesign = new ImageIcon("res/img/figma/diceDesign.png");
         JLabel dice = new JLabel(diceDesign);
@@ -237,6 +237,42 @@ public class App implements Runnable{
             diceScreen();
         });
 
+        JLabel crashLabel = new JLabel("CRASH");
+        crashLabel.setFont(geistmono9);
+        crashLabel.setForeground(new Color(55, 55, 55));
+        crashLabel.setBounds(94, 193, 235, 12);
+
+        RoundedPanel panel3 = new RoundedPanel(14);
+        panel3.setBackgroundColor(new Color(21, 21, 21));
+        panel3.setLayout(null);
+        panel3.setBounds(94, 205, 245, 132);
+
+        // insert imageicon of design here
+
+        RoundedButton confirmCrash = new RoundedButton("confirm");
+        confirmCrash.setFont(geistmono6);
+        confirmCrash.setBackground(Color.WHITE);
+        confirmCrash.setForeground(bg);
+        confirmCrash.setBounds(189, 119, 77, 21);
+
+        JLabel minesLabel = new JLabel("MINES");
+        minesLabel.setFont(geistmono9);
+        minesLabel.setForeground(new Color(55, 55, 55));
+        minesLabel.setBounds(360, 193, 27, 12);
+
+        RoundedPanel panel4 = new RoundedPanel(14);
+        panel4.setBackgroundColor(new Color(21, 21, 21));
+        panel4.setLayout(null);
+        panel4.setBounds(360, 205, 245, 132);
+
+        // insert imageicon of design here
+
+        RoundedButton confirmMines = new RoundedButton("confirm");
+        confirmMines.setFont(geistmono6);
+        confirmMines.setBackground(Color.WHITE);
+        confirmMines.setForeground(bg);
+        confirmMines.setBounds(189, 119, 77, 21);
+
         contentpane.add(userBalance);
         contentpane.add(panel);
         panel.add(title);
@@ -252,6 +288,14 @@ public class App implements Runnable{
         contentpane.add(panel2);
         panel2.add(confirmDice);
         panel2.add(dice);
+
+        contentpane.add(crashLabel);
+        contentpane.add(panel3);
+        panel3.add(confirmCrash);
+
+        contentpane.add(minesLabel);
+        contentpane.add(panel4);
+        panel4.add(confirmMines);
 
         frame.setVisible(true);
     }
