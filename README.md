@@ -26,7 +26,8 @@ The workspace contains three folders, where:
 
 ## ⬆️ Future Patches
 
-- Crash instance
+- Crash method
+- Mines method
 
 ## ✍️ Credits
 
