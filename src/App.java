@@ -193,14 +193,13 @@ public class App implements Runnable{
 
         ImageIcon bjDesign = new ImageIcon("res/img/figma/blackjackDesign.png");
         JLabel bj = new JLabel(bjDesign);
-        bj.setBackground(null);
-        bj.setBounds(21, 2, 236, 150);
+        bj.setBounds(15, 7, 216, 117);
 
         RoundedButton confirmBlackjack = new RoundedButton("confirm");
         confirmBlackjack.setFont(geistmono6);
         confirmBlackjack.setBackground(Color.WHITE);
         confirmBlackjack.setForeground(bg);
-        confirmBlackjack.setBounds(189, 119, 77, 21);
+        confirmBlackjack.setBounds(161, 106, 74, 16);
 
         // confirmBlackjack event
         confirmBlackjack.addActionListener(e ->{
@@ -222,13 +221,13 @@ public class App implements Runnable{
 
         ImageIcon diceDesign = new ImageIcon("res/img/figma/diceDesign.png");
         JLabel dice = new JLabel(diceDesign);
-        dice.setBounds(21, 2, 236, 150);
+        dice.setBounds(15, 7, 216, 117);
 
         RoundedButton confirmDice = new RoundedButton("confirm");
         confirmDice.setFont(geistmono6);
         confirmDice.setBackground(Color.WHITE);
         confirmDice.setForeground(bg);
-        confirmDice.setBounds(189, 119, 77, 21);
+        confirmDice.setBounds(161, 106, 74, 16);
 
         // confirmBlackjack event
         confirmDice.addActionListener(e -> {
@@ -248,12 +247,15 @@ public class App implements Runnable{
         panel3.setBounds(94, 205, 245, 132);
 
         // insert imageicon of design here
+        ImageIcon crashDesign = new ImageIcon("res/img/figma/crashDesign.png");
+        JLabel crash = new JLabel(crashDesign);
+        crash.setBounds(15, 7, 216, 117);
 
         RoundedButton confirmCrash = new RoundedButton("confirm");
         confirmCrash.setFont(geistmono6);
         confirmCrash.setBackground(Color.WHITE);
         confirmCrash.setForeground(bg);
-        confirmCrash.setBounds(189, 119, 77, 21);
+        confirmCrash.setBounds(161, 106, 74, 16);
 
         JLabel minesLabel = new JLabel("MINES");
         minesLabel.setFont(geistmono9);
@@ -266,12 +268,15 @@ public class App implements Runnable{
         panel4.setBounds(360, 205, 245, 132);
 
         // insert imageicon of design here
+        ImageIcon minesDesign = new ImageIcon("res/img/figma/minesDesign.png");
+        JLabel mines = new JLabel(minesDesign);
+        mines.setBounds(15, 7, 216, 117);
 
         RoundedButton confirmMines = new RoundedButton("confirm");
         confirmMines.setFont(geistmono6);
         confirmMines.setBackground(Color.WHITE);
         confirmMines.setForeground(bg);
-        confirmMines.setBounds(189, 119, 77, 21);
+        confirmMines.setBounds(161, 106, 74, 16);
 
         contentpane.add(userBalance);
         contentpane.add(panel);
@@ -292,10 +297,12 @@ public class App implements Runnable{
         contentpane.add(crashLabel);
         contentpane.add(panel3);
         panel3.add(confirmCrash);
+        panel3.add(crash);
 
         contentpane.add(minesLabel);
         contentpane.add(panel4);
         panel4.add(confirmMines);
+        panel4.add(mines);
 
         frame.setVisible(true);
     }
