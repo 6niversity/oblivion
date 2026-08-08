@@ -229,7 +229,7 @@ public class App implements Runnable{
         confirmDice.setForeground(bg);
         confirmDice.setBounds(161, 106, 74, 16);
 
-        // confirmBlackjack event
+        // confirmDice event
         confirmDice.addActionListener(e -> {
             frame.setVisible(false);
             frame.dispose();
@@ -246,7 +246,6 @@ public class App implements Runnable{
         panel3.setLayout(null);
         panel3.setBounds(94, 205, 245, 132);
 
-        // insert imageicon of design here
         ImageIcon crashDesign = new ImageIcon("res/img/figma/crashDesign.png");
         JLabel crash = new JLabel(crashDesign);
         crash.setBounds(15, 7, 216, 117);
@@ -256,6 +255,14 @@ public class App implements Runnable{
         confirmCrash.setBackground(Color.WHITE);
         confirmCrash.setForeground(bg);
         confirmCrash.setBounds(161, 106, 74, 16);
+
+        // confirmCrash event
+        confirmCrash.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+
+            crashScreen();
+        });
 
         JLabel minesLabel = new JLabel("MINES");
         minesLabel.setFont(geistmono9);
@@ -267,7 +274,6 @@ public class App implements Runnable{
         panel4.setLayout(null);
         panel4.setBounds(360, 205, 245, 132);
 
-        // insert imageicon of design here
         ImageIcon minesDesign = new ImageIcon("res/img/figma/minesDesign.png");
         JLabel mines = new JLabel(minesDesign);
         mines.setBounds(15, 7, 216, 117);
@@ -277,6 +283,14 @@ public class App implements Runnable{
         confirmMines.setBackground(Color.WHITE);
         confirmMines.setForeground(bg);
         confirmMines.setBounds(161, 106, 74, 16);
+
+        // confirmMines event
+        confirmMines.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+
+            minesScreen();
+        });
 
         contentpane.add(userBalance);
         contentpane.add(panel);
@@ -303,6 +317,144 @@ public class App implements Runnable{
         contentpane.add(panel4);
         panel4.add(confirmMines);
         panel4.add(mines);
+
+        frame.setVisible(true);
+    }
+
+    public static void minesScreen() {
+        JFrame frame = new JFrame();
+        Container contentpane = frame.getContentPane();
+
+        frame.setTitle("oblivion");
+        frame.setSize(700, 400);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        contentpane.setBackground(bg);
+        contentpane.setLayout(null);
+
+        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setBackground(null);
+        panel.setBounds(0, 0, 136, 42);
+
+        JLabel glassPanel = new JLabel(glassPanelImg);
+        glassPanel.setBackground(null);
+        glassPanel.setBounds(0, 0, 136, 42);
+
+        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon21px.png");
+        JButton menu = new JButton(menuIcon);
+        menu.setBorderPainted(false);
+        menu.setFocusPainted(false);
+        menu.setContentAreaFilled(false);
+        menu.setBackground(null);
+        menu.setBounds(20, 11, 21, 21);
+
+        // menu button event
+        menu.addActionListener(e -> {
+            System.out.println(glassPanelImg.getImageLoadStatus());
+            frame.setVisible(false);
+            frame.dispose();
+
+            menuScreen();
+        });
+
+        JLabel userBalance = new JLabel("$"+ (int) balance);
+        userBalance.setFont(geistmono12);
+        userBalance.setForeground(Color.WHITE);
+        userBalance.setBounds(655, 16, 700, 16);
+
+        RoundedButton topUp = new RoundedButton("buy");
+        topUp.setFont(geistmono9);
+        topUp.setBackground(Color.WHITE);
+        topUp.setForeground(bg);
+        topUp.setBounds(51, 13, 69, 16);
+
+        // topUp button event
+        topUp.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+
+            topUpScreen();
+        });
+
+        contentpane.add(panel);
+        panel.add(menu);
+        panel.add(topUp);
+        panel.add(glassPanel);
+
+        contentpane.add(userBalance);
+
+        frame.setVisible(true);
+    }
+
+    public static void crashScreen() {
+        JFrame frame = new JFrame();
+        Container contentpane = frame.getContentPane();
+
+        frame.setTitle("oblivion");
+        frame.setSize(700, 400);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        contentpane.setBackground(bg);
+        contentpane.setLayout(null);
+
+        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setBackground(null);
+        panel.setBounds(0, 0, 136, 42);
+
+        JLabel glassPanel = new JLabel(glassPanelImg);
+        glassPanel.setBackground(null);
+        glassPanel.setBounds(0, 0, 136, 42);
+
+        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon21px.png");
+        JButton menu = new JButton(menuIcon);
+        menu.setBorderPainted(false);
+        menu.setFocusPainted(false);
+        menu.setContentAreaFilled(false);
+        menu.setBackground(null);
+        menu.setBounds(20, 11, 21, 21);
+
+        // menu button event
+        menu.addActionListener(e -> {
+            System.out.println(glassPanelImg.getImageLoadStatus());
+            frame.setVisible(false);
+            frame.dispose();
+
+            menuScreen();
+        });
+
+        JLabel userBalance = new JLabel("$"+ (int) balance);
+        userBalance.setFont(geistmono12);
+        userBalance.setForeground(Color.WHITE);
+        userBalance.setBounds(655, 16, 700, 16);
+
+        RoundedButton topUp = new RoundedButton("buy");
+        topUp.setFont(geistmono9);
+        topUp.setBackground(Color.WHITE);
+        topUp.setForeground(bg);
+        topUp.setBounds(51, 13, 69, 16);
+
+        // topUp button event
+        topUp.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+
+            topUpScreen();
+        });
+
+        contentpane.add(panel);
+        panel.add(menu);
+        panel.add(topUp);
+        panel.add(glassPanel);
+
+        contentpane.add(userBalance);
 
         frame.setVisible(true);
     }
@@ -358,7 +510,7 @@ public class App implements Runnable{
         topUp.setForeground(bg);
         topUp.setBounds(51, 13, 69, 16);
 
-        // topUp button event (needs functionality)
+        // topUp button event
         topUp.addActionListener(e -> {
             frame.setVisible(false);
             frame.dispose();
