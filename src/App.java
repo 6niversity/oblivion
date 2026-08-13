@@ -21,6 +21,7 @@ public class App implements Runnable{
     static Font geistmono10 = null;
     static Font geistmono12 = null;
     static Font geistmono20 = null;
+    static Font geistmono96 = null;
     static Font instrument48 = null;
 
     static int dealerRNG;
@@ -64,6 +65,7 @@ public class App implements Runnable{
             geistmono10 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(10f);
             geistmono12 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(12f);
             geistmono20 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(20f);
+            geistmono96 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(96f);
             instrument48 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/instrumentserif.ttf")).deriveFont(48f);
 
             GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -72,6 +74,7 @@ public class App implements Runnable{
             graphicsEnvironment.registerFont(geistmono10);
             graphicsEnvironment.registerFont(geistmono12);
             graphicsEnvironment.registerFont(geistmono20);
+            graphicsEnvironment.registerFont(geistmono96);
             graphicsEnvironment.registerFont(instrument48);
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
@@ -449,12 +452,40 @@ public class App implements Runnable{
             topUpScreen();
         });
 
+        // title label
+        JLabel title = new JLabel("Crash");
+        title.setFont(instrument48);
+        title.setForeground(Color.WHITE);
+        title.setBounds(303, 100, 115, 62);
+
+        // multiplier label
+        JLabel multiplier = new JLabel("0.00%");
+        multiplier.setFont(geistmono96);
+        multiplier.setForeground(Color.WHITE);
+        multiplier.setBounds(206, 145, 350, 125);
+
+        // bet button
+        RoundedButton bet = new RoundedButton("bet");
+        bet.setFont(geistmono6);
+        bet.setBackground(Color.WHITE);
+        bet.setForeground(bg);
+        bet.setBounds(315, 275, 69, 16);
+
+        JLabel information = new JLabel("cashing out grants bet x multiplier");
+        information.setFont(geistmono6);
+        information.setForeground(new Color(55, 55, 55));
+        information.setBounds(282, 341, 150, 8);
+
         contentpane.add(panel);
         panel.add(menu);
         panel.add(topUp);
         panel.add(glassPanel);
 
         contentpane.add(userBalance);
+        contentpane.add(title);
+        contentpane.add(multiplier);
+        contentpane.add(bet);
+        contentpane.add(information);
 
         frame.setVisible(true);
     }
