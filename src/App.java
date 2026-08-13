@@ -28,6 +28,7 @@ public class App implements Runnable{
     static int userRNG;
 
     static Timer loop;
+    static int num = 100;
 
     public static void main(String[] args) throws Exception {
         try {
@@ -459,7 +460,7 @@ public class App implements Runnable{
         title.setBounds(303, 100, 115, 62);
 
         // multiplier label
-        JLabel multiplier = new JLabel("0.00%");
+        JLabel multiplier = new JLabel("1.00%");
         multiplier.setFont(geistmono96);
         multiplier.setForeground(Color.WHITE);
         multiplier.setBounds(206, 145, 350, 125);
@@ -470,6 +471,53 @@ public class App implements Runnable{
         bet.setBackground(Color.WHITE);
         bet.setForeground(bg);
         bet.setBounds(315, 275, 69, 16);
+
+        bet.addActionListener(e -> {
+            bet.setVisible(false);
+
+            int rng = (int) (Math.random()*1001);
+            System.out.println(rng);
+
+            RoundedButton cashout = new RoundedButton("cash out");
+            cashout.setFont(geistmono6);
+            cashout.setBackground(Color.WHITE);
+            cashout.setForeground(bg);
+            cashout.setBounds(315, 275, 69, 16);
+
+            cashout.addActionListener(k -> {
+                balance = 200 * Double.parseDouble( String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3));
+
+                frame.setVisible(false);
+                frame.dispose();
+
+                crashScreen();
+            });
+
+            contentpane.add(cashout);
+
+            contentpane.repaint();
+            contentpane.revalidate();
+
+            loop = new Timer(500, k -> {
+                if (!(num == rng)) {
+                    num++;
+                    String numString = String.valueOf(num);
+                    
+                    multiplier.setText(numString.substring(0, 1) + "." + numString.substring(1, 3) + "%");
+
+                    contentpane.repaint();
+                    contentpane.revalidate();
+                } else {
+                    loop.stop();
+
+                    frame.setVisible(false);
+                    frame.dispose();
+
+                    crashScreen();
+                }
+            });
+            loop.start();
+        });
 
         JLabel information = new JLabel("cashing out grants bet x multiplier");
         information.setFont(geistmono6);
