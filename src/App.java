@@ -10,12 +10,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class App implements Runnable{
-    static Color bg = new Color(11, 11, 11);
-    static double balance = 100;
-    static String username = "";
+    static Color bg = new Color(11, 11, 11); // background colour of the application
+    static double balance = 100; // user balance to start out
+    static String username = ""; // username (not used yet)
 
     static int switchs = 2; // 0 for over, 1 for under, 2 for none
 
+    // fonts & sizes
     static Font geistmono6 = null;
     static Font geistmono9 = null;
     static Font geistmono10 = null;
@@ -24,9 +25,11 @@ public class App implements Runnable{
     static Font geistmono96 = null;
     static Font instrument48 = null;
 
+    // random generated numbers
     static int dealerRNG;
     static int userRNG;
 
+    // loop and 
     static Timer loop;
     static int num = 100;
 
@@ -485,7 +488,11 @@ public class App implements Runnable{
             cashout.setBounds(315, 275, 69, 16);
 
             cashout.addActionListener(k -> {
+                loop.stop(); // stop loop
+
+                System.out.println(num);
                 balance = 200 * Double.parseDouble( String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3));
+                num = 100; // reset to default
 
                 frame.setVisible(false);
                 frame.dispose();
@@ -498,7 +505,7 @@ public class App implements Runnable{
             contentpane.repaint();
             contentpane.revalidate();
 
-            loop = new Timer(500, k -> {
+            loop = new Timer(250, k -> {
                 if (!(num == rng)) {
                     num++;
                     String numString = String.valueOf(num);
@@ -507,7 +514,15 @@ public class App implements Runnable{
 
                     contentpane.repaint();
                     contentpane.revalidate();
-                } else {
+                } else if (num < 100) {
+                    loop.stop();
+
+                    frame.setVisible(false);
+                    frame.dispose();
+
+                    crashScreen();
+                }
+                else {
                     loop.stop();
 
                     frame.setVisible(false);
