@@ -405,79 +405,117 @@ public class App implements Runnable{
         RoundedButton RNGButton1 = new RoundedButton("");
         RNGButton1.setFont(geistmono10);
         RNGButton1.setBackground(Color.WHITE);
-        RNGButton1.setForeground(bg);
+        RNGButton1.setForeground(Color.WHITE);
         RNGButton1.setBounds(38, 78, 81, 22);
 
         RoundedButton RNGButton2 = new RoundedButton("");
         RNGButton2.setFont(geistmono10);
         RNGButton2.setBackground(Color.WHITE);
-        RNGButton2.setForeground(bg);
+        RNGButton2.setForeground(Color.WHITE);
         RNGButton2.setBounds(129, 78, 81, 22);
 
         RoundedButton RNGButton3 = new RoundedButton("");
         RNGButton3.setFont(geistmono10);
         RNGButton3.setBackground(Color.WHITE);
-        RNGButton3.setForeground(bg);
+        RNGButton3.setForeground(Color.WHITE);
         RNGButton3.setBounds(38, 118, 81, 22);
 
         RoundedButton RNGButton4 = new RoundedButton("");
         RNGButton4.setFont(geistmono10);
         RNGButton4.setBackground(Color.WHITE);
-        RNGButton4.setForeground(bg);
+        RNGButton4.setForeground(Color.WHITE);
         RNGButton4.setBounds(129, 118, 81, 22);
 
         RoundedButton RNGButton5 = new RoundedButton("");
         RNGButton5.setFont(geistmono10);
         RNGButton5.setBackground(Color.WHITE);
-        RNGButton5.setForeground(bg);
+        RNGButton5.setForeground(Color.WHITE);
         RNGButton5.setBounds(38, 158, 81, 22);
 
         RoundedButton RNGButton6 = new RoundedButton("");
         RNGButton6.setFont(geistmono10);
         RNGButton6.setBackground(Color.WHITE);
-        RNGButton6.setForeground(bg);
+        RNGButton6.setForeground(Color.WHITE);
         RNGButton6.setBounds(129, 158, 81, 22);
 
         RoundedButton RNGButton7 = new RoundedButton("");
         RNGButton7.setFont(geistmono10);
         RNGButton7.setBackground(Color.WHITE);
-        RNGButton7.setForeground(bg);
+        RNGButton7.setForeground(Color.WHITE);
         RNGButton7.setBounds(38, 198, 81, 22);
 
         RoundedButton RNGButton8 = new RoundedButton("");
         RNGButton8.setFont(geistmono10);
         RNGButton8.setBackground(Color.WHITE);
-        RNGButton8.setForeground(bg);
+        RNGButton8.setForeground(Color.WHITE);
         RNGButton8.setBounds(129, 198, 81, 22);
 
         RoundedButton RNGButton9 = new RoundedButton("");
         RNGButton9.setFont(geistmono10);
         RNGButton9.setBackground(Color.WHITE);
-        RNGButton9.setForeground(bg);
+        RNGButton9.setForeground(Color.WHITE);
         RNGButton9.setBounds(38, 238, 81, 22);
 
         RoundedButton RNGButton10 = new RoundedButton("");
         RNGButton10.setFont(geistmono10);
         RNGButton10.setBackground(Color.WHITE);
-        RNGButton10.setForeground(bg);
+        RNGButton10.setForeground(Color.WHITE);
         RNGButton10.setBounds(129, 238, 81, 22);
 
         RoundedButton startButton = new RoundedButton("start");
         startButton.setFont(geistmono6);
         startButton.setBackground(Color.WHITE);
-        startButton.setForeground(bg);
+        startButton.setForeground(Color.WHITE);
         startButton.setBounds(89, 277, 69, 16);
 
         // startButton event
         startButton.addActionListener(e -> {
             String[] choices = {"bomb", "safe"};
-            int[] rng = new int[10];
+            int[][] rng = new int[5][2];
+            int l = 0;
 
-            for (int i = 0; i < 10; i++) {
-                int num = (int) (Math.random() * 2);
-                RNGButton1.setText(choices[0]);
-                System.out.println(num);
+            for (int i = 0; i < 5; i++) {
+                int[] window = {0, 0};
+                window[0] = (int) (Math.random() * 2);
+                System.out.println("first indx: " + String.valueOf(window[0]));
+                    
+                if (window[0] == 0) {
+                    window[1] = 1;
+                } else {
+                    window[1] = 0;
+                }
+
+                System.out.println("second index: " + String.valueOf(window[1]));
+
+                rng[i] = window;
             }
+
+            // hard-coded button choices
+            RNGButton1.setText(choices[rng[0][0]]);
+            RNGButton2.setText(choices[rng[0][1]]);
+            RNGButton3.setText(choices[rng[1][0]]);
+            RNGButton4.setText(choices[rng[1][1]]);
+            RNGButton5.setText(choices[rng[2][0]]);
+            RNGButton6.setText(choices[rng[2][1]]);
+            RNGButton7.setText(choices[rng[3][0]]);
+            RNGButton8.setText(choices[rng[3][1]]);
+            RNGButton9.setText(choices[rng[4][0]]);
+            RNGButton10.setText(choices[rng[4][1]]);
+
+            RNGButton1.addActionListener(k -> {
+                if (RNGButton1.getText().equals("bomb")) {
+                    frame.setVisible(false);
+                    frame.dispose();
+
+                    towersScreen();
+                } else {
+                    RNGButton1.setForeground(Color.BLACK);
+                    RNGButton1.setEnabled(false);
+                    RNGButton2.setEnabled(false);
+                }
+            });
+
+
 
             contentpane.repaint();
             contentpane.revalidate();
