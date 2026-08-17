@@ -271,32 +271,32 @@ public class App implements Runnable{
             crashScreen();
         });
 
-        JLabel minesLabel = new JLabel("MINES");
-        minesLabel.setFont(geistmono9);
-        minesLabel.setForeground(new Color(55, 55, 55));
-        minesLabel.setBounds(360, 193, 27, 12);
+        JLabel towersLabel = new JLabel("TOWERS");
+        towersLabel.setFont(geistmono9);
+        towersLabel.setForeground(new Color(55, 55, 55));
+        towersLabel.setBounds(360, 193, 50, 12);
 
         RoundedPanel panel4 = new RoundedPanel(14);
         panel4.setBackgroundColor(new Color(21, 21, 21));
         panel4.setLayout(null);
         panel4.setBounds(360, 205, 245, 132);
 
-        ImageIcon minesDesign = new ImageIcon("res/img/figma/minesDesign.png");
-        JLabel mines = new JLabel(minesDesign);
-        mines.setBounds(15, 7, 216, 117);
+        ImageIcon towersDesign = new ImageIcon("res/img/figma/towersDesign.png");
+        JLabel towers = new JLabel(towersDesign);
+        towers.setBounds(15, 7, 216, 117);
 
-        RoundedButton confirmMines = new RoundedButton("confirm");
-        confirmMines.setFont(geistmono6);
-        confirmMines.setBackground(Color.WHITE);
-        confirmMines.setForeground(bg);
-        confirmMines.setBounds(161, 106, 74, 16);
+        RoundedButton confirmTowers = new RoundedButton("confirm");
+        confirmTowers.setFont(geistmono6);
+        confirmTowers.setBackground(Color.WHITE);
+        confirmTowers.setForeground(bg);
+        confirmTowers.setBounds(161, 106, 74, 16);
 
-        // confirmMines event
-        confirmMines.addActionListener(e -> {
+        // confirmTowers event
+        confirmTowers.addActionListener(e -> {
             frame.setVisible(false);
             frame.dispose();
 
-            minesScreen();
+            towersScreen();
         });
 
         contentpane.add(userBalance);
@@ -320,15 +320,15 @@ public class App implements Runnable{
         panel3.add(confirmCrash);
         panel3.add(crash);
 
-        contentpane.add(minesLabel);
+        contentpane.add(towersLabel);
         contentpane.add(panel4);
-        panel4.add(confirmMines);
-        panel4.add(mines);
+        panel4.add(confirmTowers);
+        panel4.add(towers);
 
         frame.setVisible(true);
     }
 
-    public static void minesScreen() {
+    public static void towersScreen() {
         JFrame frame = new JFrame();
         Container contentpane = frame.getContentPane();
 
@@ -387,12 +387,123 @@ public class App implements Runnable{
             topUpScreen();
         });
 
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(null);
+        mainPanel.setBackground(bg);
+        mainPanel.setBounds(226, 36, 248, 336);
+
+        ImageIcon towersGlass = new ImageIcon("res/img/figma/towersGlassPanel.png");
+        JLabel towersPanel = new JLabel(towersGlass);
+        towersPanel.setBounds(0, 0, 248, 336);
+
+        JLabel towers = new JLabel("Towers");
+        towers.setFont(instrument48);
+        towers.setForeground(Color.WHITE);
+        towers.setBounds(67, 17, 150, 62);
+
+        // Hard code buttons
+        RoundedButton RNGButton1 = new RoundedButton("");
+        RNGButton1.setFont(geistmono10);
+        RNGButton1.setBackground(Color.WHITE);
+        RNGButton1.setForeground(bg);
+        RNGButton1.setBounds(38, 78, 81, 22);
+
+        RoundedButton RNGButton2 = new RoundedButton("");
+        RNGButton2.setFont(geistmono10);
+        RNGButton2.setBackground(Color.WHITE);
+        RNGButton2.setForeground(bg);
+        RNGButton2.setBounds(129, 78, 81, 22);
+
+        RoundedButton RNGButton3 = new RoundedButton("");
+        RNGButton3.setFont(geistmono10);
+        RNGButton3.setBackground(Color.WHITE);
+        RNGButton3.setForeground(bg);
+        RNGButton3.setBounds(38, 118, 81, 22);
+
+        RoundedButton RNGButton4 = new RoundedButton("");
+        RNGButton4.setFont(geistmono10);
+        RNGButton4.setBackground(Color.WHITE);
+        RNGButton4.setForeground(bg);
+        RNGButton4.setBounds(129, 118, 81, 22);
+
+        RoundedButton RNGButton5 = new RoundedButton("");
+        RNGButton5.setFont(geistmono10);
+        RNGButton5.setBackground(Color.WHITE);
+        RNGButton5.setForeground(bg);
+        RNGButton5.setBounds(38, 158, 81, 22);
+
+        RoundedButton RNGButton6 = new RoundedButton("");
+        RNGButton6.setFont(geistmono10);
+        RNGButton6.setBackground(Color.WHITE);
+        RNGButton6.setForeground(bg);
+        RNGButton6.setBounds(129, 158, 81, 22);
+
+        RoundedButton RNGButton7 = new RoundedButton("");
+        RNGButton7.setFont(geistmono10);
+        RNGButton7.setBackground(Color.WHITE);
+        RNGButton7.setForeground(bg);
+        RNGButton7.setBounds(38, 198, 81, 22);
+
+        RoundedButton RNGButton8 = new RoundedButton("");
+        RNGButton8.setFont(geistmono10);
+        RNGButton8.setBackground(Color.WHITE);
+        RNGButton8.setForeground(bg);
+        RNGButton8.setBounds(129, 198, 81, 22);
+
+        RoundedButton RNGButton9 = new RoundedButton("");
+        RNGButton9.setFont(geistmono10);
+        RNGButton9.setBackground(Color.WHITE);
+        RNGButton9.setForeground(bg);
+        RNGButton9.setBounds(38, 238, 81, 22);
+
+        RoundedButton RNGButton10 = new RoundedButton("");
+        RNGButton10.setFont(geistmono10);
+        RNGButton10.setBackground(Color.WHITE);
+        RNGButton10.setForeground(bg);
+        RNGButton10.setBounds(129, 238, 81, 22);
+
+        RoundedButton startButton = new RoundedButton("start");
+        startButton.setFont(geistmono6);
+        startButton.setBackground(Color.WHITE);
+        startButton.setForeground(bg);
+        startButton.setBounds(89, 277, 69, 16);
+
+        // startButton event
+        startButton.addActionListener(e -> {
+            String[] choices = {"bomb", "safe"};
+            int[] rng = new int[10];
+
+            for (int i = 0; i < 10; i++) {
+                int num = (int) (Math.random() * 2);
+                RNGButton1.setText(choices[0]);
+                System.out.println(num);
+            }
+
+            contentpane.repaint();
+            contentpane.revalidate();
+        });
+
         contentpane.add(panel);
         panel.add(menu);
         panel.add(topUp);
         panel.add(glassPanel);
 
         contentpane.add(userBalance);
+
+        contentpane.add(mainPanel);
+        mainPanel.add(towers);
+        mainPanel.add(RNGButton1);
+        mainPanel.add(RNGButton2);
+        mainPanel.add(RNGButton3);
+        mainPanel.add(RNGButton4);
+        mainPanel.add(RNGButton5);
+        mainPanel.add(RNGButton6);
+        mainPanel.add(RNGButton7);
+        mainPanel.add(RNGButton8);
+        mainPanel.add(RNGButton9);
+        mainPanel.add(RNGButton10);
+        mainPanel.add(startButton);
+        mainPanel.add(towersPanel);
 
         frame.setVisible(true);
     }
