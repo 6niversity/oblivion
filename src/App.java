@@ -418,48 +418,56 @@ public class App implements Runnable{
         RNGButton3.setFont(geistmono10);
         RNGButton3.setBackground(Color.WHITE);
         RNGButton3.setForeground(Color.WHITE);
+        RNGButton3.setEnabled(false);
         RNGButton3.setBounds(38, 118, 81, 22);
 
         RoundedButton RNGButton4 = new RoundedButton("");
         RNGButton4.setFont(geistmono10);
         RNGButton4.setBackground(Color.WHITE);
         RNGButton4.setForeground(Color.WHITE);
+        RNGButton4.setEnabled(false);
         RNGButton4.setBounds(129, 118, 81, 22);
 
         RoundedButton RNGButton5 = new RoundedButton("");
         RNGButton5.setFont(geistmono10);
         RNGButton5.setBackground(Color.WHITE);
         RNGButton5.setForeground(Color.WHITE);
+        RNGButton5.setEnabled(false);
         RNGButton5.setBounds(38, 158, 81, 22);
 
         RoundedButton RNGButton6 = new RoundedButton("");
         RNGButton6.setFont(geistmono10);
         RNGButton6.setBackground(Color.WHITE);
         RNGButton6.setForeground(Color.WHITE);
+        RNGButton6.setEnabled(false);
         RNGButton6.setBounds(129, 158, 81, 22);
 
         RoundedButton RNGButton7 = new RoundedButton("");
         RNGButton7.setFont(geistmono10);
         RNGButton7.setBackground(Color.WHITE);
         RNGButton7.setForeground(Color.WHITE);
+        RNGButton7.setEnabled(false);
         RNGButton7.setBounds(38, 198, 81, 22);
 
         RoundedButton RNGButton8 = new RoundedButton("");
         RNGButton8.setFont(geistmono10);
         RNGButton8.setBackground(Color.WHITE);
         RNGButton8.setForeground(Color.WHITE);
+        RNGButton8.setEnabled(false);
         RNGButton8.setBounds(129, 198, 81, 22);
 
         RoundedButton RNGButton9 = new RoundedButton("");
         RNGButton9.setFont(geistmono10);
         RNGButton9.setBackground(Color.WHITE);
         RNGButton9.setForeground(Color.WHITE);
+        RNGButton9.setEnabled(false);
         RNGButton9.setBounds(38, 238, 81, 22);
 
         RoundedButton RNGButton10 = new RoundedButton("");
         RNGButton10.setFont(geistmono10);
         RNGButton10.setBackground(Color.WHITE);
         RNGButton10.setForeground(Color.WHITE);
+        RNGButton10.setEnabled(false);
         RNGButton10.setBounds(129, 238, 81, 22);
 
         RoundedButton startButton = new RoundedButton("start");
@@ -512,10 +520,147 @@ public class App implements Runnable{
                     RNGButton1.setForeground(Color.BLACK);
                     RNGButton1.setEnabled(false);
                     RNGButton2.setEnabled(false);
+                    RNGButton3.setEnabled(true);
+                    RNGButton4.setEnabled(true);
+                }
+            });
+            
+            RNGButton2.addActionListener(k -> {
+                if (RNGButton2.getText().equals("bomb")) {
+                    frame.setVisible(false);
+                    frame.dispose();
+
+                    towersScreen();
+                } else {
+                    RNGButton2.setForeground(Color.BLACK);
+                    RNGButton2.setEnabled(false);
+                    RNGButton1.setEnabled(false);
+                    RNGButton3.setEnabled(true);
+                    RNGButton4.setEnabled(true);
                 }
             });
 
+            RNGButton3.addActionListener(k -> {
+                if (RNGButton3.getText().equals("bomb")) {
+                    frame.setVisible(false);
+                    frame.dispose();
 
+                    towersScreen();
+                } else {
+                    RNGButton3.setForeground(Color.BLACK);
+                    RNGButton3.setEnabled(false);
+                    RNGButton4.setEnabled(false);
+                    RNGButton5.setEnabled(true);
+                    RNGButton6.setEnabled(true);
+                }
+            });
+
+            RNGButton4.addActionListener(k -> {
+                if (RNGButton4.getText().equals("bomb")) {
+                    frame.setVisible(false);
+                    frame.dispose();
+
+                    towersScreen();
+                } else {
+                    RNGButton4.setForeground(Color.BLACK);
+                    RNGButton4.setEnabled(false);
+                    RNGButton3.setEnabled(false);
+                    RNGButton5.setEnabled(true);
+                    RNGButton6.setEnabled(true);
+                }
+            });
+
+            RNGButton5.addActionListener(k -> {
+                if (RNGButton5.getText().equals("bomb")) {
+                    frame.setVisible(false);
+                    frame.dispose();
+
+                    towersScreen();
+                } else {
+                    RNGButton5.setForeground(Color.BLACK);
+                    RNGButton5.setEnabled(false);
+                    RNGButton6.setEnabled(false);
+                    RNGButton7.setEnabled(true);
+                    RNGButton8.setEnabled(true);
+                }
+            });
+
+            RNGButton6.addActionListener(k -> {
+                if (RNGButton6.getText().equals("bomb")) {
+                    frame.setVisible(false);
+                    frame.dispose();
+
+                    towersScreen();
+                } else {
+                    RNGButton6.setForeground(Color.BLACK);
+                    RNGButton6.setEnabled(false);
+                    RNGButton5.setEnabled(false);
+                    RNGButton7.setEnabled(true);
+                    RNGButton8.setEnabled(true);
+                }
+            });
+
+            RNGButton7.addActionListener(k -> {
+                if (RNGButton7.getText().equals("bomb")) {
+                    frame.setVisible(false);
+                    frame.dispose();
+
+                    towersScreen();
+                } else {
+                    RNGButton7.setForeground(Color.BLACK);
+                    RNGButton7.setEnabled(false);
+                    RNGButton8.setEnabled(false);
+                    RNGButton9.setEnabled(true);
+                    RNGButton10.setEnabled(true);
+                }
+            });
+
+            RNGButton8.addActionListener(k -> {
+                if (RNGButton8.getText().equals("bomb")) {
+                    frame.setVisible(false);
+                    frame.dispose();
+
+                    towersScreen();
+                } else {
+                    RNGButton8.setForeground(Color.BLACK);
+                    RNGButton8.setEnabled(false);
+                    RNGButton7.setEnabled(false);
+                    RNGButton9.setEnabled(true);
+                    RNGButton10.setEnabled(true);
+                }
+            });
+
+            RNGButton9.addActionListener(k -> {
+                if (RNGButton9.getText().equals("bomb")) {
+                    frame.setVisible(false);
+                    frame.dispose();
+
+                    towersScreen();
+                } else {
+                    balance *= 1.2;
+
+                    frame.setVisible(false);
+                    frame.dispose();
+
+                    towersScreen();
+                }
+            });
+
+            RNGButton10.addActionListener(k -> {
+                if (RNGButton10.getText().equals("bomb")) {
+                    frame.setVisible(false);
+                    frame.dispose();
+
+                    towersScreen();
+                } else {
+                    balance *= 1.2;
+
+                    frame.setVisible(false);
+                    frame.dispose();
+
+                    towersScreen();
+                }
+            });
 
             contentpane.repaint();
             contentpane.revalidate();
