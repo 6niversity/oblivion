@@ -169,10 +169,47 @@ public class App implements Runnable{
         title.setForeground(Color.WHITE);
         title.setBounds(21, 13, 58, 16);
 
-        JLabel userBalance = new JLabel("$"+ (int) balance);
+        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
+        JLabel glassPanelBal = new JLabel(glassyPanelBalance);
+        glassPanelBal.setBounds(629, 0, 71, 42);
+
+        JLabel userBalance = new JLabel();
         userBalance.setFont(geistmono12);
         userBalance.setForeground(Color.WHITE);
-        userBalance.setBounds(653, 13, 300, 16);
+
+        // userBalance display
+        if (balance >= 1000 && balance < 10000) { // 1k to 10k
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "K");
+            userBalance.setBounds(654, 13, 700, 16);
+        } else if (balance >= 10000 && balance < 100000) { // 10k to 100k
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "K");
+            userBalance.setBounds(649, 13, 700, 16);
+        } else if (balance >= 100000 && balance < 1000000) { // 100k to 1m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "K");
+            userBalance.setBounds(647, 13, 700, 16);
+        } else if (balance >= 1000000 && balance < 10000000) { // 1m to 10m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "M");
+            userBalance.setBounds(653, 13, 700, 16);
+        } else if (balance >= 10000000 && balance < 100000000) { // 10m to 100m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "M");
+            userBalance.setBounds(649, 13, 700, 16);
+        } else if (balance >= 100000000 && balance < 1000000000) { // 100m to 1b
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+            userBalance.setBounds(643, 13, 700, 16);
+        } else if (balance >= 1000000000) {
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+            userBalance.setBounds(647, 13, 700, 16);
+        } else {
+            userBalance.setText("$" + String.valueOf((int) balance));
+
+            if (balance >= 0 && balance < 10) {
+                userBalance.setBounds(657, 13, 15, 16);
+            } else if (balance >= 10 && balance < 100) {
+                userBalance.setBounds(654, 13, 15, 16);
+            } else if (balance >= 100 && balance < 1000) {
+                userBalance.setBounds(650, 13, 700, 16);
+            }
+        }
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
@@ -300,6 +337,8 @@ public class App implements Runnable{
         });
 
         contentpane.add(userBalance);
+        contentpane.add(glassPanelBal);
+
         contentpane.add(panel);
         panel.add(title);
         panel.add(topUp);
@@ -368,10 +407,47 @@ public class App implements Runnable{
             menuScreen();
         });
 
-        JLabel userBalance = new JLabel("$"+ (int) balance);
+        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
+        JLabel glassPanelBal = new JLabel(glassyPanelBalance);
+        glassPanelBal.setBounds(629, 0, 71, 42);
+
+        JLabel userBalance = new JLabel();
         userBalance.setFont(geistmono12);
         userBalance.setForeground(Color.WHITE);
-        userBalance.setBounds(655, 16, 700, 16);
+
+        // userBalance display
+        if (balance >= 1000 && balance < 10000) { // 1k to 10k
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "K");
+            userBalance.setBounds(654, 13, 700, 16);
+        } else if (balance >= 10000 && balance < 100000) { // 10k to 100k
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "K");
+            userBalance.setBounds(649, 13, 700, 16);
+        } else if (balance >= 100000 && balance < 1000000) { // 100k to 1m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "K");
+            userBalance.setBounds(647, 13, 700, 16);
+        } else if (balance >= 1000000 && balance < 10000000) { // 1m to 10m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "M");
+            userBalance.setBounds(653, 13, 700, 16);
+        } else if (balance >= 10000000 && balance < 100000000) { // 10m to 100m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "M");
+            userBalance.setBounds(649, 13, 700, 16);
+        } else if (balance >= 100000000 && balance < 1000000000) { // 100m to 1b
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+            userBalance.setBounds(643, 13, 700, 16);
+        } else if (balance >= 1000000000) {
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+            userBalance.setBounds(647, 13, 700, 16);
+        } else {
+            userBalance.setText("$" + String.valueOf((int) balance));
+
+            if (balance >= 0 && balance < 10) {
+                userBalance.setBounds(657, 13, 15, 16);
+            } else if (balance >= 10 && balance < 100) {
+                userBalance.setBounds(654, 13, 15, 16);
+            } else if (balance >= 100 && balance < 1000) {
+                userBalance.setBounds(650, 13, 700, 16);
+            }
+        }
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
@@ -672,6 +748,7 @@ public class App implements Runnable{
         panel.add(glassPanel);
 
         contentpane.add(userBalance);
+        contentpane.add(glassPanelBal);
 
         contentpane.add(mainPanel);
         mainPanel.add(towers);
@@ -731,10 +808,47 @@ public class App implements Runnable{
             menuScreen();
         });
 
-        JLabel userBalance = new JLabel("$"+ (int) balance);
+        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
+        JLabel glassPanelBal = new JLabel(glassyPanelBalance);
+        glassPanelBal.setBounds(629, 0, 71, 42);
+
+        JLabel userBalance = new JLabel();
         userBalance.setFont(geistmono12);
         userBalance.setForeground(Color.WHITE);
-        userBalance.setBounds(655, 16, 700, 16);
+
+        // userBalance display
+        if (balance >= 1000 && balance < 10000) { // 1k to 10k
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "K");
+            userBalance.setBounds(654, 13, 700, 16);
+        } else if (balance >= 10000 && balance < 100000) { // 10k to 100k
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "K");
+            userBalance.setBounds(649, 13, 700, 16);
+        } else if (balance >= 100000 && balance < 1000000) { // 100k to 1m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "K");
+            userBalance.setBounds(647, 13, 700, 16);
+        } else if (balance >= 1000000 && balance < 10000000) { // 1m to 10m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "M");
+            userBalance.setBounds(653, 13, 700, 16);
+        } else if (balance >= 10000000 && balance < 100000000) { // 10m to 100m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "M");
+            userBalance.setBounds(649, 13, 700, 16);
+        } else if (balance >= 100000000 && balance < 1000000000) { // 100m to 1b
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+            userBalance.setBounds(643, 13, 700, 16);
+        } else if (balance >= 1000000000) {
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+            userBalance.setBounds(647, 13, 700, 16);
+        } else {
+            userBalance.setText("$" + String.valueOf((int) balance));
+
+            if (balance >= 0 && balance < 10) {
+                userBalance.setBounds(657, 13, 15, 16);
+            } else if (balance >= 10 && balance < 100) {
+                userBalance.setBounds(654, 13, 15, 16);
+            } else if (balance >= 100 && balance < 1000) {
+                userBalance.setBounds(650, 13, 700, 16);
+            }
+        }
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
@@ -839,6 +953,7 @@ public class App implements Runnable{
         panel.add(glassPanel);
 
         contentpane.add(userBalance);
+        contentpane.add(glassPanelBal);
         contentpane.add(title);
         contentpane.add(multiplier);
         contentpane.add(bet);
@@ -887,10 +1002,47 @@ public class App implements Runnable{
             menuScreen();
         });
 
-        JLabel userBalance = new JLabel("$"+ (int) balance);
+        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
+        JLabel glassPanelBal = new JLabel(glassyPanelBalance);
+        glassPanelBal.setBounds(629, 0, 71, 42);
+
+        JLabel userBalance = new JLabel();
         userBalance.setFont(geistmono12);
         userBalance.setForeground(Color.WHITE);
-        userBalance.setBounds(650, 13, 700, 16);
+
+        // userBalance display
+        if (balance >= 1000 && balance < 10000) { // 1k to 10k
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "K");
+            userBalance.setBounds(654, 13, 700, 16);
+        } else if (balance >= 10000 && balance < 100000) { // 10k to 100k
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "K");
+            userBalance.setBounds(649, 13, 700, 16);
+        } else if (balance >= 100000 && balance < 1000000) { // 100k to 1m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "K");
+            userBalance.setBounds(647, 13, 700, 16);
+        } else if (balance >= 1000000 && balance < 10000000) { // 1m to 10m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "M");
+            userBalance.setBounds(653, 13, 700, 16);
+        } else if (balance >= 10000000 && balance < 100000000) { // 10m to 100m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "M");
+            userBalance.setBounds(649, 13, 700, 16);
+        } else if (balance >= 100000000 && balance < 1000000000) { // 100m to 1b
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+            userBalance.setBounds(643, 13, 700, 16);
+        } else if (balance >= 1000000000) {
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+            userBalance.setBounds(647, 13, 700, 16);
+        } else {
+            userBalance.setText("$" + String.valueOf((int) balance));
+
+            if (balance >= 0 && balance < 10) {
+                userBalance.setBounds(657, 13, 15, 16);
+            } else if (balance >= 10 && balance < 100) {
+                userBalance.setBounds(654, 13, 15, 16);
+            } else if (balance >= 100 && balance < 1000) {
+                userBalance.setBounds(650, 13, 700, 16);
+            }
+        }
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
@@ -905,17 +1057,6 @@ public class App implements Runnable{
 
             topUpScreen();
         });
-
-        /* 
-        JPanel panel2 = new JPanel();
-        panel2.setLayout(null);
-        panel2.setBackground(bg);
-        panel2.setBounds(629, 0, 71, 42);
-        */
-
-        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
-        JLabel glassPanelBal = new JLabel(glassyPanelBalance);
-        glassPanelBal.setBounds(629, 0, 71, 42);
 
         JLabel dealerInfo = new JLabel("DEALER MUST STAND ON ALL 17'S");
         dealerInfo.setFont(geistmono9);
@@ -1018,9 +1159,7 @@ public class App implements Runnable{
                         } else if (dealerRNG == 21) {
                             balance -= 2000;
                         } else if (dealerRNG < userRNG) {
-                            System.out.println("Balance before win: " + balance);
                             balance *= 1.2;
-                            System.out.println("Balance after win: " + balance);
                         } else if (dealerRNG > userRNG) {
                             balance -= 200;
                         }
@@ -1224,10 +1363,47 @@ public class App implements Runnable{
             menuScreen();
         });
 
-        JLabel userBalance = new JLabel("$"+ (int) balance);
+        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
+        JLabel glassPanelBal = new JLabel(glassyPanelBalance);
+        glassPanelBal.setBounds(629, 0, 71, 42);
+
+        JLabel userBalance = new JLabel();
         userBalance.setFont(geistmono12);
         userBalance.setForeground(Color.WHITE);
-        userBalance.setBounds(653, 13, 300, 16);
+
+        // userBalance display
+        if (balance >= 1000 && balance < 10000) { // 1k to 10k
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "K");
+            userBalance.setBounds(654, 13, 700, 16);
+        } else if (balance >= 10000 && balance < 100000) { // 10k to 100k
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "K");
+            userBalance.setBounds(649, 13, 700, 16);
+        } else if (balance >= 100000 && balance < 1000000) { // 100k to 1m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "K");
+            userBalance.setBounds(647, 13, 700, 16);
+        } else if (balance >= 1000000 && balance < 10000000) { // 1m to 10m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "M");
+            userBalance.setBounds(653, 13, 700, 16);
+        } else if (balance >= 10000000 && balance < 100000000) { // 10m to 100m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "M");
+            userBalance.setBounds(649, 13, 700, 16);
+        } else if (balance >= 100000000 && balance < 1000000000) { // 100m to 1b
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+            userBalance.setBounds(643, 13, 700, 16);
+        } else if (balance >= 1000000000) {
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+            userBalance.setBounds(647, 13, 700, 16);
+        } else {
+            userBalance.setText("$" + String.valueOf((int) balance));
+
+            if (balance >= 0 && balance < 10) {
+                userBalance.setBounds(657, 13, 15, 16);
+            } else if (balance >= 10 && balance < 100) {
+                userBalance.setBounds(654, 13, 15, 16);
+            } else if (balance >= 100 && balance < 1000) {
+                userBalance.setBounds(650, 13, 700, 16);
+            }
+        }
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
@@ -1404,10 +1580,47 @@ public class App implements Runnable{
             menuScreen();
         });
 
-        JLabel userBalance = new JLabel("$"+ (int) balance);
+        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
+        JLabel glassPanelBal = new JLabel(glassyPanelBalance);
+        glassPanelBal.setBounds(629, 0, 71, 42);
+
+        JLabel userBalance = new JLabel();
         userBalance.setFont(geistmono12);
         userBalance.setForeground(Color.WHITE);
-        userBalance.setBounds(655, 16, 700, 16);
+
+        // userBalance display
+        if (balance >= 1000 && balance < 10000) { // 1k to 10k
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "K");
+            userBalance.setBounds(654, 13, 700, 16);
+        } else if (balance >= 10000 && balance < 100000) { // 10k to 100k
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "K");
+            userBalance.setBounds(649, 13, 700, 16);
+        } else if (balance >= 100000 && balance < 1000000) { // 100k to 1m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "K");
+            userBalance.setBounds(647, 13, 700, 16);
+        } else if (balance >= 1000000 && balance < 10000000) { // 1m to 10m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "M");
+            userBalance.setBounds(653, 13, 700, 16);
+        } else if (balance >= 10000000 && balance < 100000000) { // 10m to 100m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "M");
+            userBalance.setBounds(649, 13, 700, 16);
+        } else if (balance >= 100000000 && balance < 1000000000) { // 100m to 1b
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+            userBalance.setBounds(643, 13, 700, 16);
+        } else if (balance >= 1000000000) {
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+            userBalance.setBounds(647, 13, 700, 16);
+        } else {
+            userBalance.setText("$" + String.valueOf((int) balance));
+
+            if (balance >= 0 && balance < 10) {
+                userBalance.setBounds(657, 13, 15, 16);
+            } else if (balance >= 10 && balance < 100) {
+                userBalance.setBounds(654, 13, 15, 16);
+            } else if (balance >= 100 && balance < 1000) {
+                userBalance.setBounds(650, 13, 700, 16);
+            }
+        }
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
@@ -1502,7 +1715,39 @@ public class App implements Runnable{
                     System.out.println("Debugging: 2");
                 }
 
-                userBalance.setText("$" + String.valueOf((int) balance));
+                // userDisplay (double check after betting)
+                if (balance >= 1000 && balance < 10000) { // 1k to 10k
+                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "K");
+                    userBalance.setBounds(654, 13, 700, 16);
+                } else if (balance >= 10000 && balance < 100000) { // 10k to 100k
+                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "K");
+                    userBalance.setBounds(649, 13, 700, 16);
+                } else if (balance >= 100000 && balance < 1000000) { // 100k to 1m
+                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "K");
+                    userBalance.setBounds(647, 13, 700, 16);
+                } else if (balance >= 1000000 && balance < 10000000) { // 1m to 10m
+                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "M");
+                    userBalance.setBounds(653, 13, 700, 16);
+                } else if (balance >= 10000000 && balance < 100000000) { // 10m to 100m
+                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "M");
+                    userBalance.setBounds(649, 13, 700, 16);
+                } else if (balance >= 100000000 && balance < 1000000000) { // 100m to 1b
+                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+                    userBalance.setBounds(643, 13, 700, 16);
+                } else if (balance >= 1000000000) {
+                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+                    userBalance.setBounds(647, 13, 700, 16);
+                } else {
+                    userBalance.setText("$" + String.valueOf((int) balance));
+
+                    if (balance >= 0 && balance < 10) {
+                        userBalance.setBounds(657, 13, 15, 16);
+                    } else if (balance >= 10 && balance < 100) {
+                        userBalance.setBounds(654, 13, 15, 16);
+                    } else if (balance >= 100 && balance < 1000) {
+                        userBalance.setBounds(650, 13, 700, 16);
+                    }
+                }
 
                 contentpane.repaint();
                 contentpane.revalidate();
