@@ -890,7 +890,7 @@ public class App implements Runnable{
         JLabel userBalance = new JLabel("$"+ (int) balance);
         userBalance.setFont(geistmono12);
         userBalance.setForeground(Color.WHITE);
-        userBalance.setBounds(655, 16, 700, 16);
+        userBalance.setBounds(650, 13, 700, 16);
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
@@ -905,6 +905,17 @@ public class App implements Runnable{
 
             topUpScreen();
         });
+
+        /* 
+        JPanel panel2 = new JPanel();
+        panel2.setLayout(null);
+        panel2.setBackground(bg);
+        panel2.setBounds(629, 0, 71, 42);
+        */
+
+        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
+        JLabel glassPanelBal = new JLabel(glassyPanelBalance);
+        glassPanelBal.setBounds(629, 0, 71, 42);
 
         JLabel dealerInfo = new JLabel("DEALER MUST STAND ON ALL 17'S");
         dealerInfo.setFont(geistmono9);
@@ -1007,7 +1018,9 @@ public class App implements Runnable{
                         } else if (dealerRNG == 21) {
                             balance -= 2000;
                         } else if (dealerRNG < userRNG) {
-                            balance += 1.2;
+                            System.out.println("Balance before win: " + balance);
+                            balance *= 1.2;
+                            System.out.println("Balance after win: " + balance);
                         } else if (dealerRNG > userRNG) {
                             balance -= 200;
                         }
@@ -1043,6 +1056,7 @@ public class App implements Runnable{
         panel.add(glassPanel);
 
         contentpane.add(userBalance);
+        contentpane.add(glassPanelBal);
         contentpane.add(dealerInfo);
 
         contentpane.add(betPlacer);
