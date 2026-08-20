@@ -12,7 +12,7 @@ import java.io.ObjectOutputStream;
 public class App implements Runnable{
     static Color bg = new Color(11, 11, 11); // background colour of the application
     static double balance = 100; // user balance to start out
-    static String username = ""; // username (not used yet)
+    static String username; // username (not used yet)
 
     static int switchs = 2; // 0 for over, 1 for under, 2 for none
 
@@ -28,6 +28,7 @@ public class App implements Runnable{
     // random generated numbers
     static int dealerRNG;
     static int userRNG;
+    static boolean hasWon;
 
     // loop and 
     static Timer loop;
@@ -556,7 +557,6 @@ public class App implements Runnable{
         startButton.addActionListener(e -> {
             String[] choices = {"bomb", "safe"};
             int[][] rng = new int[5][2];
-            int l = 0;
 
             for (int i = 0; i < 5; i++) {
                 int[] window = {0, 0};
@@ -1089,8 +1089,13 @@ public class App implements Runnable{
         betPlacer.setForeground(bg);
         betPlacer.setBounds(319, 334, 61, 16);
 
+        JLabel message = new JLabel();
+        message.setFont(geistmono9);
+        message.setForeground(Color.WHITE);
+
         // i dont know how i made it work
         betPlacer.addActionListener(e -> {
+            message.setText(null);
             betPlacer.setVisible(false);
 
             dealerRNG = (int)(Math.random() * 11);
@@ -1114,37 +1119,42 @@ public class App implements Runnable{
             hitButton.setForeground(bg);
             hitButton.setBounds(193, 240, 61, 16);
 
-            hitButton.addActionListener(k -> {
-                userRNG += (int) (Math.random() * 11);
-
-                dealerNum.setText(String.valueOf(dealerRNG));
-                userCards.setText(String.valueOf(userRNG));
-
-                if (userRNG == 21) {
-                    balance *= 2;
-                    System.out.println("Debug: user won the game");
-
-                    frame.setVisible(false);
-                    frame.dispose();
-
-                    blackjackScreen();
-                } else if (userRNG > 21) {
-                    balance -= 200;
-
-                    frame.setVisible(false);
-                    frame.dispose();
-
-                    blackjackScreen();
-                }
-
-                System.out.println("Debug: User Cards: "+ userRNG + "\nDealer Cards: " + dealerRNG);
-            });
-
             RoundedButton standButton = new RoundedButton("stand");
             standButton.setFont(geistmono9);
             standButton.setBackground(Color.WHITE);
             standButton.setForeground(bg);
             standButton.setBounds(271, 240, 69, 16);
+
+            hitButton.addActionListener(k -> {
+                userRNG += (int) (Math.random() * 11);
+
+                dealerNum.setText(String.valueOf(dealerRNG));
+                userCards.setText(String.valueOf(userRNG));
+                
+                if (userRNG > 20) {
+                    hitButton.setEnabled(false);
+                    standButton.setEnabled(false);
+
+                    if (userRNG == 21) {
+                        balance *= 2;
+                        System.out.println("Debug: user won the game");
+
+                        message.setText("WON 1.2X!");
+                        message.setBounds(325, 181, 49, 12);
+                    } else if (userRNG > 21) {
+                        balance -= 200;
+
+                        message.setText("LOSS!");
+                        message.setBounds(336, 181, 27, 12);
+                    }
+
+                    betPlacer.setVisible(true);
+                }
+    
+                System.out.println("Debug: User Cards: "+ userRNG + "\nDealer Cards: " + dealerRNG);
+                contentpane.repaint();
+                contentpane.revalidate();
+            });
 
             standButton.addActionListener(k -> {
                 loop = new Timer(1000, j -> {
@@ -1152,26 +1162,43 @@ public class App implements Runnable{
                     dealerNum.setText(String.valueOf(dealerRNG));
 
                     if (dealerRNG >= 17) {
+                        hitButton.setEnabled(false);
+                        standButton.setEnabled(false);
+
+                        betPlacer.setVisible(true);
+
                         loop.stop();
 
                         if (dealerRNG > 21) {
+                            hasWon = true;
                             balance *= 1.2;
+
+                            message.setText("WON 1.2X!");
+                            message.setBounds(325, 181, 49, 12);
                         } else if (dealerRNG == 21) {
                             balance -= 2000;
+
+                            message.setText("LOSS!");
+                            message.setBounds(336, 181, 27, 12);
                         } else if (dealerRNG < userRNG) {
+                            hasWon = true;
                             balance *= 1.2;
+
+                            message.setText("WON 1.2X!");
+                            message.setBounds(325, 181, 49, 12);
                         } else if (dealerRNG > userRNG) {
                             balance -= 200;
+
+                            message.setText("LOSS!");
+                            message.setBounds(336, 181, 27, 12);
                         }
 
                         System.out.println("Debug: User cards: " + userRNG + "\nDealer Cards: " + dealerRNG);
 
-                        frame.setVisible(false);
-                        frame.dispose();
-                        blackjackScreen();
                     }
                 });
                 loop.start();
+
             });
 
             tablePanel.add(hitButton, 0);
@@ -1197,6 +1224,7 @@ public class App implements Runnable{
         contentpane.add(userBalance);
         contentpane.add(glassPanelBal);
         contentpane.add(dealerInfo);
+        contentpane.add(message);
 
         contentpane.add(betPlacer);
 
