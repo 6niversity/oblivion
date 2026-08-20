@@ -1256,36 +1256,35 @@ public class App implements Runnable{
         confirmLabel.setForeground(Color.WHITE);
         confirmLabel.setBounds(200, 121, 145, 47);
 
-        RoundedPanel panel = new RoundedPanel(20);
-        panel.setBackgroundColor(new Color(21, 21, 21));
-        panel.setLayout(null);
-        panel.setBounds(200, 168, 300, 111);
+        ImageIcon confirmGlassPanel = new ImageIcon("res/img/figma/confirmationPanel.png");
+        JLabel confirmPanel = new JLabel(confirmGlassPanel);
+        confirmPanel.setBounds(190, 163, 319, 122);
 
         JLabel question1 = new JLabel("Are you sure you want to");
         question1.setFont(geistmono12);
         question1.setForeground(Color.WHITE);
-        question1.setBounds(63, 21, 173, 16);
+        question1.setBounds(263, 189, 173, 16);
 
         JLabel question2 = new JLabel("purchase " + pending + "?");
         question2.setFont(geistmono12);
         question2.setForeground(Color.WHITE);
         if (pending == 100) {
-            question2.setBounds(103, 37, 300, 16);
+            question2.setBounds(306, 205, 300, 16);
         } else if (pending == 1000) {
-            question2.setBounds(99, 37, 300, 16);
+            question2.setBounds(299, 205, 300, 16);
         } else if (pending == 10000) {
-            question2.setBounds(96, 37, 300, 16);
+            question2.setBounds(296, 205, 300, 16);
         } else if (pending == 100000) {
-            question2.setBounds(92, 37, 300, 16);
+            question2.setBounds(292, 205, 300, 16);
         } else if (pending == 1000000) {
-            question2.setBounds(88, 37, 300, 16);
+            question2.setBounds(288, 205, 300, 16);
         }
 
         RoundedButton confirm = new RoundedButton("confirm");
         confirm.setFont(geistmono6);
         confirm.setBackground(Color.WHITE);
         confirm.setForeground(bg);
-        confirm.setBounds(64, 69, 77, 21);
+        confirm.setBounds(264, 237, 77, 21);
 
         // confirm event
         confirm.addActionListener(e -> {
@@ -1298,7 +1297,7 @@ public class App implements Runnable{
 
         GreyButton cancel = new GreyButton("cancel");
         cancel.setFont(geistmono6);
-        cancel.setBounds(159, 69, 77, 21);
+        cancel.setBounds(359, 237, 77, 21);
 
         // cancel event
         cancel.addActionListener(e -> {
@@ -1308,10 +1307,11 @@ public class App implements Runnable{
             topUpScreen();
         });
 
-        panel.add(question1);
-        panel.add(question2);
-        panel.add(cancel);
-        panel.add(confirm);
+        contentpane.add(question1);
+        contentpane.add(question2);
+        contentpane.add(cancel);
+        contentpane.add(confirm);
+        contentpane.add(confirmPanel);
 
         contentpane.add(gPanel);
         gPanel.add(menu);
@@ -1319,7 +1319,6 @@ public class App implements Runnable{
         gPanel.add(glassPanel);
 
         contentpane.add(confirmLabel);
-        contentpane.add(panel);
 
         frame.setVisible(true);
     }
