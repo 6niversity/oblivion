@@ -1121,15 +1121,15 @@ public class App implements Runnable{
                 userCards.setText(String.valueOf(userRNG));
 
                 if (userRNG == 21) {
-                    balance *= 1.2;
-                    System.out.println("Debug: won the game");
+                    balance *= 2;
+                    System.out.println("Debug: user won the game");
 
                     frame.setVisible(false);
                     frame.dispose();
 
                     blackjackScreen();
                 } else if (userRNG > 21) {
-                    balance -= 20;
+                    balance -= 200;
 
                     frame.setVisible(false);
                     frame.dispose();
