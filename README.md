@@ -18,16 +18,15 @@ The workspace contains three folders, where:
 
 ## 🆕 Current progress
 
-- Dice Foundation Achieved
-- New design
-- Main Menu
-- Blackjack // WIP
-- User balance autosave
+- Blackjack Working
+- Dice Working
+- Crash Working
+- Towers Working
 
 ## ⬆️ Future Patches
 
-- Crash method
-- Mines method
+- UI Redesign
+- Light & Dark themes
 
 ## ✍️ Credits
 
