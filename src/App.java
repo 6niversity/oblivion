@@ -876,6 +876,11 @@ public class App implements Runnable{
         multiplier.setForeground(Color.WHITE);
         multiplier.setBounds(206, 145, 350, 125);
 
+        /// message label
+        JLabel message = new JLabel();
+        message.setFont(geistmono9);
+        message.setForeground(Color.WHITE);
+
         // bet button
         RoundedButton bet = new RoundedButton("bet");
         bet.setFont(geistmono6);
@@ -888,6 +893,7 @@ public class App implements Runnable{
 
             int rng = (int) (Math.random()*1001);
             System.out.println(rng);
+            message.setText(null);
 
             RoundedButton cashout = new RoundedButton("cash out");
             cashout.setFont(geistmono6);
@@ -900,12 +906,48 @@ public class App implements Runnable{
 
                 System.out.println(num);
                 balance = 200 * Double.parseDouble( String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3));
+
+                message.setText("CASHED OUT AT " + String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3) + "!");
+                message.setBounds(303, 325, 125, 12);
+
                 num = 100; // reset to default
 
-                frame.setVisible(false);
-                frame.dispose();
+                // userDisplay (double check after betting)
+                if (balance >= 1000 && balance < 10000) { // 1k to 10k
+                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "K");
+                    userBalance.setBounds(654, 13, 700, 16);
+                } else if (balance >= 10000 && balance < 100000) { // 10k to 100k
+                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "K");
+                    userBalance.setBounds(649, 13, 700, 16);
+                } else if (balance >= 100000 && balance < 1000000) { // 100k to 1m
+                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "K");
+                    userBalance.setBounds(647, 13, 700, 16);
+                } else if (balance >= 1000000 && balance < 10000000) { // 1m to 10m
+                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "M");
+                    userBalance.setBounds(653, 13, 700, 16);
+                } else if (balance >= 10000000 && balance < 100000000) { // 10m to 100m
+                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "M");
+                    userBalance.setBounds(649, 13, 700, 16);
+                } else if (balance >= 100000000 && balance < 1000000000) { // 100m to 1b
+                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+                    userBalance.setBounds(643, 13, 700, 16);
+                } else if (balance >= 1000000000) {
+                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+                    userBalance.setBounds(647, 13, 700, 16);
+                } else {
+                    userBalance.setText("$" + String.valueOf((int) balance));
 
-                crashScreen();
+                    if (balance >= 0 && balance < 10) {
+                        userBalance.setBounds(657, 13, 15, 16);
+                    } else if (balance >= 10 && balance < 100) {
+                        userBalance.setBounds(654, 13, 15, 16);
+                    } else if (balance >= 100 && balance < 1000) {
+                        userBalance.setBounds(650, 13, 700, 16);
+                    }
+                }
+
+                bet.setVisible(true);
+                cashout.setVisible(false);
             });
 
             contentpane.add(cashout);
@@ -923,20 +965,13 @@ public class App implements Runnable{
                     contentpane.repaint();
                     contentpane.revalidate();
                 } else if (num < 100) {
-                    loop.stop();
-
-                    frame.setVisible(false);
-                    frame.dispose();
-
-                    crashScreen();
+                    num = 100;
                 }
                 else {
                     loop.stop();
 
-                    frame.setVisible(false);
-                    frame.dispose();
-
-                    crashScreen();
+                    message.setText("CRASHED AT " + String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3) + "!");
+                    message.setBounds(303, 325, 87, 12);
                 }
             });
             loop.start();
@@ -958,6 +993,7 @@ public class App implements Runnable{
         contentpane.add(multiplier);
         contentpane.add(bet);
         contentpane.add(information);
+        contentpane.add(message);
 
         frame.setVisible(true);
     }
