@@ -1716,6 +1716,10 @@ public class App implements Runnable{
         betPlacer.setForeground(bg);
         betPlacer.setBounds(548, 240, 61, 16);
 
+        JLabel message = new JLabel();
+        message.setFont(geistmono9);
+        message.setForeground(Color.WHITE);
+
         // betPlacer button event (needs functionality)
         betPlacer.addActionListener(e -> {
             // if balance is more than 1
@@ -1726,16 +1730,28 @@ public class App implements Runnable{
                 if (switchs == 0) {
                     if (rngDice < rngUser) {
                         balance *= 1.2;
+
+                        message.setText("WON 1.2X!");
+                        message.setBounds(323, 305, 49, 12);
                     } 
                     else {
                         balance -= 20;
+
+                        message.setText("LOSS!");
+                        message.setBounds(334, 305, 27, 12);
                     }
                 } else if (switchs == 1) {
                     if (rngDice > rngUser) {
                         balance *= 1.2;
+
+                        message.setText("WON 1.2X!");
+                        message.setBounds(323, 305, 49, 12);
                     } 
                     else {
                         balance /= 1.2;
+
+                        message.setText("LOSS!");
+                        message.setBounds(334, 305, 27, 12);
                     }
                 } 
                 else {
@@ -1775,10 +1791,9 @@ public class App implements Runnable{
                         userBalance.setBounds(650, 13, 700, 16);
                     }
                 }
-
-                contentpane.repaint();
-                contentpane.revalidate();
             } // else do nothing
+            contentpane.repaint();
+            contentpane.revalidate();
         });
 
         JLabel informative = new JLabel("1.2x multiplier upon win");
@@ -1801,6 +1816,7 @@ public class App implements Runnable{
         contentpane.add(under);
         contentpane.add(betPlacer);
         contentpane.add(informative);
+        contentpane.add(message);
 
         frame.setVisible(true);
     }
