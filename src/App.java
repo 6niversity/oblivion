@@ -1799,7 +1799,7 @@ public class App implements Runnable{
         JLabel informative = new JLabel("1.2x multiplier upon win");
         informative.setFont(geistmono6);
         informative.setForeground(new Color(55, 55, 55));
-        informative.setBounds(310, 345, 105, 8);
+        informative.setBounds(300, 345, 105, 8);
 
         contentpane.add(panel);
         panel.add(menu);
