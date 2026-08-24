@@ -550,8 +550,18 @@ public class App implements Runnable{
         RoundedButton startButton = new RoundedButton("start");
         startButton.setFont(geistmono6);
         startButton.setBackground(Color.WHITE);
-        startButton.setForeground(Color.WHITE);
+        startButton.setForeground(bg);
         startButton.setBounds(89, 277, 69, 16);
+
+        RoundedButton restartButton = new RoundedButton("restart");
+            restartButton.setFont(geistmono6);
+            restartButton.setBackground(Color.WHITE);
+            restartButton.setForeground(bg);
+            restartButton.setBounds(89, 277, 69, 16);
+
+        JLabel message = new JLabel();
+        message.setFont(geistmono9);
+        message.setForeground(Color.WHITE);
 
         // startButton event
         startButton.addActionListener(e -> {
@@ -574,6 +584,15 @@ public class App implements Runnable{
                 rng[i] = window;
             }
 
+            restartButton.addActionListener(k -> {
+                frame.setVisible(false);
+                frame.dispose();
+                towersScreen();
+            });
+
+            startButton.setVisible(false);
+            restartButton.setVisible(false);
+
             // hard-coded button choices
             RNGButton1.setText(choices[rng[0][0]]);
             RNGButton2.setText(choices[rng[0][1]]);
@@ -588,10 +607,13 @@ public class App implements Runnable{
 
             RNGButton1.addActionListener(k -> {
                 if (RNGButton1.getText().equals("bomb")) {
-                    frame.setVisible(false);
-                    frame.dispose();
+                    message.setText("LOSS!");
+                    message.setBounds(336, 368, 27, 12);
 
-                    towersScreen();
+                    restartButton.setVisible(true);
+                    RNGButton1.setForeground(Color.BLACK);
+                    
+                    RNGButton2.setEnabled(false);
                 } else {
                     RNGButton1.setForeground(Color.BLACK);
                     RNGButton1.setEnabled(false);
@@ -603,10 +625,13 @@ public class App implements Runnable{
             
             RNGButton2.addActionListener(k -> {
                 if (RNGButton2.getText().equals("bomb")) {
-                    frame.setVisible(false);
-                    frame.dispose();
+                    message.setText("LOSS!");
+                    message.setBounds(336, 368, 27, 12);
 
-                    towersScreen();
+                    restartButton.setVisible(true);
+                    RNGButton2.setForeground(Color.BLACK);
+
+                    RNGButton1.setEnabled(false);
                 } else {
                     RNGButton2.setForeground(Color.BLACK);
                     RNGButton2.setEnabled(false);
@@ -618,10 +643,13 @@ public class App implements Runnable{
 
             RNGButton3.addActionListener(k -> {
                 if (RNGButton3.getText().equals("bomb")) {
-                    frame.setVisible(false);
-                    frame.dispose();
+                    message.setText("LOSS!");
+                    message.setBounds(336, 368, 27, 12);
 
-                    towersScreen();
+                    restartButton.setVisible(true);
+                    RNGButton3.setForeground(Color.BLACK);
+                    
+                    RNGButton4.setEnabled(false);;
                 } else {
                     RNGButton3.setForeground(Color.BLACK);
                     RNGButton3.setEnabled(false);
@@ -633,10 +661,13 @@ public class App implements Runnable{
 
             RNGButton4.addActionListener(k -> {
                 if (RNGButton4.getText().equals("bomb")) {
-                    frame.setVisible(false);
-                    frame.dispose();
+                    message.setText("LOSS!");
+                    message.setBounds(336, 368, 27, 12);
 
-                    towersScreen();
+                    restartButton.setVisible(true);
+                    RNGButton4.setForeground(Color.BLACK);
+
+                    RNGButton3.setEnabled(false);
                 } else {
                     RNGButton4.setForeground(Color.BLACK);
                     RNGButton4.setEnabled(false);
@@ -648,10 +679,13 @@ public class App implements Runnable{
 
             RNGButton5.addActionListener(k -> {
                 if (RNGButton5.getText().equals("bomb")) {
-                    frame.setVisible(false);
-                    frame.dispose();
+                    message.setText("LOSS!");
+                    message.setBounds(336, 368, 27, 12);
 
-                    towersScreen();
+                    restartButton.setVisible(true);
+                    RNGButton5.setForeground(Color.BLACK);
+
+                    RNGButton6.setEnabled(false);
                 } else {
                     RNGButton5.setForeground(Color.BLACK);
                     RNGButton5.setEnabled(false);
@@ -663,10 +697,13 @@ public class App implements Runnable{
 
             RNGButton6.addActionListener(k -> {
                 if (RNGButton6.getText().equals("bomb")) {
-                    frame.setVisible(false);
-                    frame.dispose();
+                    message.setText("LOSS!");
+                    message.setBounds(336, 368, 27, 12);
 
-                    towersScreen();
+                    restartButton.setVisible(true);
+                    RNGButton6.setForeground(Color.BLACK);
+
+                    RNGButton5.setEnabled(false);
                 } else {
                     RNGButton6.setForeground(Color.BLACK);
                     RNGButton6.setEnabled(false);
@@ -678,10 +715,13 @@ public class App implements Runnable{
 
             RNGButton7.addActionListener(k -> {
                 if (RNGButton7.getText().equals("bomb")) {
-                    frame.setVisible(false);
-                    frame.dispose();
+                    message.setText("LOSS!");
+                    message.setBounds(336, 368, 27, 12);
 
-                    towersScreen();
+                    restartButton.setVisible(true);
+                    RNGButton7.setForeground(Color.BLACK);
+
+                    RNGButton8.setEnabled(false);
                 } else {
                     RNGButton7.setForeground(Color.BLACK);
                     RNGButton7.setEnabled(false);
@@ -693,10 +733,13 @@ public class App implements Runnable{
 
             RNGButton8.addActionListener(k -> {
                 if (RNGButton8.getText().equals("bomb")) {
-                    frame.setVisible(false);
-                    frame.dispose();
+                    message.setText("LOSS!");
+                    message.setBounds(336, 368, 27, 12);
 
-                    towersScreen();
+                    restartButton.setVisible(true);
+                    RNGButton8.setForeground(Color.BLACK);
+
+                    RNGButton7.setEnabled(false);
                 } else {
                     RNGButton8.setForeground(Color.BLACK);
                     RNGButton8.setEnabled(false);
@@ -708,33 +751,41 @@ public class App implements Runnable{
 
             RNGButton9.addActionListener(k -> {
                 if (RNGButton9.getText().equals("bomb")) {
-                    frame.setVisible(false);
-                    frame.dispose();
+                    message.setText("LOSS!");
+                    message.setBounds(336, 368, 27, 12);
 
-                    towersScreen();
+                    restartButton.setVisible(true);
+                    RNGButton9.setForeground(Color.BLACK);
+
+                    RNGButton10.setEnabled(false);
                 } else {
+                    RNGButton9.setForeground(Color.BLACK);
                     balance *= 1.2;
 
-                    frame.setVisible(false);
-                    frame.dispose();
+                    message.setText("WON 1.2X!");
+                    message.setBounds(325, 368, 49, 12);
 
-                    towersScreen();
+                    restartButton.setVisible(true);
                 }
             });
 
             RNGButton10.addActionListener(k -> {
                 if (RNGButton10.getText().equals("bomb")) {
-                    frame.setVisible(false);
-                    frame.dispose();
+                    message.setText("LOSS!");
+                    message.setBounds(336, 368, 27, 12);
 
-                    towersScreen();
+                    restartButton.setVisible(true);
+                    RNGButton10.setForeground(Color.BLACK);
+
+                    RNGButton9.setEnabled(false);
                 } else {
+                    RNGButton10.setForeground(Color.BLACK);
                     balance *= 1.2;
 
-                    frame.setVisible(false);
-                    frame.dispose();
+                    message.setText("WON 1.2X!");
+                    message.setBounds(325, 368, 49, 12);
 
-                    towersScreen();
+                    restartButton.setVisible(true);
                 }
             });
 
@@ -763,6 +814,7 @@ public class App implements Runnable{
         mainPanel.add(RNGButton9);
         mainPanel.add(RNGButton10);
         mainPanel.add(startButton);
+        mainPanel.add(restartButton);
         mainPanel.add(towersPanel);
 
         frame.setVisible(true);
