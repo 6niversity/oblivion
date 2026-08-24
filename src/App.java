@@ -908,7 +908,7 @@ public class App implements Runnable{
                 balance = 200 * Double.parseDouble( String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3));
 
                 message.setText("CASHED OUT AT " + String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3) + "!");
-                message.setBounds(303, 325, 125, 12);
+                message.setBounds(309, 325, 125, 12);
 
                 num = 100; // reset to default
 
@@ -969,6 +969,8 @@ public class App implements Runnable{
                 }
                 else {
                     loop.stop();
+
+                    balance /= 1.2;
 
                     message.setText("CRASHED AT " + String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3) + "!");
                     message.setBounds(303, 325, 87, 12);
