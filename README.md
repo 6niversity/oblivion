@@ -22,6 +22,7 @@ The workspace contains three folders, where:
 - Dice Working
 - Crash Working
 - Towers Working
+- Win/Loss Message
 
 ## ⬆️ Future Patches
 
