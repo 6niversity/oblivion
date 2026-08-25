@@ -113,6 +113,110 @@ public class App implements Runnable{
         }
     }
 
+    public static void settingScreen() {
+        JFrame frame = new JFrame();
+        Container contentpane = frame.getContentPane();
+
+        frame.setTitle("oblivion");
+        frame.setSize(700, 400);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        contentpane.setBackground(bg);
+        contentpane.setLayout(null);
+        
+        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setBackground(null);
+        panel.setBounds(0, 0, 136, 42);
+
+        JLabel glassPanel = new JLabel(glassPanelImg);
+        glassPanel.setBackground(null);
+        glassPanel.setBounds(0, 0, 136, 42);
+
+        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon21px.png");
+        JButton menu = new JButton(menuIcon);
+        menu.setBorderPainted(false);
+        menu.setFocusPainted(false);
+        menu.setContentAreaFilled(false);
+        menu.setBackground(null);
+        menu.setBounds(20, 11, 21, 21);
+
+        // menu button event
+        menu.addActionListener(e -> {
+            System.out.println(glassPanelImg.getImageLoadStatus());
+            frame.setVisible(false);
+            frame.dispose();
+
+            menuScreen();
+        });
+
+        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
+        JLabel glassPanelBal = new JLabel(glassyPanelBalance);
+        glassPanelBal.setBounds(629, 0, 71, 42);
+
+        JLabel userBalance = new JLabel();
+        userBalance.setFont(geistmono12);
+        userBalance.setForeground(Color.WHITE);
+
+        // userBalance display
+        if (balance >= 1000 && balance < 10000) { // 1k to 10k
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "K");
+            userBalance.setBounds(654, 13, 700, 16);
+        } else if (balance >= 10000 && balance < 100000) { // 10k to 100k
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "K");
+            userBalance.setBounds(649, 13, 700, 16);
+        } else if (balance >= 100000 && balance < 1000000) { // 100k to 1m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "K");
+            userBalance.setBounds(647, 13, 700, 16);
+        } else if (balance >= 1000000 && balance < 10000000) { // 1m to 10m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "M");
+            userBalance.setBounds(653, 13, 700, 16);
+        } else if (balance >= 10000000 && balance < 100000000) { // 10m to 100m
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "M");
+            userBalance.setBounds(649, 13, 700, 16);
+        } else if (balance >= 100000000 && balance < 1000000000) { // 100m to 1b
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+            userBalance.setBounds(643, 13, 700, 16);
+        } else if (balance >= 1000000000) {
+            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+            userBalance.setBounds(647, 13, 700, 16);
+        } else {
+            userBalance.setText("$" + String.valueOf((int) balance));
+
+            if (balance >= 0 && balance < 10) {
+                userBalance.setBounds(657, 13, 15, 16);
+            } else if (balance >= 10 && balance < 100) {
+                userBalance.setBounds(654, 13, 15, 16);
+            } else if (balance >= 100 && balance < 1000) {
+                userBalance.setBounds(650, 13, 700, 16);
+            }
+        }
+
+        RoundedButton topUp = new RoundedButton("buy");
+        topUp.setFont(geistmono9);
+        topUp.setBackground(Color.WHITE);
+        topUp.setForeground(bg);
+        topUp.setBounds(51, 13, 69, 16);
+
+        // topUp button event
+        topUp.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+
+            topUpScreen();
+        });
+
+        contentpane.add(panel);
+        panel.add(menu);
+        panel.add(topUp);
+        panel.add(glassPanel);
+
+        frame.setVisible(true);
+    }
+
     public static void menuScreen() {
         JFrame frame = new JFrame();
         Container contentpane = frame.getContentPane();
@@ -125,35 +229,6 @@ public class App implements Runnable{
 
         contentpane.setBackground(bg);
         contentpane.setLayout(null);
-
-        Font geistmono6 = null;
-        Font geistmono9 = null;
-        Font geistmono10 = null;
-        Font geistmono12 = null;
-        Font geistmono20 = null;
-        Font instrument48 = null;
-        Font instrument64 = null;
-
-        try {
-            geistmono6 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(6f);
-            geistmono9 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(9f);
-            geistmono10 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(10f);
-            geistmono12 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(12f);
-            geistmono20 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/geistmono.ttf")).deriveFont(20f);
-            instrument48 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/instrumentserif.ttf")).deriveFont(48f);
-            instrument64 = Font.createFont(Font.TRUETYPE_FONT, new File("res/font/instrumentserif.ttf")).deriveFont(64f);
-
-            GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            graphicsEnvironment.registerFont(geistmono6);
-            graphicsEnvironment.registerFont(geistmono9);
-            graphicsEnvironment.registerFont(geistmono10);
-            graphicsEnvironment.registerFont(geistmono12);
-            graphicsEnvironment.registerFont(geistmono20);
-            graphicsEnvironment.registerFont(instrument48);
-            graphicsEnvironment.registerFont(instrument64);
-        } catch (IOException | FontFormatException e) {
-            e.printStackTrace();
-        }
 
         ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
         JPanel panel = new JPanel();
