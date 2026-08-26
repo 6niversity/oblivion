@@ -34,6 +34,8 @@ public class App implements Runnable{
     static Timer loop;
     static int num = 100;
 
+    static String theme = "DARK"; // default: dark
+
     public static void main(String[] args) throws Exception {
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -48,17 +50,35 @@ public class App implements Runnable{
                 }
             }
 
-            FileInputStream fileInput = new FileInputStream("res/user/raw.txt");
-            ObjectInputStream objectInput = new ObjectInputStream(fileInput);
+            File rawFile = new File("res/user/raw.txt");
 
-            User currentUser = (User) objectInput.readObject();
+            if (rawFile.length() > 0) {
+                FileInputStream fileInput = new FileInputStream("res/user/raw.txt");
+                ObjectInputStream objectInput = new ObjectInputStream(fileInput);
 
-            balance = currentUser.getBalance();
+                User currentUser = (User) objectInput.readObject();
 
-            objectInput.close();
-            fileInput.close();
+                balance = currentUser.getBalance();
 
-            System.out.println("Debug: User Balance successfully set!");
+                objectInput.close();
+                fileInput.close();
+
+                System.out.println("Debug: User Balance successfully set!");
+            } else {
+                User u = new User(balance, theme);
+
+                u.setBalance(balance);
+
+                FileOutputStream fileOutput = new FileOutputStream("res/user/raw.txt");
+                ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
+
+                objectOutput.writeObject(u);
+
+                objectOutput.close();
+                fileOutput.close();
+
+                System.out.println("Debug: User Balance & Theme Saved in: res/user/raw.txt");
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -95,7 +115,7 @@ public class App implements Runnable{
     public void run() {
         while (true) {
             try {
-                User u = new User(balance);
+                User u = new User(balance, theme);
 
                 u.setBalance(balance);
 
@@ -107,7 +127,7 @@ public class App implements Runnable{
                 objectOutput.close();
                 fileOutput.close();
 
-                System.out.println("Debug: User Balance Saved in: res/user/raw.txt");
+                System.out.println("Debug: User Balance & Theme Saved in: res/user/raw.txt");
                 Thread.sleep(1000); // autosave per second
             } catch (Exception _) {}
         }
@@ -209,10 +229,53 @@ public class App implements Runnable{
             topUpScreen();
         });
 
+        ImageIcon glass = new ImageIcon("res/img/figma/settingsPanel.png");
+        JLabel settingsPanel = new JLabel(glass);
+        settingsPanel.setBackground(null);
+        settingsPanel.setBounds(271, 121, 157, 157);
+
+        JLabel themeLabel = new JLabel("THEME");
+        themeLabel.setFont(geistmono9);
+        themeLabel.setForeground(Color.WHITE);
+        themeLabel.setBounds(336, 157, 27, 12);
+
+        RoundedButton themeSwitcher = new RoundedButton(theme);
+        themeSwitcher.setFont(geistmono6);
+        themeSwitcher.setBackground(Color.WHITE);
+        themeSwitcher.setForeground(bg);
+        themeSwitcher.setBounds(315, 173, 69, 16);
+
+        // themeSwitcher event
+        themeSwitcher.addActionListener(e -> {
+            // switch the theme and save
+        });
+
+        JLabel resetLabel = new JLabel("RESET PROGRESS");
+        resetLabel.setFont(geistmono9);
+        resetLabel.setForeground(Color.WHITE);
+        resetLabel.setBounds(312, 211, 76, 12);
+
+        RoundedButton resetProgress = new RoundedButton("RESET");
+        resetProgress.setFont(geistmono6);
+        resetProgress.setForeground(Color.black);
+        resetProgress.setBackground(Color.WHITE);
+        resetProgress.setBounds(315, 226, 69, 16);
+
+        // resetProgress event
+        resetProgress.addActionListener(e -> {
+            // reset the balance
+        });
+
         contentpane.add(panel);
         panel.add(menu);
         panel.add(topUp);
         panel.add(glassPanel);
+
+        contentpane.add(themeLabel);
+        contentpane.add(themeSwitcher);
+        contentpane.add(resetLabel);
+        contentpane.add(resetProgress);
+        contentpane.add(settingsPanel);
 
         frame.setVisible(true);
     }
