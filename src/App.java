@@ -263,10 +263,16 @@ public class App implements Runnable{
 
         // resetProgress event
         resetProgress.addActionListener(e -> {
-            // reset the balance
+            balance = 200;
+
+            userBalance.setText("$" + String.valueOf((int) balance));
+
+            contentpane.revalidate();
+            contentpane.repaint();
         });
 
         contentpane.add(panel);
+        contentpane.add(userBalance);
         panel.add(menu);
         panel.add(topUp);
         panel.add(glassPanel);
