@@ -364,6 +364,22 @@ public class App implements Runnable{
             topUpScreen();
         });
 
+        ImageIcon settingsIcon = new ImageIcon("res/img/icons/settingsIcon.png");
+        JButton settingsButton = new JButton(settingsIcon);
+        settingsButton.setBackground(null);
+        settingsButton.setBorderPainted(false);
+        settingsButton.setFocusPainted(false);
+        settingsButton.setOpaque(false);
+        settingsButton.setBounds(12, 335, 24, 24);
+
+        // settingsButton event
+        settingsButton.addActionListener(e -> {
+            frame.setVisible(false);
+            frame.dispose();
+
+            settingScreen();
+        });
+
         JLabel blackjackLabel = new JLabel("BLACKJACK");
         blackjackLabel.setFont(geistmono9);
         blackjackLabel.setForeground(new Color(55, 55, 55));
@@ -477,6 +493,7 @@ public class App implements Runnable{
 
         contentpane.add(userBalance);
         contentpane.add(glassPanelBal);
+        contentpane.add(settingsButton);
 
         contentpane.add(panel);
         panel.add(title);
