@@ -9,8 +9,14 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class App implements Runnable{
-    static Color bg = new Color(11, 11, 11); // background colour of the application
+public class App implements Runnable {
+    static String theme = "DARK"; // default: dark
+
+    static Color bg; // background colour of the application
+    static Color buttonBackground; // button background colour
+    static Color lightBlack; // for smaller texts
+    static Color panelBackground; // panel colour
+
     static double balance = 100; // user balance to start out
     static String username; // username (not used yet)
 
@@ -33,8 +39,6 @@ public class App implements Runnable{
     // loop and 
     static Timer loop;
     static int num = 100;
-
-    static String theme = "DARK"; // default: dark
 
     public static void main(String[] args) throws Exception {
         try {
@@ -103,6 +107,14 @@ public class App implements Runnable{
             graphicsEnvironment.registerFont(instrument48);
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
+        }
+
+        // load dark/light theme
+        if (theme.equals("DARK")) {
+            bg = new Color(11, 11, 11); // background colour of the application
+            buttonBackground = new Color(255, 255, 255); // button background colour
+            lightBlack = new Color(55, 55, 55); // for smaller texts
+            panelBackground = new Color(21, 21, 21); // panel colour
         }
 
         App main = new App();
@@ -179,7 +191,7 @@ public class App implements Runnable{
 
         JLabel userBalance = new JLabel();
         userBalance.setFont(geistmono12);
-        userBalance.setForeground(Color.WHITE);
+        userBalance.setForeground(buttonBackground);
 
         // userBalance display
         if (balance >= 1000 && balance < 10000) { // 1k to 10k
@@ -217,7 +229,7 @@ public class App implements Runnable{
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
-        topUp.setBackground(Color.WHITE);
+        topUp.setBackground(buttonBackground);
         topUp.setForeground(bg);
         topUp.setBounds(51, 13, 69, 16);
 
@@ -236,12 +248,12 @@ public class App implements Runnable{
 
         JLabel themeLabel = new JLabel("THEME");
         themeLabel.setFont(geistmono9);
-        themeLabel.setForeground(Color.WHITE);
+        themeLabel.setForeground(buttonBackground);
         themeLabel.setBounds(336, 157, 27, 12);
 
         RoundedButton themeSwitcher = new RoundedButton(theme);
         themeSwitcher.setFont(geistmono6);
-        themeSwitcher.setBackground(Color.WHITE);
+        themeSwitcher.setBackground(buttonBackground);
         themeSwitcher.setForeground(bg);
         themeSwitcher.setBounds(315, 173, 69, 16);
 
@@ -252,13 +264,13 @@ public class App implements Runnable{
 
         JLabel resetLabel = new JLabel("RESET PROGRESS");
         resetLabel.setFont(geistmono9);
-        resetLabel.setForeground(Color.WHITE);
+        resetLabel.setForeground(buttonBackground);
         resetLabel.setBounds(312, 211, 76, 12);
 
         RoundedButton resetProgress = new RoundedButton("RESET");
         resetProgress.setFont(geistmono6);
-        resetProgress.setForeground(Color.black);
-        resetProgress.setBackground(Color.WHITE);
+        resetProgress.setForeground(bg);
+        resetProgress.setBackground(buttonBackground);
         resetProgress.setBounds(315, 226, 69, 16);
 
         // resetProgress event
@@ -311,7 +323,7 @@ public class App implements Runnable{
 
         JLabel title = new JLabel("obv");
         title.setFont(geistmono12);
-        title.setForeground(Color.WHITE);
+        title.setForeground(buttonBackground);
         title.setBounds(21, 13, 58, 16);
 
         ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
@@ -320,7 +332,7 @@ public class App implements Runnable{
 
         JLabel userBalance = new JLabel();
         userBalance.setFont(geistmono12);
-        userBalance.setForeground(Color.WHITE);
+        userBalance.setForeground(buttonBackground);
 
         // userBalance display
         if (balance >= 1000 && balance < 10000) { // 1k to 10k
@@ -358,7 +370,7 @@ public class App implements Runnable{
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
-        topUp.setBackground(Color.WHITE);
+        topUp.setBackground(buttonBackground);
         topUp.setForeground(bg);
         topUp.setBounds(51, 13, 69, 16);
 
@@ -388,11 +400,11 @@ public class App implements Runnable{
 
         JLabel blackjackLabel = new JLabel("BLACKJACK");
         blackjackLabel.setFont(geistmono9);
-        blackjackLabel.setForeground(new Color(55, 55, 55));
+        blackjackLabel.setForeground(lightBlack);
         blackjackLabel.setBounds(94, 42, 235, 12);
 
         RoundedPanel panel1 = new RoundedPanel(14);
-        panel1.setBackgroundColor(new Color(21, 21, 21));
+        panel1.setBackgroundColor(panelBackground);
         panel1.setLayout(null);
         panel1.setBounds(94, 54, 245, 132);
 
@@ -402,7 +414,7 @@ public class App implements Runnable{
 
         RoundedButton confirmBlackjack = new RoundedButton("confirm");
         confirmBlackjack.setFont(geistmono6);
-        confirmBlackjack.setBackground(Color.WHITE);
+        confirmBlackjack.setBackground(buttonBackground);
         confirmBlackjack.setForeground(bg);
         confirmBlackjack.setBounds(161, 106, 74, 16);
 
@@ -416,11 +428,11 @@ public class App implements Runnable{
 
         JLabel diceLabel = new JLabel("DICE");
         diceLabel.setFont(geistmono9);
-        diceLabel.setForeground(new Color(55, 55, 55));
+        diceLabel.setForeground(lightBlack);
         diceLabel.setBounds(360, 42, 235, 12);
 
         RoundedPanel panel2 = new RoundedPanel(14);
-        panel2.setBackgroundColor(new Color(21, 21, 21));
+        panel2.setBackgroundColor(panelBackground);
         panel2.setLayout(null);
         panel2.setBounds(360, 54, 245, 132);
 
@@ -430,7 +442,7 @@ public class App implements Runnable{
 
         RoundedButton confirmDice = new RoundedButton("confirm");
         confirmDice.setFont(geistmono6);
-        confirmDice.setBackground(Color.WHITE);
+        confirmDice.setBackground(buttonBackground);
         confirmDice.setForeground(bg);
         confirmDice.setBounds(161, 106, 74, 16);
 
@@ -443,11 +455,11 @@ public class App implements Runnable{
 
         JLabel crashLabel = new JLabel("CRASH");
         crashLabel.setFont(geistmono9);
-        crashLabel.setForeground(new Color(55, 55, 55));
+        crashLabel.setForeground(lightBlack);
         crashLabel.setBounds(94, 193, 235, 12);
 
         RoundedPanel panel3 = new RoundedPanel(14);
-        panel3.setBackgroundColor(new Color(21, 21, 21));
+        panel3.setBackgroundColor(panelBackground);
         panel3.setLayout(null);
         panel3.setBounds(94, 205, 245, 132);
 
@@ -457,7 +469,7 @@ public class App implements Runnable{
 
         RoundedButton confirmCrash = new RoundedButton("confirm");
         confirmCrash.setFont(geistmono6);
-        confirmCrash.setBackground(Color.WHITE);
+        confirmCrash.setBackground(buttonBackground);
         confirmCrash.setForeground(bg);
         confirmCrash.setBounds(161, 106, 74, 16);
 
@@ -471,11 +483,11 @@ public class App implements Runnable{
 
         JLabel towersLabel = new JLabel("TOWERS");
         towersLabel.setFont(geistmono9);
-        towersLabel.setForeground(new Color(55, 55, 55));
+        towersLabel.setForeground(lightBlack);
         towersLabel.setBounds(360, 193, 50, 12);
 
         RoundedPanel panel4 = new RoundedPanel(14);
-        panel4.setBackgroundColor(new Color(21, 21, 21));
+        panel4.setBackgroundColor(panelBackground);
         panel4.setLayout(null);
         panel4.setBounds(360, 205, 245, 132);
 
@@ -485,7 +497,7 @@ public class App implements Runnable{
 
         RoundedButton confirmTowers = new RoundedButton("confirm");
         confirmTowers.setFont(geistmono6);
-        confirmTowers.setBackground(Color.WHITE);
+        confirmTowers.setBackground(buttonBackground);
         confirmTowers.setForeground(bg);
         confirmTowers.setBounds(161, 106, 74, 16);
 
@@ -575,7 +587,7 @@ public class App implements Runnable{
 
         JLabel userBalance = new JLabel();
         userBalance.setFont(geistmono12);
-        userBalance.setForeground(Color.WHITE);
+        userBalance.setForeground(buttonBackground);
 
         // userBalance display
         if (balance >= 1000 && balance < 10000) { // 1k to 10k
@@ -613,7 +625,7 @@ public class App implements Runnable{
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
-        topUp.setBackground(Color.WHITE);
+        topUp.setBackground(buttonBackground);
         topUp.setForeground(bg);
         topUp.setBounds(51, 13, 69, 16);
 
@@ -636,93 +648,93 @@ public class App implements Runnable{
 
         JLabel towers = new JLabel("Towers");
         towers.setFont(instrument48);
-        towers.setForeground(Color.WHITE);
+        towers.setForeground(buttonBackground);
         towers.setBounds(67, 17, 150, 62);
 
         // Hard code buttons
         RoundedButton RNGButton1 = new RoundedButton("");
         RNGButton1.setFont(geistmono10);
-        RNGButton1.setBackground(Color.WHITE);
-        RNGButton1.setForeground(Color.WHITE);
+        RNGButton1.setBackground(buttonBackground);
+        RNGButton1.setForeground(buttonBackground);
         RNGButton1.setBounds(38, 78, 81, 22);
 
         RoundedButton RNGButton2 = new RoundedButton("");
         RNGButton2.setFont(geistmono10);
-        RNGButton2.setBackground(Color.WHITE);
-        RNGButton2.setForeground(Color.WHITE);
+        RNGButton2.setBackground(buttonBackground);
+        RNGButton2.setForeground(buttonBackground);
         RNGButton2.setBounds(129, 78, 81, 22);
 
         RoundedButton RNGButton3 = new RoundedButton("");
         RNGButton3.setFont(geistmono10);
-        RNGButton3.setBackground(Color.WHITE);
-        RNGButton3.setForeground(Color.WHITE);
+        RNGButton3.setBackground(buttonBackground);
+        RNGButton3.setForeground(buttonBackground);
         RNGButton3.setEnabled(false);
         RNGButton3.setBounds(38, 118, 81, 22);
 
         RoundedButton RNGButton4 = new RoundedButton("");
         RNGButton4.setFont(geistmono10);
-        RNGButton4.setBackground(Color.WHITE);
-        RNGButton4.setForeground(Color.WHITE);
+        RNGButton4.setBackground(buttonBackground);
+        RNGButton4.setForeground(buttonBackground);
         RNGButton4.setEnabled(false);
         RNGButton4.setBounds(129, 118, 81, 22);
 
         RoundedButton RNGButton5 = new RoundedButton("");
         RNGButton5.setFont(geistmono10);
-        RNGButton5.setBackground(Color.WHITE);
-        RNGButton5.setForeground(Color.WHITE);
+        RNGButton5.setBackground(buttonBackground);
+        RNGButton5.setForeground(buttonBackground);
         RNGButton5.setEnabled(false);
         RNGButton5.setBounds(38, 158, 81, 22);
 
         RoundedButton RNGButton6 = new RoundedButton("");
         RNGButton6.setFont(geistmono10);
-        RNGButton6.setBackground(Color.WHITE);
-        RNGButton6.setForeground(Color.WHITE);
+        RNGButton6.setBackground(buttonBackground);
+        RNGButton6.setForeground(buttonBackground);
         RNGButton6.setEnabled(false);
         RNGButton6.setBounds(129, 158, 81, 22);
 
         RoundedButton RNGButton7 = new RoundedButton("");
         RNGButton7.setFont(geistmono10);
-        RNGButton7.setBackground(Color.WHITE);
-        RNGButton7.setForeground(Color.WHITE);
+        RNGButton7.setBackground(buttonBackground);
+        RNGButton7.setForeground(buttonBackground);
         RNGButton7.setEnabled(false);
         RNGButton7.setBounds(38, 198, 81, 22);
 
         RoundedButton RNGButton8 = new RoundedButton("");
         RNGButton8.setFont(geistmono10);
-        RNGButton8.setBackground(Color.WHITE);
-        RNGButton8.setForeground(Color.WHITE);
+        RNGButton8.setBackground(buttonBackground);
+        RNGButton8.setForeground(buttonBackground);
         RNGButton8.setEnabled(false);
         RNGButton8.setBounds(129, 198, 81, 22);
 
         RoundedButton RNGButton9 = new RoundedButton("");
         RNGButton9.setFont(geistmono10);
-        RNGButton9.setBackground(Color.WHITE);
-        RNGButton9.setForeground(Color.WHITE);
+        RNGButton9.setBackground(buttonBackground);
+        RNGButton9.setForeground(buttonBackground);
         RNGButton9.setEnabled(false);
         RNGButton9.setBounds(38, 238, 81, 22);
 
         RoundedButton RNGButton10 = new RoundedButton("");
         RNGButton10.setFont(geistmono10);
-        RNGButton10.setBackground(Color.WHITE);
-        RNGButton10.setForeground(Color.WHITE);
+        RNGButton10.setBackground(buttonBackground);
+        RNGButton10.setForeground(buttonBackground);
         RNGButton10.setEnabled(false);
         RNGButton10.setBounds(129, 238, 81, 22);
 
         RoundedButton startButton = new RoundedButton("start");
         startButton.setFont(geistmono6);
-        startButton.setBackground(Color.WHITE);
+        startButton.setBackground(buttonBackground);
         startButton.setForeground(bg);
         startButton.setBounds(89, 277, 69, 16);
 
         RoundedButton restartButton = new RoundedButton("restart");
             restartButton.setFont(geistmono6);
-            restartButton.setBackground(Color.WHITE);
+            restartButton.setBackground(buttonBackground);
             restartButton.setForeground(bg);
             restartButton.setBounds(89, 277, 69, 16);
 
         JLabel message = new JLabel();
         message.setFont(geistmono9);
-        message.setForeground(Color.WHITE);
+        message.setForeground(buttonBackground);
 
         // startButton event
         startButton.addActionListener(e -> {
@@ -1027,7 +1039,7 @@ public class App implements Runnable{
 
         JLabel userBalance = new JLabel();
         userBalance.setFont(geistmono12);
-        userBalance.setForeground(Color.WHITE);
+        userBalance.setForeground(buttonBackground);
 
         // userBalance display
         if (balance >= 1000 && balance < 10000) { // 1k to 10k
@@ -1065,7 +1077,7 @@ public class App implements Runnable{
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
-        topUp.setBackground(Color.WHITE);
+        topUp.setBackground(buttonBackground);
         topUp.setForeground(bg);
         topUp.setBounds(51, 13, 69, 16);
 
@@ -1080,24 +1092,24 @@ public class App implements Runnable{
         // title label
         JLabel title = new JLabel("Crash");
         title.setFont(instrument48);
-        title.setForeground(Color.WHITE);
+        title.setForeground(buttonBackground);
         title.setBounds(303, 100, 115, 62);
 
         // multiplier label
         JLabel multiplier = new JLabel("1.00%");
         multiplier.setFont(geistmono96);
-        multiplier.setForeground(Color.WHITE);
+        multiplier.setForeground(buttonBackground);
         multiplier.setBounds(206, 145, 350, 125);
 
         /// message label
         JLabel message = new JLabel();
         message.setFont(geistmono9);
-        message.setForeground(Color.WHITE);
+        message.setForeground(buttonBackground);
 
         // bet button
         RoundedButton bet = new RoundedButton("bet");
         bet.setFont(geistmono6);
-        bet.setBackground(Color.WHITE);
+        bet.setBackground(buttonBackground);
         bet.setForeground(bg);
         bet.setBounds(315, 275, 69, 16);
 
@@ -1110,7 +1122,7 @@ public class App implements Runnable{
 
             RoundedButton cashout = new RoundedButton("cash out");
             cashout.setFont(geistmono6);
-            cashout.setBackground(Color.WHITE);
+            cashout.setBackground(buttonBackground);
             cashout.setForeground(bg);
             cashout.setBounds(315, 275, 69, 16);
 
@@ -1194,7 +1206,7 @@ public class App implements Runnable{
 
         JLabel information = new JLabel("cashing out grants bet x multiplier");
         information.setFont(geistmono6);
-        information.setForeground(new Color(55, 55, 55));
+        information.setForeground(lightBlack);
         information.setBounds(282, 341, 150, 8);
 
         contentpane.add(panel);
@@ -1259,7 +1271,7 @@ public class App implements Runnable{
 
         JLabel userBalance = new JLabel();
         userBalance.setFont(geistmono12);
-        userBalance.setForeground(Color.WHITE);
+        userBalance.setForeground(buttonBackground);
 
         // userBalance display
         if (balance >= 1000 && balance < 10000) { // 1k to 10k
@@ -1297,7 +1309,7 @@ public class App implements Runnable{
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
-        topUp.setBackground(Color.WHITE);
+        topUp.setBackground(buttonBackground);
         topUp.setForeground(bg);
         topUp.setBounds(51, 13, 69, 16);
 
@@ -1311,7 +1323,7 @@ public class App implements Runnable{
 
         JLabel dealerInfo = new JLabel("DEALER MUST STAND ON ALL 17'S");
         dealerInfo.setFont(geistmono9);
-        dealerInfo.setForeground(Color.WHITE);
+        dealerInfo.setForeground(buttonBackground);
         dealerInfo.setBounds(271, 48, 157, 12);
 
         JPanel tablePanel = new JPanel();
@@ -1326,23 +1338,23 @@ public class App implements Runnable{
 
         JLabel dealerNum = new JLabel("");
         dealerNum.setFont(geistmono9);
-        dealerNum.setForeground(Color.WHITE);
+        dealerNum.setForeground(buttonBackground);
         dealerNum.setBounds(261, 61, 533, 12);
 
         JLabel userCards = new JLabel("");
         userCards.setFont(geistmono9);
-        userCards.setForeground(Color.WHITE);
+        userCards.setForeground(buttonBackground);
         userCards.setBounds(261, 190, 60, 12);
 
         RoundedButton betPlacer = new RoundedButton("bet");
         betPlacer.setFont(geistmono9);
-        betPlacer.setBackground(Color.WHITE);
+        betPlacer.setBackground(buttonBackground);
         betPlacer.setForeground(bg);
         betPlacer.setBounds(319, 334, 61, 16);
 
         JLabel message = new JLabel();
         message.setFont(geistmono9);
-        message.setForeground(Color.WHITE);
+        message.setForeground(buttonBackground);
 
         // i dont know how i made it work
         betPlacer.addActionListener(e -> {
@@ -1366,13 +1378,13 @@ public class App implements Runnable{
 
             RoundedButton hitButton = new RoundedButton("hit");
             hitButton.setFont(geistmono9);
-            hitButton.setBackground(Color.WHITE);
+            hitButton.setBackground(buttonBackground);
             hitButton.setForeground(bg);
             hitButton.setBounds(193, 240, 61, 16);
 
             RoundedButton standButton = new RoundedButton("stand");
             standButton.setFont(geistmono9);
-            standButton.setBackground(Color.WHITE);
+            standButton.setBackground(buttonBackground);
             standButton.setForeground(bg);
             standButton.setBounds(271, 240, 69, 16);
 
@@ -1526,13 +1538,13 @@ public class App implements Runnable{
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
-        topUp.setBackground(Color.WHITE);
+        topUp.setBackground(buttonBackground);
         topUp.setForeground(bg);
         topUp.setBounds(51, 13, 69, 16);
 
         JLabel confirmLabel = new JLabel("Confirm");
         confirmLabel.setFont(instrument48);
-        confirmLabel.setForeground(Color.WHITE);
+        confirmLabel.setForeground(buttonBackground);
         confirmLabel.setBounds(200, 121, 145, 47);
 
         ImageIcon confirmGlassPanel = new ImageIcon("res/img/figma/confirmationPanel.png");
@@ -1541,12 +1553,12 @@ public class App implements Runnable{
 
         JLabel question1 = new JLabel("Are you sure you want to");
         question1.setFont(geistmono12);
-        question1.setForeground(Color.WHITE);
+        question1.setForeground(buttonBackground);
         question1.setBounds(263, 189, 173, 16);
 
         JLabel question2 = new JLabel("purchase " + pending + "?");
         question2.setFont(geistmono12);
-        question2.setForeground(Color.WHITE);
+        question2.setForeground(buttonBackground);
         if (pending == 100) {
             question2.setBounds(306, 205, 300, 16);
         } else if (pending == 1000) {
@@ -1561,7 +1573,7 @@ public class App implements Runnable{
 
         RoundedButton confirm = new RoundedButton("confirm");
         confirm.setFont(geistmono6);
-        confirm.setBackground(Color.WHITE);
+        confirm.setBackground(buttonBackground);
         confirm.setForeground(bg);
         confirm.setBounds(264, 237, 77, 21);
 
@@ -1647,7 +1659,7 @@ public class App implements Runnable{
 
         JLabel userBalance = new JLabel();
         userBalance.setFont(geistmono12);
-        userBalance.setForeground(Color.WHITE);
+        userBalance.setForeground(buttonBackground);
 
         // userBalance display
         if (balance >= 1000 && balance < 10000) { // 1k to 10k
@@ -1685,48 +1697,48 @@ public class App implements Runnable{
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
-        topUp.setBackground(Color.WHITE);
+        topUp.setBackground(buttonBackground);
         topUp.setForeground(bg);
         topUp.setBounds(51, 13, 69, 16);
 
         JLabel paymentsLabel = new JLabel("Payments");
         paymentsLabel.setFont(instrument48);
-        paymentsLabel.setForeground(Color.WHITE);
+        paymentsLabel.setForeground(buttonBackground);
         paymentsLabel.setBounds(200, 63, 175, 47);
 
         RoundedPanel panel = new RoundedPanel(20);
-        panel.setBackgroundColor(new Color(21, 21, 21));
+        panel.setBackgroundColor(panelBackground);
         panel.setLayout(null);
         panel.setBounds(200, 116, 300, 221);
 
         JLabel hundred = new JLabel("$100");
         hundred.setFont(geistmono20);
-        hundred.setForeground(Color.WHITE);
+        hundred.setForeground(buttonBackground);
         hundred.setBounds(15, 9, 175, 47);
 
         JLabel thousand = new JLabel("$1000");
         thousand.setFont(geistmono20);
-        thousand.setForeground(Color.WHITE);
+        thousand.setForeground(buttonBackground);
         thousand.setBounds(15, 49, 200, 47);
 
         JLabel tenthousand = new JLabel("$10,000");
         tenthousand.setFont(geistmono20);
-        tenthousand.setForeground(Color.WHITE);
+        tenthousand.setForeground(buttonBackground);
         tenthousand.setBounds(15, 98, 210, 26);
 
         JLabel hundredthousand = new JLabel("$100,000");
         hundredthousand.setFont(geistmono20);
-        hundredthousand.setForeground(Color.WHITE);
+        hundredthousand.setForeground(buttonBackground);
         hundredthousand.setBounds(15, 137, 225, 26);
 
         JLabel million = new JLabel("$1,000,000");
         million.setFont(geistmono20);
-        million.setForeground(Color.WHITE);
+        million.setForeground(buttonBackground);
         million.setBounds(15, 176, 250, 26);
 
         RoundedButton purchasehundred = new RoundedButton("purchase");
         purchasehundred.setFont(geistmono10);
-        purchasehundred.setBackground(Color.WHITE);
+        purchasehundred.setBackground(buttonBackground);
         purchasehundred.setForeground(Color.BLACK);
         purchasehundred.setBounds(185, 22, 99, 21);
 
@@ -1740,7 +1752,7 @@ public class App implements Runnable{
 
         RoundedButton purchasethousand = new RoundedButton("purchase");
         purchasethousand.setFont(geistmono10);
-        purchasethousand.setBackground(Color.WHITE);
+        purchasethousand.setBackground(buttonBackground);
         purchasethousand.setForeground(Color.BLACK);
         purchasethousand.setBounds(185, 62, 99, 21);
         
@@ -1754,7 +1766,7 @@ public class App implements Runnable{
 
         RoundedButton purchasetenthousand = new RoundedButton("purchase");
         purchasetenthousand.setFont(geistmono10);
-        purchasetenthousand.setBackground(Color.WHITE);
+        purchasetenthousand.setBackground(buttonBackground);
         purchasetenthousand.setForeground(Color.BLACK);
         purchasetenthousand.setBounds(185, 102, 99, 21);
 
@@ -1768,7 +1780,7 @@ public class App implements Runnable{
 
         RoundedButton purchasehundredthousand = new RoundedButton("purchase");
         purchasehundredthousand.setFont(geistmono10);
-        purchasehundredthousand.setBackground(Color.WHITE);
+        purchasehundredthousand.setBackground(buttonBackground);
         purchasehundredthousand.setForeground(Color.BLACK);
         purchasehundredthousand.setBounds(185, 142, 99, 21);
 
@@ -1782,7 +1794,7 @@ public class App implements Runnable{
 
         RoundedButton purchasemillion = new RoundedButton("purchase");
         purchasemillion.setFont(geistmono10);
-        purchasemillion.setBackground(Color.WHITE);
+        purchasemillion.setBackground(buttonBackground);
         purchasemillion.setForeground(Color.BLACK);
         purchasemillion.setBounds(185, 182, 99, 21);
 
@@ -1864,7 +1876,7 @@ public class App implements Runnable{
 
         JLabel userBalance = new JLabel();
         userBalance.setFont(geistmono12);
-        userBalance.setForeground(Color.WHITE);
+        userBalance.setForeground(buttonBackground);
 
         // userBalance display
         if (balance >= 1000 && balance < 10000) { // 1k to 10k
@@ -1902,7 +1914,7 @@ public class App implements Runnable{
 
         RoundedButton topUp = new RoundedButton("buy");
         topUp.setFont(geistmono9);
-        topUp.setBackground(Color.WHITE);
+        topUp.setBackground(buttonBackground);
         topUp.setForeground(bg);
         topUp.setBounds(51, 13, 69, 16);
 
@@ -1916,17 +1928,17 @@ public class App implements Runnable{
 
         JLabel dice = new JLabel("Dice");
         dice.setFont(instrument48);
-        dice.setForeground(Color.WHITE);
+        dice.setForeground(buttonBackground);
         dice.setBounds(316, 143, 70, 62);
 
         JLabel zero = new JLabel("0");
         zero.setFont(geistmono12);
-        zero.setForeground(new Color(55, 55, 55));
+        zero.setForeground(lightBlack);
         zero.setBounds(92, 197, 8, 16);
 
         JLabel hundred = new JLabel("100");
         hundred.setFont(geistmono12);
-        hundred.setForeground(new Color(55, 55, 55));
+        hundred.setForeground(lightBlack);
         hundred.setBounds(587, 197, 22, 16);
 
         ImageIcon backgroundImg = new ImageIcon("res/img/figma/sliderBackground.png");
@@ -1943,7 +1955,7 @@ public class App implements Runnable{
 
         RoundedButton over = new RoundedButton("over");
         over.setFont(geistmono9);
-        over.setBackground(Color.WHITE);
+        over.setBackground(buttonBackground);
         over.setForeground(bg);
         over.setBounds(92, 240, 69, 16);
 
@@ -1953,7 +1965,7 @@ public class App implements Runnable{
 
         RoundedButton under = new RoundedButton("under");
         under.setFont(geistmono9);
-        under.setBackground(Color.WHITE);
+        under.setBackground(buttonBackground);
         under.setForeground(bg);
         under.setBounds(170, 240, 69, 16);
 
@@ -1963,13 +1975,13 @@ public class App implements Runnable{
 
         RoundedButton betPlacer = new RoundedButton("bet");
         betPlacer.setFont(geistmono9);
-        betPlacer.setBackground(Color.WHITE);
+        betPlacer.setBackground(buttonBackground);
         betPlacer.setForeground(bg);
         betPlacer.setBounds(548, 240, 61, 16);
 
         JLabel message = new JLabel();
         message.setFont(geistmono9);
-        message.setForeground(Color.WHITE);
+        message.setForeground(buttonBackground);
 
         // betPlacer button event (needs functionality)
         betPlacer.addActionListener(e -> {
@@ -2049,7 +2061,7 @@ public class App implements Runnable{
 
         JLabel informative = new JLabel("1.2x multiplier upon win");
         informative.setFont(geistmono6);
-        informative.setForeground(new Color(55, 55, 55));
+        informative.setForeground(lightBlack);
         informative.setBounds(300, 345, 105, 8);
 
         contentpane.add(panel);

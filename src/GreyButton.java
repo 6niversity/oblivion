@@ -15,7 +15,7 @@ public class GreyButton extends JButton {
         setFocusPainted(false);
         setBorderPainted(false);
         setOpaque(false);
-        setForeground(Color.WHITE);
+        setForeground(buttonBackground);
         setBackground(fillColor);
     }
 

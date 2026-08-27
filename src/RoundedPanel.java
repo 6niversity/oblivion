@@ -4,7 +4,7 @@ import java.awt.geom.RoundRectangle2D;
 
 public class RoundedPanel extends JPanel {
     private int cornerRadius;
-    private Color backgroundColor = Color.WHITE;
+    private Color backgroundColor = new Color(HEIGHT);
     private Color borderColor = null; // null = no border
     private int borderThickness = 1;
 

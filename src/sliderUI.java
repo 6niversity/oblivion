@@ -53,7 +53,7 @@ public class sliderUI extends BasicSliderUI {
     }
 
     @Override
-    public Dimension getPreferredSize() {
+    public Dimension getPreferredSize(JComponent c) {
         return new Dimension(200, 24);
     }
 }
