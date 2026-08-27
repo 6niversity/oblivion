@@ -63,6 +63,7 @@ public class App implements Runnable {
                 User currentUser = (User) objectInput.readObject();
 
                 balance = currentUser.getBalance();
+                theme = currentUser.getTheme();
 
                 objectInput.close();
                 fileInput.close();
@@ -72,6 +73,7 @@ public class App implements Runnable {
                 User u = new User(balance, theme);
 
                 u.setBalance(balance);
+                u.setTheme(theme);
 
                 FileOutputStream fileOutput = new FileOutputStream("res/user/raw.txt");
                 ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
@@ -115,6 +117,11 @@ public class App implements Runnable {
             buttonBackground = new Color(255, 255, 255); // button background colour
             lightBlack = new Color(55, 55, 55); // for smaller texts
             panelBackground = new Color(21, 21, 21); // panel colour
+        } else {
+            bg = new Color(245, 245, 245);
+            buttonBackground = new Color(26, 26, 26);
+            panelBackground = new Color(230, 230, 227);
+            lightBlack = new Color(155, 155, 152);
         }
 
         App main = new App();
@@ -259,7 +266,21 @@ public class App implements Runnable {
 
         // themeSwitcher event
         themeSwitcher.addActionListener(e -> {
-            // switch the theme and save
+            if (theme.equals("DARK")) {
+                theme = "LIGHT";
+
+                frame.setVisible(false);
+                frame.dispose();
+
+                menuScreen();
+            } else {
+                theme = "DARK";
+
+                frame.setVisible(false);
+                frame.dispose();
+
+                menuScreen();
+            }
         });
 
         JLabel resetLabel = new JLabel("RESET PROGRESS");
