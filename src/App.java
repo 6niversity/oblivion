@@ -11,6 +11,7 @@ import java.io.ObjectOutputStream;
 
 public class App implements Runnable {
     static String theme = "DARK"; // default: dark
+    static String themePath = "res/img/figma/dark/"; // default theme path
 
     static Color bg; // background colour of the application
     static Color buttonBackground; // button background colour
@@ -113,11 +114,13 @@ public class App implements Runnable {
 
         // load dark/light theme
         if (theme.equals("DARK")) {
+            themePath = "res/img/figma/dark/";
             bg = new Color(11, 11, 11); // background colour of the application
             buttonBackground = new Color(255, 255, 255); // button background colour
             lightBlack = new Color(55, 55, 55); // for smaller texts
             panelBackground = new Color(21, 21, 21); // panel colour
         } else {
+            themePath = "res/img/figma/light/";
             bg = new Color(245, 245, 245);
             buttonBackground = new Color(26, 26, 26);
             panelBackground = new Color(230, 230, 227);
@@ -165,7 +168,7 @@ public class App implements Runnable {
         contentpane.setBackground(bg);
         contentpane.setLayout(null);
         
-        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        ImageIcon glassPanelImg = new ImageIcon(themePath + "glassyPanel.png");
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(null);
@@ -192,7 +195,7 @@ public class App implements Runnable {
             menuScreen();
         });
 
-        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
+        ImageIcon glassyPanelBalance = new ImageIcon(themePath + "glassyPanelBalance.png");
         JLabel glassPanelBal = new JLabel(glassyPanelBalance);
         glassPanelBal.setBounds(629, 0, 71, 42);
 
@@ -248,7 +251,7 @@ public class App implements Runnable {
             topUpScreen();
         });
 
-        ImageIcon glass = new ImageIcon("res/img/figma/settingsPanel.png");
+        ImageIcon glass = new ImageIcon(themePath + "settingsPanel.png");
         JLabel settingsPanel = new JLabel(glass);
         settingsPanel.setBackground(null);
         settingsPanel.setBounds(271, 121, 157, 157);
@@ -332,7 +335,7 @@ public class App implements Runnable {
         contentpane.setBackground(bg);
         contentpane.setLayout(null);
 
-        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        ImageIcon glassPanelImg = new ImageIcon(themePath + "glassyPanel.png");
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(null);
@@ -347,7 +350,7 @@ public class App implements Runnable {
         title.setForeground(buttonBackground);
         title.setBounds(21, 13, 58, 16);
 
-        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
+        ImageIcon glassyPanelBalance = new ImageIcon(themePath + "glassyPanelBalance.png");
         JLabel glassPanelBal = new JLabel(glassyPanelBalance);
         glassPanelBal.setBounds(629, 0, 71, 42);
 
@@ -429,7 +432,7 @@ public class App implements Runnable {
         panel1.setLayout(null);
         panel1.setBounds(94, 54, 245, 132);
 
-        ImageIcon bjDesign = new ImageIcon("res/img/figma/blackjackDesign.png");
+        ImageIcon bjDesign = new ImageIcon(themePath + "blackjackDesign.png");
         JLabel bj = new JLabel(bjDesign);
         bj.setBounds(15, 7, 216, 117);
 
@@ -457,7 +460,7 @@ public class App implements Runnable {
         panel2.setLayout(null);
         panel2.setBounds(360, 54, 245, 132);
 
-        ImageIcon diceDesign = new ImageIcon("res/img/figma/diceDesign.png");
+        ImageIcon diceDesign = new ImageIcon(themePath + "diceDesign.png");
         JLabel dice = new JLabel(diceDesign);
         dice.setBounds(15, 7, 216, 117);
 
@@ -484,7 +487,7 @@ public class App implements Runnable {
         panel3.setLayout(null);
         panel3.setBounds(94, 205, 245, 132);
 
-        ImageIcon crashDesign = new ImageIcon("res/img/figma/crashDesign.png");
+        ImageIcon crashDesign = new ImageIcon(themePath + "crashDesign.png");
         JLabel crash = new JLabel(crashDesign);
         crash.setBounds(15, 7, 216, 117);
 
@@ -512,7 +515,7 @@ public class App implements Runnable {
         panel4.setLayout(null);
         panel4.setBounds(360, 205, 245, 132);
 
-        ImageIcon towersDesign = new ImageIcon("res/img/figma/towersDesign.png");
+        ImageIcon towersDesign = new ImageIcon(themePath + "towersDesign.png");
         JLabel towers = new JLabel(towersDesign);
         towers.setBounds(15, 7, 216, 117);
 
@@ -575,7 +578,7 @@ public class App implements Runnable {
         contentpane.setBackground(bg);
         contentpane.setLayout(null);
 
-        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        ImageIcon glassPanelImg = new ImageIcon(themePath + "glassyPanel.png");
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(null);
@@ -602,7 +605,7 @@ public class App implements Runnable {
             menuScreen();
         });
 
-        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
+        ImageIcon glassyPanelBalance = new ImageIcon(themePath + "glassyPanelBalance.png");
         JLabel glassPanelBal = new JLabel(glassyPanelBalance);
         glassPanelBal.setBounds(629, 0, 71, 42);
 
@@ -663,7 +666,7 @@ public class App implements Runnable {
         mainPanel.setBackground(bg);
         mainPanel.setBounds(226, 36, 248, 336);
 
-        ImageIcon towersGlass = new ImageIcon("res/img/figma/towersGlassPanel.png");
+        ImageIcon towersGlass = new ImageIcon(themePath + "towersGlassPanel.png");
         JLabel towersPanel = new JLabel(towersGlass);
         towersPanel.setBounds(0, 0, 248, 336);
 
@@ -1027,7 +1030,7 @@ public class App implements Runnable {
         contentpane.setBackground(bg);
         contentpane.setLayout(null);
 
-        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        ImageIcon glassPanelImg = new ImageIcon(themePath + "glassyPanel.png");
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(null);
@@ -1054,7 +1057,7 @@ public class App implements Runnable {
             menuScreen();
         });
 
-        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
+        ImageIcon glassyPanelBalance = new ImageIcon(themePath + "glassyPanelBalance.png");
         JLabel glassPanelBal = new JLabel(glassyPanelBalance);
         glassPanelBal.setBounds(629, 0, 71, 42);
 
@@ -1259,7 +1262,7 @@ public class App implements Runnable {
         contentpane.setBackground(bg);
         contentpane.setLayout(null);
 
-        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        ImageIcon glassPanelImg = new ImageIcon(themePath + "glassyPanel.png");
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(null);
@@ -1286,7 +1289,7 @@ public class App implements Runnable {
             menuScreen();
         });
 
-        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
+        ImageIcon glassyPanelBalance = new ImageIcon(themePath + "glassyPanelBalance.png");
         JLabel glassPanelBal = new JLabel(glassyPanelBalance);
         glassPanelBal.setBounds(629, 0, 71, 42);
 
@@ -1352,7 +1355,7 @@ public class App implements Runnable {
         tablePanel.setBackground(null);
         tablePanel.setBounds(83, 50, 533, 290);
 
-        ImageIcon blackjackTableImg = new ImageIcon("res/img/figma/blackjackTable.png");
+        ImageIcon blackjackTableImg = new ImageIcon(themePath + "blackjackTable.png");
         JLabel blackjackTable = new JLabel(blackjackTableImg);
         blackjackTable.setBackground(null);
         blackjackTable.setBounds(0, 0, 533, 290);
@@ -1388,7 +1391,7 @@ public class App implements Runnable {
             dealerNum.setText(String.valueOf(dealerRNG));
             userCards.setText(String.valueOf(userRNG));
 
-            ImageIcon cardImg = new ImageIcon("res/img/figma/cardFrame.png");
+            ImageIcon cardImg = new ImageIcon(themePath + "cardFrame.png");
             JLabel dealerCard = new JLabel(cardImg);
             dealerCard.setBackground(null);
             dealerCard.setBounds(245, 34, 44, 67);
@@ -1531,7 +1534,7 @@ public class App implements Runnable {
         contentpane.setBackground(bg);
         contentpane.setLayout(null);
 
-        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        ImageIcon glassPanelImg = new ImageIcon(themePath + "glassyPanel.png");
         JPanel gPanel = new JPanel();
         gPanel.setLayout(null);
         gPanel.setBackground(null);
@@ -1568,7 +1571,7 @@ public class App implements Runnable {
         confirmLabel.setForeground(buttonBackground);
         confirmLabel.setBounds(200, 121, 145, 47);
 
-        ImageIcon confirmGlassPanel = new ImageIcon("res/img/figma/confirmationPanel.png");
+        ImageIcon confirmGlassPanel = new ImageIcon(themePath + "confirmationPanel.png");
         JLabel confirmPanel = new JLabel(confirmGlassPanel);
         confirmPanel.setBounds(190, 163, 319, 122);
 
@@ -1648,7 +1651,7 @@ public class App implements Runnable {
         contentpane.setBackground(bg);
         contentpane.setLayout(null);
 
-        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        ImageIcon glassPanelImg = new ImageIcon(themePath + "glassyPanel.png");
         JPanel menuPanel = new JPanel();
         menuPanel.setLayout(null);
         menuPanel.setBackground(null);
@@ -1674,7 +1677,7 @@ public class App implements Runnable {
             menuScreen();
         });
 
-        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
+        ImageIcon glassyPanelBalance = new ImageIcon(themePath + "glassyPanelBalance.png");
         JLabel glassPanelBal = new JLabel(glassyPanelBalance);
         glassPanelBal.setBounds(629, 0, 71, 42);
 
@@ -1864,7 +1867,7 @@ public class App implements Runnable {
         contentpane.setBackground(bg);
         contentpane.setLayout(null);
 
-        ImageIcon glassPanelImg = new ImageIcon("res/img/figma/glassyPanel.png");
+        ImageIcon glassPanelImg = new ImageIcon(themePath + "glassyPanel.png");
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(null);
@@ -1891,7 +1894,7 @@ public class App implements Runnable {
             menuScreen();
         });
 
-        ImageIcon glassyPanelBalance = new ImageIcon("res/img/figma/glassyPanelBalance.png");
+        ImageIcon glassyPanelBalance = new ImageIcon(themePath + "glassyPanelBalance.png");
         JLabel glassPanelBal = new JLabel(glassyPanelBalance);
         glassPanelBal.setBounds(629, 0, 71, 42);
 
@@ -1962,7 +1965,7 @@ public class App implements Runnable {
         hundred.setForeground(lightBlack);
         hundred.setBounds(587, 197, 22, 16);
 
-        ImageIcon backgroundImg = new ImageIcon("res/img/figma/sliderBackground.png");
+        ImageIcon backgroundImg = new ImageIcon(themePath + "sliderBackground.png");
         JLabel background = new JLabel(backgroundImg);
         background.setBackground(null);
         background.setBounds(92, 218, 517, 14);
