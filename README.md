@@ -23,6 +23,7 @@ The workspace contains three folders, where:
 - Crash Working
 - Towers Working
 - Win/Loss Message
+- Light Theme (unfinished)
 
 ## ⬆️ Future Patches
 
