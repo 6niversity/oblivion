@@ -12,6 +12,7 @@ import java.io.ObjectOutputStream;
 public class App implements Runnable {
     static String theme = "DARK"; // default: dark
     static String themePath = "res/img/figma/dark/"; // default theme path
+    static String iconThemePath = "res/img/icons/dark/"; // default icon theme path
 
     static Color bg; // background colour of the application
     static Color buttonBackground; // button background colour
@@ -115,6 +116,7 @@ public class App implements Runnable {
         // load dark/light theme
         if (theme.equals("DARK")) {
             themePath = "res/img/figma/dark/";
+            iconThemePath = "res/img/icons/dark/";
             bg = new Color(11, 11, 11); // background colour of the application
             buttonBackground = new Color(255, 255, 255); // button background colour
             lightBlack = new Color(55, 55, 55); // for smaller texts
@@ -178,7 +180,7 @@ public class App implements Runnable {
         glassPanel.setBackground(null);
         glassPanel.setBounds(0, 0, 136, 42);
 
-        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon21px.png");
+        ImageIcon menuIcon = new ImageIcon(iconThemePath + "menuIcon21px.png");
         JButton menu = new JButton(menuIcon);
         menu.setBorderPainted(false);
         menu.setFocusPainted(false);
@@ -404,7 +406,7 @@ public class App implements Runnable {
             topUpScreen();
         });
 
-        ImageIcon settingsIcon = new ImageIcon("res/img/icons/settingsIcon.png");
+        ImageIcon settingsIcon = new ImageIcon(iconThemePath + "settingsIcon.png");
         JButton settingsButton = new JButton(settingsIcon);
         settingsButton.setBackground(null);
         settingsButton.setBorderPainted(false);
@@ -586,7 +588,7 @@ public class App implements Runnable {
         glassPanel.setBackground(null);
         glassPanel.setBounds(0, 0, 136, 42);
 
-        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon21px.png");
+        ImageIcon menuIcon = new ImageIcon(iconThemePath + "menuIcon21px.png");
         JButton menu = new JButton(menuIcon);
         menu.setBorderPainted(false);
         menu.setFocusPainted(false);
@@ -1038,7 +1040,7 @@ public class App implements Runnable {
         glassPanel.setBackground(null);
         glassPanel.setBounds(0, 0, 136, 42);
 
-        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon21px.png");
+        ImageIcon menuIcon = new ImageIcon(iconThemePath + "menuIcon21px.png");
         JButton menu = new JButton(menuIcon);
         menu.setBorderPainted(false);
         menu.setFocusPainted(false);
@@ -1270,7 +1272,7 @@ public class App implements Runnable {
         glassPanel.setBackground(null);
         glassPanel.setBounds(0, 0, 136, 42);
 
-        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon21px.png");
+        ImageIcon menuIcon = new ImageIcon(iconThemePath + "menuIcon21px.png");
         JButton menu = new JButton(menuIcon);
         menu.setBorderPainted(false);
         menu.setFocusPainted(false);
@@ -1542,7 +1544,7 @@ public class App implements Runnable {
         glassPanel.setBackground(null);
         glassPanel.setBounds(0, 0, 136, 42);
 
-        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon21px.png");
+        ImageIcon menuIcon = new ImageIcon(iconThemePath + "menuIcon21px.png");
         JButton menu = new JButton(menuIcon);
         menu.setBorderPainted(false);
         menu.setFocusPainted(false);
@@ -1659,7 +1661,7 @@ public class App implements Runnable {
         glassPanel.setBackground(null);
         glassPanel.setBounds(0, 0, 136, 42);
 
-        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon21px.png");
+        ImageIcon menuIcon = new ImageIcon(iconThemePath + "menuIcon21px.png");
         JButton menu = new JButton(menuIcon);
         menu.setBorderPainted(false);
         menu.setFocusPainted(false);
@@ -1875,7 +1877,7 @@ public class App implements Runnable {
         glassPanel.setBackground(null);
         glassPanel.setBounds(0, 0, 136, 42);
 
-        ImageIcon menuIcon = new ImageIcon("res/img/icons/menuIcon21px.png");
+        ImageIcon menuIcon = new ImageIcon(iconThemePath + "menuIcon21px.png");
         JButton menu = new JButton(menuIcon);
         menu.setBorderPainted(false);
         menu.setFocusPainted(false);
