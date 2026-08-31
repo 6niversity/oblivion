@@ -150,7 +150,7 @@ public class App implements Runnable {
                 fileOutput.close();
 
                 System.out.println("Debug: User Balance & Theme Saved in: res/user/raw.txt");
-                Thread.sleep(1000); // autosave per second
+                Thread.sleep(200); // autosave every 2 miliseconds
             } catch (Exception _) {}
         }
     }
@@ -272,17 +272,14 @@ public class App implements Runnable {
             if (theme.equals("DARK")) {
                 theme = "LIGHT";
 
-                frame.setVisible(false);
-                frame.dispose();
+                try {Thread.sleep(500);} catch (Exception _) {}
 
-                menuScreen();
+                System.exit(0);
             } else {
                 theme = "DARK";
 
-                frame.setVisible(false);
-                frame.dispose();
-
-                menuScreen();
+                try {Thread.sleep(500);} catch (Exception _) {}
+                System.exit(0);
             }
         });
 
@@ -309,6 +306,7 @@ public class App implements Runnable {
 
         contentpane.add(panel);
         contentpane.add(userBalance);
+        contentpane.add(glassPanelBal);
         panel.add(menu);
         panel.add(topUp);
         panel.add(glassPanel);
