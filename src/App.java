@@ -1971,7 +1971,7 @@ public class App implements Runnable {
         background.setBounds(92, 218, 517, 14);
 
         JSlider slider = new JSlider(0, 100, 35);
-        slider.setUI(new sliderUI(slider));
+        slider.setUI(new sliderUI(slider, theme));
         slider.setOpaque(false);
         slider.setBounds(85, 218, 525, 14);
 
@@ -2094,6 +2094,7 @@ public class App implements Runnable {
         panel.add(glassPanel);
 
         contentpane.add(userBalance);
+        contentpane.add(glassPanelBal);
         contentpane.add(dice);
         contentpane.add(zero);
         contentpane.add(hundred);
