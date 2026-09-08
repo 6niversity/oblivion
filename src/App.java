@@ -123,6 +123,7 @@ public class App implements Runnable {
             panelBackground = new Color(21, 21, 21); // panel colour
         } else {
             themePath = "res/img/figma/light/";
+            iconThemePath = "res/img/icons/light/";
             bg = new Color(245, 245, 245);
             buttonBackground = new Color(26, 26, 26);
             panelBackground = new Color(230, 230, 227);
@@ -1763,7 +1764,7 @@ public class App implements Runnable {
         RoundedButton purchasehundred = new RoundedButton("purchase");
         purchasehundred.setFont(geistmono10);
         purchasehundred.setBackground(buttonBackground);
-        purchasehundred.setForeground(Color.BLACK);
+        purchasehundred.setForeground(bg);
         purchasehundred.setBounds(185, 22, 99, 21);
 
         // purchasehundred event
@@ -1777,7 +1778,7 @@ public class App implements Runnable {
         RoundedButton purchasethousand = new RoundedButton("purchase");
         purchasethousand.setFont(geistmono10);
         purchasethousand.setBackground(buttonBackground);
-        purchasethousand.setForeground(Color.BLACK);
+        purchasethousand.setForeground(bg);
         purchasethousand.setBounds(185, 62, 99, 21);
         
         // purchasethousand event
@@ -1791,7 +1792,7 @@ public class App implements Runnable {
         RoundedButton purchasetenthousand = new RoundedButton("purchase");
         purchasetenthousand.setFont(geistmono10);
         purchasetenthousand.setBackground(buttonBackground);
-        purchasetenthousand.setForeground(Color.BLACK);
+        purchasetenthousand.setForeground(bg);
         purchasetenthousand.setBounds(185, 102, 99, 21);
 
         // purchasetenthousand event
@@ -1805,7 +1806,7 @@ public class App implements Runnable {
         RoundedButton purchasehundredthousand = new RoundedButton("purchase");
         purchasehundredthousand.setFont(geistmono10);
         purchasehundredthousand.setBackground(buttonBackground);
-        purchasehundredthousand.setForeground(Color.BLACK);
+        purchasehundredthousand.setForeground(bg);
         purchasehundredthousand.setBounds(185, 142, 99, 21);
 
         // purchasehundredthousand event
@@ -1819,7 +1820,7 @@ public class App implements Runnable {
         RoundedButton purchasemillion = new RoundedButton("purchase");
         purchasemillion.setFont(geistmono10);
         purchasemillion.setBackground(buttonBackground);
-        purchasemillion.setForeground(Color.BLACK);
+        purchasemillion.setForeground(bg);
         purchasemillion.setBounds(185, 182, 99, 21);
 
         // purchasemillion
