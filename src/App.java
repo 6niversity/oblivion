@@ -808,11 +808,11 @@ public class App implements Runnable {
                     message.setBounds(336, 368, 27, 12);
 
                     restartButton.setVisible(true);
-                    RNGButton1.setForeground(Color.BLACK);
+                    RNGButton1.setForeground(bg);
                     
                     RNGButton2.setEnabled(false);
                 } else {
-                    RNGButton1.setForeground(Color.BLACK);
+                    RNGButton1.setForeground(bg);
                     RNGButton1.setEnabled(false);
                     RNGButton2.setEnabled(false);
                     RNGButton3.setEnabled(true);
@@ -826,11 +826,11 @@ public class App implements Runnable {
                     message.setBounds(336, 368, 27, 12);
 
                     restartButton.setVisible(true);
-                    RNGButton2.setForeground(Color.BLACK);
+                    RNGButton2.setForeground(bg);
 
                     RNGButton1.setEnabled(false);
                 } else {
-                    RNGButton2.setForeground(Color.BLACK);
+                    RNGButton2.setForeground(bg);
                     RNGButton2.setEnabled(false);
                     RNGButton1.setEnabled(false);
                     RNGButton3.setEnabled(true);
@@ -844,11 +844,11 @@ public class App implements Runnable {
                     message.setBounds(336, 368, 27, 12);
 
                     restartButton.setVisible(true);
-                    RNGButton3.setForeground(Color.BLACK);
+                    RNGButton3.setForeground(bg);
                     
                     RNGButton4.setEnabled(false);;
                 } else {
-                    RNGButton3.setForeground(Color.BLACK);
+                    RNGButton3.setForeground(bg);
                     RNGButton3.setEnabled(false);
                     RNGButton4.setEnabled(false);
                     RNGButton5.setEnabled(true);
@@ -862,11 +862,11 @@ public class App implements Runnable {
                     message.setBounds(336, 368, 27, 12);
 
                     restartButton.setVisible(true);
-                    RNGButton4.setForeground(Color.BLACK);
+                    RNGButton4.setForeground(bg);
 
                     RNGButton3.setEnabled(false);
                 } else {
-                    RNGButton4.setForeground(Color.BLACK);
+                    RNGButton4.setForeground(bg);
                     RNGButton4.setEnabled(false);
                     RNGButton3.setEnabled(false);
                     RNGButton5.setEnabled(true);
@@ -880,11 +880,11 @@ public class App implements Runnable {
                     message.setBounds(336, 368, 27, 12);
 
                     restartButton.setVisible(true);
-                    RNGButton5.setForeground(Color.BLACK);
+                    RNGButton5.setForeground(bg);
 
                     RNGButton6.setEnabled(false);
                 } else {
-                    RNGButton5.setForeground(Color.BLACK);
+                    RNGButton5.setForeground(bg);
                     RNGButton5.setEnabled(false);
                     RNGButton6.setEnabled(false);
                     RNGButton7.setEnabled(true);
@@ -898,11 +898,11 @@ public class App implements Runnable {
                     message.setBounds(336, 368, 27, 12);
 
                     restartButton.setVisible(true);
-                    RNGButton6.setForeground(Color.BLACK);
+                    RNGButton6.setForeground(bg);
 
                     RNGButton5.setEnabled(false);
                 } else {
-                    RNGButton6.setForeground(Color.BLACK);
+                    RNGButton6.setForeground(bg);
                     RNGButton6.setEnabled(false);
                     RNGButton5.setEnabled(false);
                     RNGButton7.setEnabled(true);
@@ -916,11 +916,11 @@ public class App implements Runnable {
                     message.setBounds(336, 368, 27, 12);
 
                     restartButton.setVisible(true);
-                    RNGButton7.setForeground(Color.BLACK);
+                    RNGButton7.setForeground(bg);
 
                     RNGButton8.setEnabled(false);
                 } else {
-                    RNGButton7.setForeground(Color.BLACK);
+                    RNGButton7.setForeground(bg);
                     RNGButton7.setEnabled(false);
                     RNGButton8.setEnabled(false);
                     RNGButton9.setEnabled(true);
@@ -934,11 +934,11 @@ public class App implements Runnable {
                     message.setBounds(336, 368, 27, 12);
 
                     restartButton.setVisible(true);
-                    RNGButton8.setForeground(Color.BLACK);
+                    RNGButton8.setForeground(bg);
 
                     RNGButton7.setEnabled(false);
                 } else {
-                    RNGButton8.setForeground(Color.BLACK);
+                    RNGButton8.setForeground(bg);
                     RNGButton8.setEnabled(false);
                     RNGButton7.setEnabled(false);
                     RNGButton9.setEnabled(true);
@@ -952,11 +952,11 @@ public class App implements Runnable {
                     message.setBounds(336, 368, 27, 12);
 
                     restartButton.setVisible(true);
-                    RNGButton9.setForeground(Color.BLACK);
+                    RNGButton9.setForeground(bg);
 
                     RNGButton10.setEnabled(false);
                 } else {
-                    RNGButton9.setForeground(Color.BLACK);
+                    RNGButton9.setForeground(bg);
                     balance *= 1.2;
 
                     message.setText("WON 1.2X!");
@@ -972,11 +972,11 @@ public class App implements Runnable {
                     message.setBounds(336, 368, 27, 12);
 
                     restartButton.setVisible(true);
-                    RNGButton10.setForeground(Color.BLACK);
+                    RNGButton10.setForeground(bg);
 
                     RNGButton9.setEnabled(false);
                 } else {
-                    RNGButton10.setForeground(Color.BLACK);
+                    RNGButton10.setForeground(bg);
                     balance *= 1.2;
 
                     message.setText("WON 1.2X!");
