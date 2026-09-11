@@ -42,6 +42,9 @@ public class App implements Runnable {
     static Timer loop;
     static int num = 100;
 
+    // towersScreen multiplier
+    static double multiplier;
+
     public static void main(String[] args) throws Exception {
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -531,7 +534,7 @@ public class App implements Runnable {
             frame.setVisible(false);
             frame.dispose();
 
-            towersScreen2();
+            towersScreen();
         });
 
         contentpane.add(userBalance);
@@ -665,459 +668,11 @@ public class App implements Runnable {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(null);
         mainPanel.setBackground(bg);
-        mainPanel.setBounds(226, 36, 248, 336);
-
-        ImageIcon towersGlass = new ImageIcon(themePath + "towersGlassPanel.png");
-        JLabel towersPanel = new JLabel(towersGlass);
-        towersPanel.setBounds(0, 0, 248, 336);
-
-        JLabel towers = new JLabel("Towers");
-        towers.setFont(instrument48);
-        towers.setForeground(buttonBackground);
-        towers.setBounds(67, 17, 150, 62);
-
-        // Hard code buttons
-        RoundedButton RNGButton1 = new RoundedButton("");
-        RNGButton1.setFont(geistmono10);
-        RNGButton1.setBackground(buttonBackground);
-        RNGButton1.setForeground(buttonBackground);
-        RNGButton1.setBounds(38, 78, 81, 22);
-
-        RoundedButton RNGButton2 = new RoundedButton("");
-        RNGButton2.setFont(geistmono10);
-        RNGButton2.setBackground(buttonBackground);
-        RNGButton2.setForeground(buttonBackground);
-        RNGButton2.setBounds(129, 78, 81, 22);
-
-        RoundedButton RNGButton3 = new RoundedButton("");
-        RNGButton3.setFont(geistmono10);
-        RNGButton3.setBackground(buttonBackground);
-        RNGButton3.setForeground(buttonBackground);
-        RNGButton3.setEnabled(false);
-        RNGButton3.setBounds(38, 118, 81, 22);
-
-        RoundedButton RNGButton4 = new RoundedButton("");
-        RNGButton4.setFont(geistmono10);
-        RNGButton4.setBackground(buttonBackground);
-        RNGButton4.setForeground(buttonBackground);
-        RNGButton4.setEnabled(false);
-        RNGButton4.setBounds(129, 118, 81, 22);
-
-        RoundedButton RNGButton5 = new RoundedButton("");
-        RNGButton5.setFont(geistmono10);
-        RNGButton5.setBackground(buttonBackground);
-        RNGButton5.setForeground(buttonBackground);
-        RNGButton5.setEnabled(false);
-        RNGButton5.setBounds(38, 158, 81, 22);
-
-        RoundedButton RNGButton6 = new RoundedButton("");
-        RNGButton6.setFont(geistmono10);
-        RNGButton6.setBackground(buttonBackground);
-        RNGButton6.setForeground(buttonBackground);
-        RNGButton6.setEnabled(false);
-        RNGButton6.setBounds(129, 158, 81, 22);
-
-        RoundedButton RNGButton7 = new RoundedButton("");
-        RNGButton7.setFont(geistmono10);
-        RNGButton7.setBackground(buttonBackground);
-        RNGButton7.setForeground(buttonBackground);
-        RNGButton7.setEnabled(false);
-        RNGButton7.setBounds(38, 198, 81, 22);
-
-        RoundedButton RNGButton8 = new RoundedButton("");
-        RNGButton8.setFont(geistmono10);
-        RNGButton8.setBackground(buttonBackground);
-        RNGButton8.setForeground(buttonBackground);
-        RNGButton8.setEnabled(false);
-        RNGButton8.setBounds(129, 198, 81, 22);
-
-        RoundedButton RNGButton9 = new RoundedButton("");
-        RNGButton9.setFont(geistmono10);
-        RNGButton9.setBackground(buttonBackground);
-        RNGButton9.setForeground(buttonBackground);
-        RNGButton9.setEnabled(false);
-        RNGButton9.setBounds(38, 238, 81, 22);
-
-        RoundedButton RNGButton10 = new RoundedButton("");
-        RNGButton10.setFont(geistmono10);
-        RNGButton10.setBackground(buttonBackground);
-        RNGButton10.setForeground(buttonBackground);
-        RNGButton10.setEnabled(false);
-        RNGButton10.setBounds(129, 238, 81, 22);
-
-        RoundedButton startButton = new RoundedButton("start");
-        startButton.setFont(geistmono6);
-        startButton.setBackground(buttonBackground);
-        startButton.setForeground(bg);
-        startButton.setBounds(89, 277, 69, 16);
-
-        RoundedButton restartButton = new RoundedButton("restart");
-            restartButton.setFont(geistmono6);
-            restartButton.setBackground(buttonBackground);
-            restartButton.setForeground(bg);
-            restartButton.setBounds(89, 277, 69, 16);
-
-        JLabel message = new JLabel();
-        message.setFont(geistmono9);
-        message.setForeground(buttonBackground);
-
-        // startButton event
-        startButton.addActionListener(e -> {
-            String[] choices = {"bomb", "safe"};
-            int[][] rng = new int[5][2];
-
-            for (int i = 0; i < 5; i++) {
-                int[] window = {0, 0};
-                window[0] = (int) (Math.random() * 2);
-                System.out.println("first indx: " + String.valueOf(window[0]));
-                    
-                if (window[0] == 0) {
-                    window[1] = 1;
-                } else {
-                    window[1] = 0;
-                }
-
-                System.out.println("second index: " + String.valueOf(window[1]));
-
-                rng[i] = window;
-            }
-
-            restartButton.addActionListener(k -> {
-                frame.setVisible(false);
-                frame.dispose();
-                towersScreen();
-            });
-
-            startButton.setVisible(false);
-            restartButton.setVisible(false);
-
-            // hard-coded button choices
-            RNGButton1.setText(choices[rng[0][0]]);
-            RNGButton2.setText(choices[rng[0][1]]);
-            RNGButton3.setText(choices[rng[1][0]]);
-            RNGButton4.setText(choices[rng[1][1]]);
-            RNGButton5.setText(choices[rng[2][0]]);
-            RNGButton6.setText(choices[rng[2][1]]);
-            RNGButton7.setText(choices[rng[3][0]]);
-            RNGButton8.setText(choices[rng[3][1]]);
-            RNGButton9.setText(choices[rng[4][0]]);
-            RNGButton10.setText(choices[rng[4][1]]);
-
-            RNGButton1.addActionListener(k -> {
-                if (RNGButton1.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
-
-                    restartButton.setVisible(true);
-                    RNGButton1.setForeground(bg);
-                    
-                    RNGButton2.setEnabled(false);
-                } else {
-                    RNGButton1.setForeground(bg);
-                    RNGButton1.setEnabled(false);
-                    RNGButton2.setEnabled(false);
-                    RNGButton3.setEnabled(true);
-                    RNGButton4.setEnabled(true);
-                }
-            });
-            
-            RNGButton2.addActionListener(k -> {
-                if (RNGButton2.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
-
-                    restartButton.setVisible(true);
-                    RNGButton2.setForeground(bg);
-
-                    RNGButton1.setEnabled(false);
-                } else {
-                    RNGButton2.setForeground(bg);
-                    RNGButton2.setEnabled(false);
-                    RNGButton1.setEnabled(false);
-                    RNGButton3.setEnabled(true);
-                    RNGButton4.setEnabled(true);
-                }
-            });
-
-            RNGButton3.addActionListener(k -> {
-                if (RNGButton3.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
-
-                    restartButton.setVisible(true);
-                    RNGButton3.setForeground(bg);
-                    
-                    RNGButton4.setEnabled(false);;
-                } else {
-                    RNGButton3.setForeground(bg);
-                    RNGButton3.setEnabled(false);
-                    RNGButton4.setEnabled(false);
-                    RNGButton5.setEnabled(true);
-                    RNGButton6.setEnabled(true);
-                }
-            });
-
-            RNGButton4.addActionListener(k -> {
-                if (RNGButton4.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
-
-                    restartButton.setVisible(true);
-                    RNGButton4.setForeground(bg);
-
-                    RNGButton3.setEnabled(false);
-                } else {
-                    RNGButton4.setForeground(bg);
-                    RNGButton4.setEnabled(false);
-                    RNGButton3.setEnabled(false);
-                    RNGButton5.setEnabled(true);
-                    RNGButton6.setEnabled(true);
-                }
-            });
-
-            RNGButton5.addActionListener(k -> {
-                if (RNGButton5.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
-
-                    restartButton.setVisible(true);
-                    RNGButton5.setForeground(bg);
-
-                    RNGButton6.setEnabled(false);
-                } else {
-                    RNGButton5.setForeground(bg);
-                    RNGButton5.setEnabled(false);
-                    RNGButton6.setEnabled(false);
-                    RNGButton7.setEnabled(true);
-                    RNGButton8.setEnabled(true);
-                }
-            });
-
-            RNGButton6.addActionListener(k -> {
-                if (RNGButton6.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
-
-                    restartButton.setVisible(true);
-                    RNGButton6.setForeground(bg);
-
-                    RNGButton5.setEnabled(false);
-                } else {
-                    RNGButton6.setForeground(bg);
-                    RNGButton6.setEnabled(false);
-                    RNGButton5.setEnabled(false);
-                    RNGButton7.setEnabled(true);
-                    RNGButton8.setEnabled(true);
-                }
-            });
-
-            RNGButton7.addActionListener(k -> {
-                if (RNGButton7.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
-
-                    restartButton.setVisible(true);
-                    RNGButton7.setForeground(bg);
-
-                    RNGButton8.setEnabled(false);
-                } else {
-                    RNGButton7.setForeground(bg);
-                    RNGButton7.setEnabled(false);
-                    RNGButton8.setEnabled(false);
-                    RNGButton9.setEnabled(true);
-                    RNGButton10.setEnabled(true);
-                }
-            });
-
-            RNGButton8.addActionListener(k -> {
-                if (RNGButton8.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
-
-                    restartButton.setVisible(true);
-                    RNGButton8.setForeground(bg);
-
-                    RNGButton7.setEnabled(false);
-                } else {
-                    RNGButton8.setForeground(bg);
-                    RNGButton8.setEnabled(false);
-                    RNGButton7.setEnabled(false);
-                    RNGButton9.setEnabled(true);
-                    RNGButton10.setEnabled(true);
-                }
-            });
-
-            RNGButton9.addActionListener(k -> {
-                if (RNGButton9.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
-
-                    restartButton.setVisible(true);
-                    RNGButton9.setForeground(bg);
-
-                    RNGButton10.setEnabled(false);
-                } else {
-                    RNGButton9.setForeground(bg);
-                    balance *= 1.2;
-
-                    message.setText("WON 1.2X!");
-                    message.setBounds(325, 368, 49, 12);
-
-                    restartButton.setVisible(true);
-                }
-            });
-
-            RNGButton10.addActionListener(k -> {
-                if (RNGButton10.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
-
-                    restartButton.setVisible(true);
-                    RNGButton10.setForeground(bg);
-
-                    RNGButton9.setEnabled(false);
-                } else {
-                    RNGButton10.setForeground(bg);
-                    balance *= 1.2;
-
-                    message.setText("WON 1.2X!");
-                    message.setBounds(325, 368, 49, 12);
-
-                    restartButton.setVisible(true);
-                }
-            });
-
-            contentpane.repaint();
-            contentpane.revalidate();
-        });
-
-        contentpane.add(panel);
-        panel.add(menu);
-        panel.add(topUp);
-        panel.add(glassPanel);
-
-        contentpane.add(userBalance);
-        contentpane.add(glassPanelBal);
-
-        contentpane.add(mainPanel);
-        mainPanel.add(towers);
-        mainPanel.add(RNGButton1);
-        mainPanel.add(RNGButton2);
-        mainPanel.add(RNGButton3);
-        mainPanel.add(RNGButton4);
-        mainPanel.add(RNGButton5);
-        mainPanel.add(RNGButton6);
-        mainPanel.add(RNGButton7);
-        mainPanel.add(RNGButton8);
-        mainPanel.add(RNGButton9);
-        mainPanel.add(RNGButton10);
-        mainPanel.add(startButton);
-        mainPanel.add(restartButton);
-        mainPanel.add(towersPanel);
-
-        frame.setVisible(true);
-    }
-
-    public static void towersScreen2() {
-        JFrame frame = new JFrame();
-        Container contentpane = frame.getContentPane();
-
-        frame.setTitle("oblivion");
-        frame.setSize(700, 400);
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        contentpane.setBackground(bg);
-        contentpane.setLayout(null);
-
-        ImageIcon glassPanelImg = new ImageIcon(themePath + "glassyPanel.png");
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
-        panel.setBackground(null);
-        panel.setBounds(0, 0, 136, 42);
-
-        JLabel glassPanel = new JLabel(glassPanelImg);
-        glassPanel.setBackground(null);
-        glassPanel.setBounds(0, 0, 136, 42);
-
-        ImageIcon menuIcon = new ImageIcon(iconThemePath + "menuIcon21px.png");
-        JButton menu = new JButton(menuIcon);
-        menu.setBorderPainted(false);
-        menu.setFocusPainted(false);
-        menu.setContentAreaFilled(false);
-        menu.setBackground(null);
-        menu.setBounds(20, 11, 21, 21);
-
-        // menu button event
-        menu.addActionListener(e -> {
-            System.out.println(glassPanelImg.getImageLoadStatus());
-            frame.setVisible(false);
-            frame.dispose();
-
-            menuScreen();
-        });
-
-        ImageIcon glassyPanelBalance = new ImageIcon(themePath + "glassyPanelBalance.png");
-        JLabel glassPanelBal = new JLabel(glassyPanelBalance);
-        glassPanelBal.setBounds(629, 0, 71, 42);
-
-        JLabel userBalance = new JLabel();
-        userBalance.setFont(geistmono12);
-        userBalance.setForeground(buttonBackground);
-
-        // userBalance display
-        if (balance >= 1000 && balance < 10000) { // 1k to 10k
-            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "K");
-            userBalance.setBounds(654, 13, 700, 16);
-        } else if (balance >= 10000 && balance < 100000) { // 10k to 100k
-            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "K");
-            userBalance.setBounds(649, 13, 700, 16);
-        } else if (balance >= 100000 && balance < 1000000) { // 100k to 1m
-            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "K");
-            userBalance.setBounds(647, 13, 700, 16);
-        } else if (balance >= 1000000 && balance < 10000000) { // 1m to 10m
-            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "M");
-            userBalance.setBounds(653, 13, 700, 16);
-        } else if (balance >= 10000000 && balance < 100000000) { // 10m to 100m
-            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "M");
-            userBalance.setBounds(649, 13, 700, 16);
-        } else if (balance >= 100000000 && balance < 1000000000) { // 100m to 1b
-            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
-            userBalance.setBounds(643, 13, 700, 16);
-        } else if (balance >= 1000000000) {
-            userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
-            userBalance.setBounds(647, 13, 700, 16);
-        } else {
-            userBalance.setText("$" + String.valueOf((int) balance));
-
-            if (balance >= 0 && balance < 10) {
-                userBalance.setBounds(657, 13, 15, 16);
-            } else if (balance >= 10 && balance < 100) {
-                userBalance.setBounds(654, 13, 15, 16);
-            } else if (balance >= 100 && balance < 1000) {
-                userBalance.setBounds(650, 13, 700, 16);
-            }
-        }
-
-        RoundedButton topUp = new RoundedButton("buy");
-        topUp.setFont(geistmono9);
-        topUp.setBackground(buttonBackground);
-        topUp.setForeground(bg);
-        topUp.setBounds(51, 13, 69, 16);
-
-        // topUp button event
-        topUp.addActionListener(e -> {
-            frame.setVisible(false);
-            frame.dispose();
-
-            topUpScreen();
-        });
-
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(null);
-        mainPanel.setBackground(bg);
-        mainPanel.setBounds(226, 36, 248, 336);
+        mainPanel.setBounds(404, 31, 248, 336);
+
+        JPanel seperator = new JPanel();
+        seperator.setBackground(lightBlack);
+        seperator.setBounds(349, 82, 1, 236);
 
         ImageIcon towersGlass = new ImageIcon(themePath + "towersGlassPanel.png");
         JLabel towersPanel = new JLabel(towersGlass);
@@ -1140,6 +695,43 @@ public class App implements Runnable {
         betAmount.setBackground(bg);
         betAmount.setBounds(110, 172, 111, 20);
 
+        // Multiplier label
+        JLabel multiplierLabel = new JLabel("MULTIPLIER:");
+        multiplierLabel.setFont(geistmono9);
+        multiplierLabel.setForeground(buttonBackground);
+        multiplierLabel.setBounds(136, 217, 60, 12);
+
+        // Rounded Buttons: 1.5x, 2x, 5x
+        RoundedButton oneFiveMultiplier = new RoundedButton("1.5x");
+        oneFiveMultiplier.setFont(geistmono6);
+        oneFiveMultiplier.setForeground(bg);
+        oneFiveMultiplier.setBackground(buttonBackground);
+        oneFiveMultiplier.setBounds(55, 238, 69, 16);
+
+        oneFiveMultiplier.addActionListener(e -> {
+            multiplier = 1.5;
+        });
+
+        RoundedButton twoMultiplier = new RoundedButton("2x");
+        twoMultiplier.setFont(geistmono6);
+        twoMultiplier.setForeground(bg);
+        twoMultiplier.setBackground(buttonBackground);
+        twoMultiplier.setBounds(131, 238, 69, 16);
+
+        twoMultiplier.addActionListener(e -> {
+            multiplier = 2;
+        });
+
+        RoundedButton fiveMultiplier = new RoundedButton("5x");
+        fiveMultiplier.setFont(geistmono6);
+        fiveMultiplier.setForeground(bg);
+        fiveMultiplier.setBackground(buttonBackground);
+        fiveMultiplier.setBounds(207, 238, 69, 16);
+
+        fiveMultiplier.addActionListener(e -> {
+            multiplier = 5;
+        });
+
         // Hard code buttons
         RoundedButton RNGButton1 = new RoundedButton("");
         RNGButton1.setFont(geistmono10);
@@ -1213,13 +805,13 @@ public class App implements Runnable {
         startButton.setFont(geistmono6);
         startButton.setBackground(buttonBackground);
         startButton.setForeground(bg);
-        startButton.setBounds(89, 277, 69, 16);
+        startButton.setBounds(131, 305, 69, 16);
 
         RoundedButton restartButton = new RoundedButton("restart");
         restartButton.setFont(geistmono6);
         restartButton.setBackground(buttonBackground);
         restartButton.setForeground(bg);
-        restartButton.setBounds(89, 277, 69, 16);
+        restartButton.setBounds(131, 305, 69, 16);
 
         JLabel message = new JLabel();
         message.setFont(geistmono9);
@@ -1227,232 +819,250 @@ public class App implements Runnable {
 
         // startButton event
         startButton.addActionListener(e -> {
-            String[] choices = {"bomb", "safe"};
-            int[][] rng = new int[5][2];
+            // edge case
+            if (multiplier <= 0) {
+                // do nothing until a multiplier is selected
+            } else if (betAmount.getText().isEmpty()) {
+                // do nothing until a bet amount is entered
+            } else if (Integer.parseInt(betAmount.getText()) > balance) {
+                // do nothing since the bet is lower than the user balance
+            } else {
+                String[] choices = {"bomb", "safe"};
+                int[][] rng = new int[5][2];
 
-            for (int i = 0; i < 5; i++) {
-                int[] window = {0, 0};
-                window[0] = (int) (Math.random() * 2);
-                System.out.println("first indx: " + String.valueOf(window[0]));
-                    
-                if (window[0] == 0) {
-                    window[1] = 1;
-                } else {
-                    window[1] = 0;
+                for (int i = 0; i < 5; i++) {
+                    int[] window = {0, 0};
+                    window[0] = (int) (Math.random() * 2);
+                    System.out.println("first indx: " + String.valueOf(window[0]));
+                        
+                    if (window[0] == 0) {
+                        window[1] = 1;
+                    } else {
+                        window[1] = 0;
+                    }
+
+                    System.out.println("second index: " + String.valueOf(window[1]));
+
+                    rng[i] = window;
                 }
 
-                System.out.println("second index: " + String.valueOf(window[1]));
+                restartButton.addActionListener(k -> {
+                    frame.setVisible(false);
+                    frame.dispose();
+                    towersScreen();
+                });
 
-                rng[i] = window;
-            }
+                startButton.setVisible(false);
+                restartButton.setVisible(false);
 
-            restartButton.addActionListener(k -> {
-                frame.setVisible(false);
-                frame.dispose();
-                towersScreen2();
-            });
+                // hard-coded button choices
+                RNGButton1.setText(choices[rng[0][0]]);
+                RNGButton2.setText(choices[rng[0][1]]);
+                RNGButton3.setText(choices[rng[1][0]]);
+                RNGButton4.setText(choices[rng[1][1]]);
+                RNGButton5.setText(choices[rng[2][0]]);
+                RNGButton6.setText(choices[rng[2][1]]);
+                RNGButton7.setText(choices[rng[3][0]]);
+                RNGButton8.setText(choices[rng[3][1]]);
+                RNGButton9.setText(choices[rng[4][0]]);
+                RNGButton10.setText(choices[rng[4][1]]);
 
-            startButton.setVisible(false);
-            restartButton.setVisible(false);
+                RNGButton1.addActionListener(k -> {
+                    if (RNGButton1.getText().equals("bomb")) {
+                        balance -= 200;
+                        message.setText("LOSS!");
+                        message.setBounds(336, 368, 27, 12);
 
-            // hard-coded button choices
-            RNGButton1.setText(choices[rng[0][0]]);
-            RNGButton2.setText(choices[rng[0][1]]);
-            RNGButton3.setText(choices[rng[1][0]]);
-            RNGButton4.setText(choices[rng[1][1]]);
-            RNGButton5.setText(choices[rng[2][0]]);
-            RNGButton6.setText(choices[rng[2][1]]);
-            RNGButton7.setText(choices[rng[3][0]]);
-            RNGButton8.setText(choices[rng[3][1]]);
-            RNGButton9.setText(choices[rng[4][0]]);
-            RNGButton10.setText(choices[rng[4][1]]);
+                        restartButton.setVisible(true);
+                        RNGButton1.setForeground(bg);
+                        
+                        RNGButton2.setEnabled(false);
+                    } else {
+                        RNGButton1.setForeground(bg);
+                        RNGButton1.setEnabled(false);
+                        RNGButton2.setEnabled(false);
+                        RNGButton3.setEnabled(true);
+                        RNGButton4.setEnabled(true);
+                    }
+                });
+                
+                RNGButton2.addActionListener(k -> {
+                    if (RNGButton2.getText().equals("bomb")) {
+                        balance -= 200;
+                        message.setText("LOSS!");
+                        message.setBounds(336, 368, 27, 12);
 
-            RNGButton1.addActionListener(k -> {
-                if (RNGButton1.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
+                        restartButton.setVisible(true);
+                        RNGButton2.setForeground(bg);
 
-                    restartButton.setVisible(true);
-                    RNGButton1.setForeground(bg);
-                    
-                    RNGButton2.setEnabled(false);
-                } else {
-                    RNGButton1.setForeground(bg);
-                    RNGButton1.setEnabled(false);
-                    RNGButton2.setEnabled(false);
-                    RNGButton3.setEnabled(true);
-                    RNGButton4.setEnabled(true);
-                }
-            });
-            
-            RNGButton2.addActionListener(k -> {
-                if (RNGButton2.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
+                        RNGButton1.setEnabled(false);
+                    } else {
+                        RNGButton2.setForeground(bg);
+                        RNGButton2.setEnabled(false);
+                        RNGButton1.setEnabled(false);
+                        RNGButton3.setEnabled(true);
+                        RNGButton4.setEnabled(true);
+                    }
+                });
 
-                    restartButton.setVisible(true);
-                    RNGButton2.setForeground(bg);
+                RNGButton3.addActionListener(k -> {
+                    if (RNGButton3.getText().equals("bomb")) {
+                        balance -= 200;
+                        message.setText("LOSS!");
+                        message.setBounds(336, 368, 27, 12);
 
-                    RNGButton1.setEnabled(false);
-                } else {
-                    RNGButton2.setForeground(bg);
-                    RNGButton2.setEnabled(false);
-                    RNGButton1.setEnabled(false);
-                    RNGButton3.setEnabled(true);
-                    RNGButton4.setEnabled(true);
-                }
-            });
+                        restartButton.setVisible(true);
+                        RNGButton3.setForeground(bg);
+                        
+                        RNGButton4.setEnabled(false);;
+                    } else {
+                        RNGButton3.setForeground(bg);
+                        RNGButton3.setEnabled(false);
+                        RNGButton4.setEnabled(false);
+                        RNGButton5.setEnabled(true);
+                        RNGButton6.setEnabled(true);
+                    }
+                });
 
-            RNGButton3.addActionListener(k -> {
-                if (RNGButton3.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
+                RNGButton4.addActionListener(k -> {
+                    if (RNGButton4.getText().equals("bomb")) {
+                        message.setText("LOSS!");
+                        message.setBounds(336, 368, 27, 12);
 
-                    restartButton.setVisible(true);
-                    RNGButton3.setForeground(bg);
-                    
-                    RNGButton4.setEnabled(false);;
-                } else {
-                    RNGButton3.setForeground(bg);
-                    RNGButton3.setEnabled(false);
-                    RNGButton4.setEnabled(false);
-                    RNGButton5.setEnabled(true);
-                    RNGButton6.setEnabled(true);
-                }
-            });
+                        restartButton.setVisible(true);
+                        RNGButton4.setForeground(bg);
 
-            RNGButton4.addActionListener(k -> {
-                if (RNGButton4.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
+                        RNGButton3.setEnabled(false);
+                    } else {
+                        RNGButton4.setForeground(bg);
+                        RNGButton4.setEnabled(false);
+                        RNGButton3.setEnabled(false);
+                        RNGButton5.setEnabled(true);
+                        RNGButton6.setEnabled(true);
+                    }
+                });
 
-                    restartButton.setVisible(true);
-                    RNGButton4.setForeground(bg);
+                RNGButton5.addActionListener(k -> {
+                    if (RNGButton5.getText().equals("bomb")) {
+                        balance -= 200;
+                        message.setText("LOSS!");
+                        message.setBounds(336, 368, 27, 12);
 
-                    RNGButton3.setEnabled(false);
-                } else {
-                    RNGButton4.setForeground(bg);
-                    RNGButton4.setEnabled(false);
-                    RNGButton3.setEnabled(false);
-                    RNGButton5.setEnabled(true);
-                    RNGButton6.setEnabled(true);
-                }
-            });
+                        restartButton.setVisible(true);
+                        RNGButton5.setForeground(bg);
 
-            RNGButton5.addActionListener(k -> {
-                if (RNGButton5.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
+                        RNGButton6.setEnabled(false);
+                    } else {
+                        RNGButton5.setForeground(bg);
+                        RNGButton5.setEnabled(false);
+                        RNGButton6.setEnabled(false);
+                        RNGButton7.setEnabled(true);
+                        RNGButton8.setEnabled(true);
+                    }
+                });
 
-                    restartButton.setVisible(true);
-                    RNGButton5.setForeground(bg);
+                RNGButton6.addActionListener(k -> {
+                    if (RNGButton6.getText().equals("bomb")) {
+                        balance -= 200;
+                        message.setText("LOSS!");
+                        message.setBounds(336, 368, 27, 12);
 
-                    RNGButton6.setEnabled(false);
-                } else {
-                    RNGButton5.setForeground(bg);
-                    RNGButton5.setEnabled(false);
-                    RNGButton6.setEnabled(false);
-                    RNGButton7.setEnabled(true);
-                    RNGButton8.setEnabled(true);
-                }
-            });
+                        restartButton.setVisible(true);
+                        RNGButton6.setForeground(bg);
 
-            RNGButton6.addActionListener(k -> {
-                if (RNGButton6.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
+                        RNGButton5.setEnabled(false);
+                    } else {
+                        RNGButton6.setForeground(bg);
+                        RNGButton6.setEnabled(false);
+                        RNGButton5.setEnabled(false);
+                        RNGButton7.setEnabled(true);
+                        RNGButton8.setEnabled(true);
+                    }
+                });
 
-                    restartButton.setVisible(true);
-                    RNGButton6.setForeground(bg);
+                RNGButton7.addActionListener(k -> {
+                    if (RNGButton7.getText().equals("bomb")) {
+                        balance -= 200;
+                        message.setText("LOSS!");
+                        message.setBounds(336, 368, 27, 12);
 
-                    RNGButton5.setEnabled(false);
-                } else {
-                    RNGButton6.setForeground(bg);
-                    RNGButton6.setEnabled(false);
-                    RNGButton5.setEnabled(false);
-                    RNGButton7.setEnabled(true);
-                    RNGButton8.setEnabled(true);
-                }
-            });
+                        restartButton.setVisible(true);
+                        RNGButton7.setForeground(bg);
 
-            RNGButton7.addActionListener(k -> {
-                if (RNGButton7.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
+                        RNGButton8.setEnabled(false);
+                    } else {
+                        RNGButton7.setForeground(bg);
+                        RNGButton7.setEnabled(false);
+                        RNGButton8.setEnabled(false);
+                        RNGButton9.setEnabled(true);
+                        RNGButton10.setEnabled(true);
+                    }
+                });
 
-                    restartButton.setVisible(true);
-                    RNGButton7.setForeground(bg);
+                RNGButton8.addActionListener(k -> {
+                    if (RNGButton8.getText().equals("bomb")) {
+                        balance -= 200;
+                        message.setText("LOSS!");
+                        message.setBounds(336, 368, 27, 12);
 
-                    RNGButton8.setEnabled(false);
-                } else {
-                    RNGButton7.setForeground(bg);
-                    RNGButton7.setEnabled(false);
-                    RNGButton8.setEnabled(false);
-                    RNGButton9.setEnabled(true);
-                    RNGButton10.setEnabled(true);
-                }
-            });
+                        restartButton.setVisible(true);
+                        RNGButton8.setForeground(bg);
 
-            RNGButton8.addActionListener(k -> {
-                if (RNGButton8.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
+                        RNGButton7.setEnabled(false);
+                    } else {
+                        RNGButton8.setForeground(bg);
+                        RNGButton8.setEnabled(false);
+                        RNGButton7.setEnabled(false);
+                        RNGButton9.setEnabled(true);
+                        RNGButton10.setEnabled(true);
+                    }
+                });
 
-                    restartButton.setVisible(true);
-                    RNGButton8.setForeground(bg);
+                RNGButton9.addActionListener(k -> {
+                    if (RNGButton9.getText().equals("bomb")) {
+                        balance -= 200;
+                        message.setText("LOSS!");
+                        message.setBounds(336, 368, 27, 12);
 
-                    RNGButton7.setEnabled(false);
-                } else {
-                    RNGButton8.setForeground(bg);
-                    RNGButton8.setEnabled(false);
-                    RNGButton7.setEnabled(false);
-                    RNGButton9.setEnabled(true);
-                    RNGButton10.setEnabled(true);
-                }
-            });
+                        restartButton.setVisible(true);
+                        RNGButton9.setForeground(bg);
 
-            RNGButton9.addActionListener(k -> {
-                if (RNGButton9.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
+                        RNGButton10.setEnabled(false);
+                    } else {
+                        RNGButton9.setForeground(bg);
+                        balance *= multiplier;
 
-                    restartButton.setVisible(true);
-                    RNGButton9.setForeground(bg);
+                        message.setText("WON " + multiplier + "X!");
+                        message.setBounds(325, 368, 49, 12);
 
-                    RNGButton10.setEnabled(false);
-                } else {
-                    RNGButton9.setForeground(bg);
-                    balance *= 1.2;
+                        restartButton.setVisible(true);
+                    }
+                });
 
-                    message.setText("WON 1.2X!");
-                    message.setBounds(325, 368, 49, 12);
+                RNGButton10.addActionListener(k -> {
+                    if (RNGButton10.getText().equals("bomb")) {
+                        balance -= 200;
+                        message.setText("LOSS!");
+                        message.setBounds(336, 368, 27, 12);
 
-                    restartButton.setVisible(true);
-                }
-            });
+                        restartButton.setVisible(true);
+                        RNGButton10.setForeground(bg);
 
-            RNGButton10.addActionListener(k -> {
-                if (RNGButton10.getText().equals("bomb")) {
-                    message.setText("LOSS!");
-                    message.setBounds(336, 368, 27, 12);
+                        RNGButton9.setEnabled(false);
+                    } else {
+                        RNGButton10.setForeground(bg);
+                        balance *= multiplier;
 
-                    restartButton.setVisible(true);
-                    RNGButton10.setForeground(bg);
+                        message.setText("WON " + multiplier + "X!");
+                        message.setBounds(325, 368, 49, 12);
 
-                    RNGButton9.setEnabled(false);
-                } else {
-                    RNGButton10.setForeground(bg);
-                    balance *= 1.2;
-
-                    message.setText("WON 1.2X!");
-                    message.setBounds(325, 368, 49, 12);
-
-                    restartButton.setVisible(true);
-                }
-            });
+                        restartButton.setVisible(true);
+                    }
+                });
 
             contentpane.repaint();
             contentpane.revalidate();
+            }
         });
 
         contentpane.add(panel);
@@ -1465,8 +1075,15 @@ public class App implements Runnable {
 
         contentpane.add(mainPanel);
         contentpane.add(towers);
+        contentpane.add(seperator);
         contentpane.add(betLabel);
         contentpane.add(betAmount);
+        contentpane.add(multiplierLabel);
+        contentpane.add(oneFiveMultiplier);
+        contentpane.add(twoMultiplier);
+        contentpane.add(fiveMultiplier);
+        contentpane.add(startButton);
+        contentpane.add(restartButton);
         mainPanel.add(RNGButton1);
         mainPanel.add(RNGButton2);
         mainPanel.add(RNGButton3);
@@ -1477,8 +1094,6 @@ public class App implements Runnable {
         mainPanel.add(RNGButton8);
         mainPanel.add(RNGButton9);
         mainPanel.add(RNGButton10);
-        mainPanel.add(startButton);
-        mainPanel.add(restartButton);
         mainPanel.add(towersPanel);
 
         frame.setVisible(true);

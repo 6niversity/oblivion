@@ -18,12 +18,10 @@ The workspace contains three folders, where:
 
 ## 🆕 Current progress
 
-- Blackjack Working
-- Dice Working
-- Crash Working
-- Towers Working
+- All Games Working
 - Win/Loss Message
 - Light Theme (unfinished)
+- Towers UI Redesign
 
 ## ⬆️ Future Patches
 
