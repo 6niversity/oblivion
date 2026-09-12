@@ -1255,24 +1255,42 @@ public class App implements Runnable {
         multiplier.setForeground(buttonBackground);
         multiplier.setBounds(206, 145, 350, 125);
 
-        /// message label
+        // message label
         JLabel message = new JLabel();
         message.setFont(geistmono9);
         message.setForeground(buttonBackground);
+
+        // bet amount label
+        JLabel betLabel = new JLabel("BET AMOUNT:");
+        betLabel.setFont(geistmono9);
+        betLabel.setForeground(buttonBackground);
+        betLabel.setBounds(254, 271, 60, 12);
+
+        // bet amount roundedtextfield
+        RoundedTextField betAmount = new RoundedTextField(lightBlack, 3);
+        betAmount.setBackground(bg);
+        betAmount.setForeground(buttonBackground);
+        betAmount.setBounds(254, 283, 111, 20);
 
         // bet button
         RoundedButton bet = new RoundedButton("bet");
         bet.setFont(geistmono6);
         bet.setBackground(buttonBackground);
         bet.setForeground(bg);
-        bet.setBounds(315, 275, 69, 16);
+        bet.setBounds(377, 285, 69, 16);
 
         bet.addActionListener(e -> {
             // edge case
             if (balance == 0) {
                 // do nothing
-            } else {
+            } else if (betAmount.getText().isEmpty()) {
+                // do nothing
+            } else if (Double.parseDouble(betAmount.getText()) > balance || Double.parseDouble(betAmount.getText()) == 0) {
+                // do nothing
+            } else {   
                 bet.setVisible(false);
+                betLabel.setVisible(false);
+                betAmount.setVisible(false);
 
                 int rng = (int) (Math.random()*1001);
                 System.out.println(rng);
@@ -1288,7 +1306,7 @@ public class App implements Runnable {
                     loop.stop(); // stop loop
 
                     System.out.println(num);
-                    balance = 200 * Double.parseDouble( String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3));
+                    balance = balance + Integer.parseInt(betAmount.getText()) * Double.parseDouble( String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3));
 
                     message.setText("CASHED OUT AT " + String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3) + "!");
                     message.setBounds(309, 325, 125, 12);
@@ -1331,6 +1349,8 @@ public class App implements Runnable {
 
                     bet.setVisible(true);
                     cashout.setVisible(false);
+                    betLabel.setVisible(true);
+                    betAmount.setVisible(true);
                 });
 
                 contentpane.add(cashout);
@@ -1385,6 +1405,8 @@ public class App implements Runnable {
         contentpane.add(bet);
         contentpane.add(information);
         contentpane.add(message);
+        contentpane.add(betLabel);
+        contentpane.add(betAmount);
 
         frame.setVisible(true);
     }
