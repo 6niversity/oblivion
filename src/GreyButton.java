@@ -5,17 +5,23 @@ import java.awt.geom.RoundRectangle2D;
 // Claude Grey Button
 public class GreyButton extends JButton {
 
-    private Color fillColor = new Color(21, 21, 21);
+    private Color fillColor;
     private Color borderColor = new Color(52, 52, 52);
     private int arc = 20;
 
-    public GreyButton(String text) {
+    private Color foregroundColor;
+
+    public GreyButton(String text, Color fillColor, Color foregroundColor) {
         super(text);
+
+        this.fillColor = fillColor;
+        this.foregroundColor = foregroundColor;
+
         setContentAreaFilled(false);
         setFocusPainted(false);
         setBorderPainted(false);
         setOpaque(false);
-        setForeground(buttonBackground);
+        setForeground(foregroundColor);
         setBackground(fillColor);
     }
 

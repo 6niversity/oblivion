@@ -235,9 +235,9 @@ public class App implements Runnable {
             userBalance.setText("$" + String.valueOf((int) balance));
 
             if (balance >= 0 && balance < 10) {
-                userBalance.setBounds(657, 13, 15, 16);
+                userBalance.setBounds(657, 13, 700, 16);
             } else if (balance >= 10 && balance < 100) {
-                userBalance.setBounds(654, 13, 15, 16);
+                userBalance.setBounds(654, 13, 700, 16);
             } else if (balance >= 100 && balance < 1000) {
                 userBalance.setBounds(650, 13, 700, 16);
             }
@@ -388,9 +388,9 @@ public class App implements Runnable {
             userBalance.setText("$" + String.valueOf((int) balance));
 
             if (balance >= 0 && balance < 10) {
-                userBalance.setBounds(657, 13, 15, 16);
+                userBalance.setBounds(657, 13, 700, 16);
             } else if (balance >= 10 && balance < 100) {
-                userBalance.setBounds(654, 13, 15, 16);
+                userBalance.setBounds(654, 13, 700, 16);
             } else if (balance >= 100 && balance < 1000) {
                 userBalance.setBounds(650, 13, 700, 16);
             }
@@ -643,9 +643,9 @@ public class App implements Runnable {
             userBalance.setText("$" + String.valueOf((int) balance));
 
             if (balance >= 0 && balance < 10) {
-                userBalance.setBounds(657, 13, 15, 16);
+                userBalance.setBounds(657, 13, 700, 16);
             } else if (balance >= 10 && balance < 100) {
-                userBalance.setBounds(654, 13, 15, 16);
+                userBalance.setBounds(654, 13, 700, 16);
             } else if (balance >= 100 && balance < 1000) {
                 userBalance.setBounds(650, 13, 700, 16);
             }
@@ -870,6 +870,11 @@ public class App implements Runnable {
                 RNGButton1.addActionListener(k -> {
                     if (RNGButton1.getText().equals("bomb")) {
                         balance -= 200;
+
+                        if (balance < 0) {
+                            balance = 0;
+                        }
+
                         message.setText("LOSS!");
                         message.setBounds(336, 368, 27, 12);
 
@@ -889,6 +894,11 @@ public class App implements Runnable {
                 RNGButton2.addActionListener(k -> {
                     if (RNGButton2.getText().equals("bomb")) {
                         balance -= 200;
+
+                        if (balance < 0) {
+                            balance = 0;
+                        }
+
                         message.setText("LOSS!");
                         message.setBounds(336, 368, 27, 12);
 
@@ -908,6 +918,11 @@ public class App implements Runnable {
                 RNGButton3.addActionListener(k -> {
                     if (RNGButton3.getText().equals("bomb")) {
                         balance -= 200;
+
+                        if (balance < 0) {
+                            balance = 0;
+                        }
+
                         message.setText("LOSS!");
                         message.setBounds(336, 368, 27, 12);
 
@@ -926,6 +941,12 @@ public class App implements Runnable {
 
                 RNGButton4.addActionListener(k -> {
                     if (RNGButton4.getText().equals("bomb")) {
+                        balance -= 200;
+
+                        if (balance < 0) {
+                            balance = 0;
+                        }
+
                         message.setText("LOSS!");
                         message.setBounds(336, 368, 27, 12);
 
@@ -945,6 +966,11 @@ public class App implements Runnable {
                 RNGButton5.addActionListener(k -> {
                     if (RNGButton5.getText().equals("bomb")) {
                         balance -= 200;
+
+                        if (balance < 0) {
+                            balance = 0;
+                        }
+
                         message.setText("LOSS!");
                         message.setBounds(336, 368, 27, 12);
 
@@ -964,6 +990,11 @@ public class App implements Runnable {
                 RNGButton6.addActionListener(k -> {
                     if (RNGButton6.getText().equals("bomb")) {
                         balance -= 200;
+
+                        if (balance < 0) {
+                            balance = 0;
+                        }
+
                         message.setText("LOSS!");
                         message.setBounds(336, 368, 27, 12);
 
@@ -1002,6 +1033,11 @@ public class App implements Runnable {
                 RNGButton8.addActionListener(k -> {
                     if (RNGButton8.getText().equals("bomb")) {
                         balance -= 200;
+
+                        if (balance < 0) {
+                            balance = 0;
+                        }
+
                         message.setText("LOSS!");
                         message.setBounds(336, 368, 27, 12);
 
@@ -1021,6 +1057,11 @@ public class App implements Runnable {
                 RNGButton9.addActionListener(k -> {
                     if (RNGButton9.getText().equals("bomb")) {
                         balance -= 200;
+
+                        if (balance < 0) {
+                            balance = 0;
+                        }
+
                         message.setText("LOSS!");
                         message.setBounds(336, 368, 27, 12);
 
@@ -1042,6 +1083,11 @@ public class App implements Runnable {
                 RNGButton10.addActionListener(k -> {
                     if (RNGButton10.getText().equals("bomb")) {
                         balance -= 200;
+
+                        if (balance < 0) {
+                            balance = 0;
+                        }
+
                         message.setText("LOSS!");
                         message.setBounds(336, 368, 27, 12);
 
@@ -1173,9 +1219,9 @@ public class App implements Runnable {
             userBalance.setText("$" + String.valueOf((int) balance));
 
             if (balance >= 0 && balance < 10) {
-                userBalance.setBounds(657, 13, 15, 16);
+                userBalance.setBounds(657, 13, 700, 16);
             } else if (balance >= 10 && balance < 100) {
-                userBalance.setBounds(654, 13, 15, 16);
+                userBalance.setBounds(654, 13, 700, 16);
             } else if (balance >= 100 && balance < 1000) {
                 userBalance.setBounds(650, 13, 700, 16);
             }
@@ -1269,9 +1315,9 @@ public class App implements Runnable {
                     userBalance.setText("$" + String.valueOf((int) balance));
 
                     if (balance >= 0 && balance < 10) {
-                        userBalance.setBounds(657, 13, 15, 16);
+                        userBalance.setBounds(657, 13, 700, 16);
                     } else if (balance >= 10 && balance < 100) {
-                        userBalance.setBounds(654, 13, 15, 16);
+                        userBalance.setBounds(654, 13, 700, 16);
                     } else if (balance >= 100 && balance < 1000) {
                         userBalance.setBounds(650, 13, 700, 16);
                     }
@@ -1302,6 +1348,10 @@ public class App implements Runnable {
                     loop.stop();
 
                     balance /= 1.2;
+
+                    if (balance < 0) {
+                        balance = 0;
+                    }
 
                     message.setText("CRASHED AT " + String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3) + "!");
                     message.setBounds(303, 325, 87, 12);
@@ -1405,9 +1455,9 @@ public class App implements Runnable {
             userBalance.setText("$" + String.valueOf((int) balance));
 
             if (balance >= 0 && balance < 10) {
-                userBalance.setBounds(657, 13, 15, 16);
+                userBalance.setBounds(657, 13, 700, 16);
             } else if (balance >= 10 && balance < 100) {
-                userBalance.setBounds(654, 13, 15, 16);
+                userBalance.setBounds(654, 13, 700, 16);
             } else if (balance >= 100 && balance < 1000) {
                 userBalance.setBounds(650, 13, 700, 16);
             }
@@ -1513,6 +1563,10 @@ public class App implements Runnable {
                     } else if (userRNG > 21) {
                         balance -= 200;
 
+                        if (balance < 0) {
+                            balance = 0;
+                        }
+
                         message.setText("LOSS!");
                         message.setBounds(336, 181, 27, 12);
                     }
@@ -1547,6 +1601,10 @@ public class App implements Runnable {
                         } else if (dealerRNG == 21) {
                             balance -= 2000;
 
+                            if (balance < 0) {
+                                balance = 0;
+                            }
+
                             message.setText("LOSS!");
                             message.setBounds(336, 181, 27, 12);
                         } else if (dealerRNG < userRNG) {
@@ -1557,6 +1615,10 @@ public class App implements Runnable {
                             message.setBounds(325, 181, 49, 12);
                         } else if (dealerRNG > userRNG) {
                             balance -= 200;
+
+                            if (balance < 0) {
+                                balance = 0;
+                            }
 
                             message.setText("LOSS!");
                             message.setBounds(336, 181, 27, 12);
@@ -1692,7 +1754,7 @@ public class App implements Runnable {
             diceScreen();
         });;
 
-        GreyButton cancel = new GreyButton("cancel");
+        GreyButton cancel = new GreyButton("cancel", bg, buttonBackground);
         cancel.setFont(geistmono6);
         cancel.setBounds(359, 237, 77, 21);
 
@@ -1793,11 +1855,11 @@ public class App implements Runnable {
             userBalance.setText("$" + String.valueOf((int) balance));
 
             if (balance >= 0 && balance < 10) {
-                userBalance.setBounds(657, 13, 15, 16);
+                userBalance.setBounds(657, 13, 700, 16);
             } else if (balance >= 10 && balance < 100) {
-                userBalance.setBounds(654, 13, 15, 16);
+                userBalance.setBounds(654, 13, 700, 16);
             } else if (balance >= 100 && balance < 1000) {
-                userBalance.setBounds(650, 13, 700, 16);
+                userBalance.setBounds(650, 13,700, 16);
             }
         }
 
@@ -2009,10 +2071,12 @@ public class App implements Runnable {
         } else {
             userBalance.setText("$" + String.valueOf((int) balance));
 
+            System.out.println(balance);
+
             if (balance >= 0 && balance < 10) {
-                userBalance.setBounds(657, 13, 15, 16);
+                userBalance.setBounds(657, 13, 700, 16);
             } else if (balance >= 10 && balance < 100) {
-                userBalance.setBounds(654, 13, 15, 16);
+                userBalance.setBounds(654, 13, 700, 16);
             } else if (balance >= 100 && balance < 1000) {
                 userBalance.setBounds(650, 13, 700, 16);
             }
@@ -2106,6 +2170,10 @@ public class App implements Runnable {
                     else {
                         balance -= 20;
 
+                        if (balance < 0) {
+                            balance = 0;
+                        }
+
                         message.setText("LOSS!");
                         message.setBounds(334, 305, 27, 12);
                     }
@@ -2118,6 +2186,10 @@ public class App implements Runnable {
                     } 
                     else {
                         balance /= 1.2;
+
+                        if (balance < 0) {
+                            balance = 0;
+                        }
 
                         message.setText("LOSS!");
                         message.setBounds(334, 305, 27, 12);
@@ -2153,9 +2225,9 @@ public class App implements Runnable {
                     userBalance.setText("$" + String.valueOf((int) balance));
 
                     if (balance >= 0 && balance < 10) {
-                        userBalance.setBounds(657, 13, 15, 16);
+                        userBalance.setBounds(657, 13, 700, 16);
                     } else if (balance >= 10 && balance < 100) {
-                        userBalance.setBounds(654, 13, 15, 16);
+                        userBalance.setBounds(654, 13, 700, 16);
                     } else if (balance >= 100 && balance < 1000) {
                         userBalance.setBounds(650, 13, 700, 16);
                     }
