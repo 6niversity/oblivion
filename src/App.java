@@ -824,10 +824,8 @@ public class App implements Runnable {
                 // do nothing until a multiplier is selected
             } else if (betAmount.getText().isEmpty()) {
                 // do nothing until a bet amount is entered
-            } else if (Integer.parseInt(betAmount.getText()) > balance) {
+            } else if (Integer.parseInt(betAmount.getText()) > balance || Integer.parseInt(betAmount.getText()) == 0) {
                 // do nothing since the bet is lower than the user balance
-            } else if (balance == 0) {
-                // do nothing as the user doesn't have the balance to play
             } else {
                 String[] choices = {"bomb", "safe"};
                 int[][] rng = new int[5][2];
