@@ -826,6 +826,8 @@ public class App implements Runnable {
                 // do nothing until a bet amount is entered
             } else if (Integer.parseInt(betAmount.getText()) > balance) {
                 // do nothing since the bet is lower than the user balance
+            } else if (balance == 0) {
+                // do nothing as the user doesn't have the balance to play
             } else {
                 String[] choices = {"bomb", "safe"};
                 int[][] rng = new int[5][2];
@@ -1266,98 +1268,104 @@ public class App implements Runnable {
         bet.setBounds(315, 275, 69, 16);
 
         bet.addActionListener(e -> {
-            bet.setVisible(false);
+            // edge case
+            if (balance == 0) {
+                // do nothing
+            } else {
+                bet.setVisible(false);
 
-            int rng = (int) (Math.random()*1001);
-            System.out.println(rng);
-            message.setText(null);
+                int rng = (int) (Math.random()*1001);
+                System.out.println(rng);
+                message.setText(null);
 
-            RoundedButton cashout = new RoundedButton("cash out");
-            cashout.setFont(geistmono6);
-            cashout.setBackground(buttonBackground);
-            cashout.setForeground(bg);
-            cashout.setBounds(315, 275, 69, 16);
+                RoundedButton cashout = new RoundedButton("cash out");
+                cashout.setFont(geistmono6);
+                cashout.setBackground(buttonBackground);
+                cashout.setForeground(bg);
+                cashout.setBounds(315, 275, 69, 16);
 
-            cashout.addActionListener(k -> {
-                loop.stop(); // stop loop
+                cashout.addActionListener(k -> {
+                    loop.stop(); // stop loop
 
-                System.out.println(num);
-                balance = 200 * Double.parseDouble( String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3));
+                    System.out.println(num);
+                    balance = 200 * Double.parseDouble( String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3));
 
-                message.setText("CASHED OUT AT " + String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3) + "!");
-                message.setBounds(309, 325, 125, 12);
+                    message.setText("CASHED OUT AT " + String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3) + "!");
+                    message.setBounds(309, 325, 125, 12);
 
-                num = 100; // reset to default
+                    num = 100; // reset to default
 
-                // userDisplay (double check after betting)
-                if (balance >= 1000 && balance < 10000) { // 1k to 10k
-                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "K");
-                    userBalance.setBounds(654, 13, 700, 16);
-                } else if (balance >= 10000 && balance < 100000) { // 10k to 100k
-                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "K");
-                    userBalance.setBounds(649, 13, 700, 16);
-                } else if (balance >= 100000 && balance < 1000000) { // 100k to 1m
-                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "K");
-                    userBalance.setBounds(647, 13, 700, 16);
-                } else if (balance >= 1000000 && balance < 10000000) { // 1m to 10m
-                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "M");
-                    userBalance.setBounds(653, 13, 700, 16);
-                } else if (balance >= 10000000 && balance < 100000000) { // 10m to 100m
-                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "M");
-                    userBalance.setBounds(649, 13, 700, 16);
-                } else if (balance >= 100000000 && balance < 1000000000) { // 100m to 1b
-                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
-                    userBalance.setBounds(643, 13, 700, 16);
-                } else if (balance >= 1000000000) {
-                    userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
-                    userBalance.setBounds(647, 13, 700, 16);
-                } else {
-                    userBalance.setText("$" + String.valueOf((int) balance));
-
-                    if (balance >= 0 && balance < 10) {
-                        userBalance.setBounds(657, 13, 700, 16);
-                    } else if (balance >= 10 && balance < 100) {
+                    // userDisplay (double check after betting)
+                    if (balance >= 1000 && balance < 10000) { // 1k to 10k
+                        userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "K");
                         userBalance.setBounds(654, 13, 700, 16);
-                    } else if (balance >= 100 && balance < 1000) {
-                        userBalance.setBounds(650, 13, 700, 16);
-                    }
-                }
+                    } else if (balance >= 10000 && balance < 100000) { // 10k to 100k
+                        userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "K");
+                        userBalance.setBounds(649, 13, 700, 16);
+                    } else if (balance >= 100000 && balance < 1000000) { // 100k to 1m
+                        userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "K");
+                        userBalance.setBounds(647, 13, 700, 16);
+                    } else if (balance >= 1000000 && balance < 10000000) { // 1m to 10m
+                        userBalance.setText("$" + String.valueOf((int) balance).substring(0, 1) + "M");
+                        userBalance.setBounds(653, 13, 700, 16);
+                    } else if (balance >= 10000000 && balance < 100000000) { // 10m to 100m
+                        userBalance.setText("$" + String.valueOf((int) balance).substring(0, 2) + "M");
+                        userBalance.setBounds(649, 13, 700, 16);
+                    } else if (balance >= 100000000 && balance < 1000000000) { // 100m to 1b
+                        userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+                        userBalance.setBounds(643, 13, 700, 16);
+                    } else if (balance >= 1000000000) {
+                        userBalance.setText("$" + String.valueOf((int) balance).substring(0, 3) + "M");
+                        userBalance.setBounds(647, 13, 700, 16);
+                    } else {
+                        userBalance.setText("$" + String.valueOf((int) balance));
 
-                bet.setVisible(true);
-                cashout.setVisible(false);
-            });
-
-            contentpane.add(cashout);
-
-            contentpane.repaint();
-            contentpane.revalidate();
-
-            loop = new Timer(250, k -> {
-                if (!(num == rng)) {
-                    num++;
-                    String numString = String.valueOf(num);
-                    
-                    multiplier.setText(numString.substring(0, 1) + "." + numString.substring(1, 3) + "%");
-
-                    contentpane.repaint();
-                    contentpane.revalidate();
-                } else if (num < 100) {
-                    num = 100;
-                }
-                else {
-                    loop.stop();
-
-                    balance /= 1.2;
-
-                    if (balance < 0) {
-                        balance = 0;
+                        if (balance >= 0 && balance < 10) {
+                            userBalance.setBounds(657, 13, 700, 16);
+                        } else if (balance >= 10 && balance < 100) {
+                            userBalance.setBounds(654, 13, 700, 16);
+                        } else if (balance >= 100 && balance < 1000) {
+                            userBalance.setBounds(650, 13, 700, 16);
+                        }
                     }
 
-                    message.setText("CRASHED AT " + String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3) + "!");
-                    message.setBounds(303, 325, 87, 12);
-                }
-            });
-            loop.start();
+                    bet.setVisible(true);
+                    cashout.setVisible(false);
+                });
+
+                contentpane.add(cashout);
+
+                contentpane.repaint();
+                contentpane.revalidate();
+
+                loop = new Timer(250, k -> {
+                    if (!(num == rng)) {
+                        num++;
+                        String numString = String.valueOf(num);
+                        
+                        multiplier.setText(numString.substring(0, 1) + "." + numString.substring(1, 3) + "%");
+
+                        contentpane.repaint();
+                        contentpane.revalidate();
+                    } else if (num < 100) {
+                        num = 100;
+                    }
+                    else {
+                        loop.stop();
+
+                        balance /= 1.2;
+
+                        if (balance < 0) {
+                            balance = 0;
+                        }
+
+                        message.setText("CRASHED AT " + String.valueOf(num).substring(0, 1) + "." + String.valueOf(num).substring(1, 3) + "!");
+                        message.setBounds(303, 325, 87, 12);
+                    }
+                });
+                loop.start();
+            }
+            
         });
 
         JLabel information = new JLabel("cashing out grants bet x multiplier");
@@ -1514,106 +1522,56 @@ public class App implements Runnable {
 
         // i dont know how i made it work
         betPlacer.addActionListener(e -> {
-            message.setText(null);
-            betPlacer.setVisible(false);
+            if (balance == 0) {
+                // do nothing as the user does not have the balance to play
+            } else {
+                message.setText(null);
+                betPlacer.setVisible(false);
 
-            dealerRNG = (int)(Math.random() * 11);
-            userRNG = (int)(Math.random() * 11);
-
-            dealerNum.setText(String.valueOf(dealerRNG));
-            userCards.setText(String.valueOf(userRNG));
-
-            ImageIcon cardImg = new ImageIcon(themePath + "cardFrame.png");
-            JLabel dealerCard = new JLabel(cardImg);
-            dealerCard.setBackground(null);
-            dealerCard.setBounds(245, 34, 44, 67);
-
-            JLabel userCard = new JLabel(cardImg);
-            userCard.setBackground(null);
-            userCard.setBounds(245, 162, 44, 67);
-
-            RoundedButton hitButton = new RoundedButton("hit");
-            hitButton.setFont(geistmono9);
-            hitButton.setBackground(buttonBackground);
-            hitButton.setForeground(bg);
-            hitButton.setBounds(193, 240, 61, 16);
-
-            RoundedButton standButton = new RoundedButton("stand");
-            standButton.setFont(geistmono9);
-            standButton.setBackground(buttonBackground);
-            standButton.setForeground(bg);
-            standButton.setBounds(271, 240, 69, 16);
-
-            hitButton.addActionListener(k -> {
-                userRNG += (int) (Math.random() * 11);
+                dealerRNG = (int)(Math.random() * 11);
+                userRNG = (int)(Math.random() * 11);
 
                 dealerNum.setText(String.valueOf(dealerRNG));
                 userCards.setText(String.valueOf(userRNG));
-                
-                if (userRNG > 20) {
-                    hitButton.setEnabled(false);
-                    standButton.setEnabled(false);
 
-                    if (userRNG == 21) {
-                        balance *= 2;
-                        System.out.println("Debug: user won the game");
+                ImageIcon cardImg = new ImageIcon(themePath + "cardFrame.png");
+                JLabel dealerCard = new JLabel(cardImg);
+                dealerCard.setBackground(null);
+                dealerCard.setBounds(245, 34, 44, 67);
 
-                        message.setText("WON 1.2X!");
-                        message.setBounds(325, 181, 49, 12);
-                    } else if (userRNG > 21) {
-                        balance -= 200;
+                JLabel userCard = new JLabel(cardImg);
+                userCard.setBackground(null);
+                userCard.setBounds(245, 162, 44, 67);
 
-                        if (balance < 0) {
-                            balance = 0;
-                        }
+                RoundedButton hitButton = new RoundedButton("hit");
+                hitButton.setFont(geistmono9);
+                hitButton.setBackground(buttonBackground);
+                hitButton.setForeground(bg);
+                hitButton.setBounds(193, 240, 61, 16);
 
-                        message.setText("LOSS!");
-                        message.setBounds(336, 181, 27, 12);
-                    }
+                RoundedButton standButton = new RoundedButton("stand");
+                standButton.setFont(geistmono9);
+                standButton.setBackground(buttonBackground);
+                standButton.setForeground(bg);
+                standButton.setBounds(271, 240, 69, 16);
 
-                    betPlacer.setVisible(true);
-                }
-    
-                System.out.println("Debug: User Cards: "+ userRNG + "\nDealer Cards: " + dealerRNG);
-                contentpane.repaint();
-                contentpane.revalidate();
-            });
+                hitButton.addActionListener(k -> {
+                    userRNG += (int) (Math.random() * 11);
 
-            standButton.addActionListener(k -> {
-                loop = new Timer(1000, j -> {
-                    dealerRNG += (int) (Math.random() * 10) + 1;
                     dealerNum.setText(String.valueOf(dealerRNG));
-
-                    if (dealerRNG >= 17) {
+                    userCards.setText(String.valueOf(userRNG));
+                    
+                    if (userRNG > 20) {
                         hitButton.setEnabled(false);
                         standButton.setEnabled(false);
 
-                        betPlacer.setVisible(true);
-
-                        loop.stop();
-
-                        if (dealerRNG > 21) {
-                            hasWon = true;
-                            balance *= 1.2;
+                        if (userRNG == 21) {
+                            balance *= 2;
+                            System.out.println("Debug: user won the game");
 
                             message.setText("WON 1.2X!");
                             message.setBounds(325, 181, 49, 12);
-                        } else if (dealerRNG == 21) {
-                            balance -= 2000;
-
-                            if (balance < 0) {
-                                balance = 0;
-                            }
-
-                            message.setText("LOSS!");
-                            message.setBounds(336, 181, 27, 12);
-                        } else if (dealerRNG < userRNG) {
-                            hasWon = true;
-                            balance *= 1.2;
-
-                            message.setText("WON 1.2X!");
-                            message.setBounds(325, 181, 49, 12);
-                        } else if (dealerRNG > userRNG) {
+                        } else if (userRNG > 21) {
                             balance -= 200;
 
                             if (balance < 0) {
@@ -1624,27 +1582,81 @@ public class App implements Runnable {
                             message.setBounds(336, 181, 27, 12);
                         }
 
-                        System.out.println("Debug: User cards: " + userRNG + "\nDealer Cards: " + dealerRNG);
-
+                        betPlacer.setVisible(true);
                     }
+        
+                    System.out.println("Debug: User Cards: "+ userRNG + "\nDealer Cards: " + dealerRNG);
+                    contentpane.repaint();
+                    contentpane.revalidate();
                 });
-                loop.start();
 
-            });
+                standButton.addActionListener(k -> {
+                    loop = new Timer(1000, j -> {
+                        dealerRNG += (int) (Math.random() * 10) + 1;
+                        dealerNum.setText(String.valueOf(dealerRNG));
 
-            tablePanel.add(hitButton, 0);
-            tablePanel.add(standButton, 0);
+                        if (dealerRNG >= 17) {
+                            hitButton.setEnabled(false);
+                            standButton.setEnabled(false);
 
-            tablePanel.add(dealerNum, 1);
-            tablePanel.add(userCards, 2);
+                            betPlacer.setVisible(true);
 
-            tablePanel.add(dealerCard, 3);
-            tablePanel.add(userCard, 4);
+                            loop.stop();
 
-            tablePanel.repaint();
-            tablePanel.revalidate();
-            contentpane.repaint();
-            contentpane.revalidate();
+                            if (dealerRNG > 21) {
+                                hasWon = true;
+                                balance *= 1.2;
+
+                                message.setText("WON 1.2X!");
+                                message.setBounds(325, 181, 49, 12);
+                            } else if (dealerRNG == 21) {
+                                balance -= 2000;
+
+                                if (balance < 0) {
+                                    balance = 0;
+                                }
+
+                                message.setText("LOSS!");
+                                message.setBounds(336, 181, 27, 12);
+                            } else if (dealerRNG < userRNG) {
+                                hasWon = true;
+                                balance *= 1.2;
+
+                                message.setText("WON 1.2X!");
+                                message.setBounds(325, 181, 49, 12);
+                            } else if (dealerRNG > userRNG) {
+                                balance -= 200;
+
+                                if (balance < 0) {
+                                    balance = 0;
+                                }
+
+                                message.setText("LOSS!");
+                                message.setBounds(336, 181, 27, 12);
+                            }
+
+                            System.out.println("Debug: User cards: " + userRNG + "\nDealer Cards: " + dealerRNG);
+
+                        }
+                    });
+                    loop.start();
+
+                });
+
+                tablePanel.add(hitButton, 0);
+                tablePanel.add(standButton, 0);
+
+                tablePanel.add(dealerNum, 1);
+                tablePanel.add(userCards, 2);
+
+                tablePanel.add(dealerCard, 3);
+                tablePanel.add(userCard, 4);
+
+                tablePanel.repaint();
+                tablePanel.revalidate();
+                contentpane.repaint();
+                contentpane.revalidate();
+            }
         });
 
         contentpane.add(panel);
@@ -2155,7 +2167,7 @@ public class App implements Runnable {
 
         // betPlacer button event (needs functionality)
         betPlacer.addActionListener(e -> {
-            // if balance is more than 1
+            // if balance is more than or 1
             if (balance >= 1) {
                 int rngDice = (int)(Math.random() * 101);
                 int rngUser = slider.getValue();
